@@ -1,0 +1,296 @@
+{
+  "_meta": {
+    "title": "PediaDose — Formulation & Concentration Library",
+    "description": "Pre-calculated volume tables per age group per formulation strength. Use alongside drugs.json for concentration-aware dose display.",
+    "sources": [
+      "Paeds_Meds_v2 — Paediatric Medication Quick Reference",
+      "PaedsENGAGE Common Paediatric Drug Reference Guide, 1st Edition February 2025",
+      "KKH CE Clinical Guidelines, January 2026 edition"
+    ],
+    "lastUpdated": "2026-03"
+  },
+  "formulations": [
+    {
+      "drugId": "paracetamol",
+      "label": "Paracetamol 250 mg/5 mL suspension",
+      "strengthMg": 250,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "notes": "Standard paediatric suspension. Dose 10–15 mg/kg. Ages and volumes based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "3–6 months", "volumeMl": "1.5" },
+        { "ageLabel": "6–12 months", "volumeMl": "2" },
+        { "ageLabel": "2 years", "volumeMl": "2.5–3" },
+        { "ageLabel": "3 years", "volumeMl": "3–3.5" },
+        { "ageLabel": "4 years", "volumeMl": "3.5–4" },
+        { "ageLabel": "5 years", "volumeMl": "4–4.5" },
+        { "ageLabel": "6 years", "volumeMl": "4.5–5" },
+        { "ageLabel": "7 years", "volumeMl": "5–6" },
+        { "ageLabel": "8 years", "volumeMl": "6–7" },
+        { "ageLabel": "9 years", "volumeMl": "7–8" },
+        { "ageLabel": "10 years", "volumeMl": "8–9" },
+        { "ageLabel": "11 years", "volumeMl": "9–10" },
+        { "ageLabel": "12 years", "volumeMl": "10–11" }
+      ]
+    },
+    {
+      "drugId": "paracetamol",
+      "label": "Paracetamol 500 mg tablet",
+      "strengthMg": 500,
+      "perVolumeMl": null,
+      "route": "Oral",
+      "isDefault": false,
+      "notes": "For children able to swallow tablets. Max 2 tablets per dose."
+    },
+    {
+      "drugId": "paracetamol",
+      "label": "Paracetamol suppository (125 mg)",
+      "strengthMg": 125,
+      "perVolumeMl": null,
+      "route": "Rectal",
+      "isDefault": false,
+      "notes": "Dose 10–20 mg/kg rectally."
+    },
+    {
+      "drugId": "paracetamol",
+      "label": "Paracetamol suppository (250 mg)",
+      "strengthMg": 250,
+      "perVolumeMl": null,
+      "route": "Rectal",
+      "isDefault": false,
+      "notes": "Dose 10–20 mg/kg rectally."
+    },
+    {
+      "drugId": "ibuprofen",
+      "label": "Ibuprofen 100 mg/5 mL syrup (TDS dosing)",
+      "strengthMg": 100,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "TDS",
+      "notes": "TDS volumes — lower end of dose range (antipyretic). Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "6–12 months", "volumeMl": "2.5" },
+        { "ageLabel": "1–3 years", "volumeMl": "5" },
+        { "ageLabel": "4–6 years", "volumeMl": "7.5" },
+        { "ageLabel": "7–9 years", "volumeMl": "10" },
+        { "ageLabel": "10–12 years", "volumeMl": "15" }
+      ]
+    },
+    {
+      "drugId": "ibuprofen",
+      "label": "Ibuprofen 100 mg/5 mL syrup (QDS dosing)",
+      "strengthMg": 100,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "QDS",
+      "notes": "QDS volumes — lower dose per administration. Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "6–12 months", "volumeMl": "2.5" },
+        { "ageLabel": "1–3 years", "volumeMl": "3.75" },
+        { "ageLabel": "4–6 years", "volumeMl": "5.5" },
+        { "ageLabel": "7–9 years", "volumeMl": "7.5" },
+        { "ageLabel": "10–12 years", "volumeMl": "11" }
+      ]
+    },
+    {
+      "drugId": "amoxicillin",
+      "label": "Amoxicillin 125 mg/5 mL suspension (TDS)",
+      "strengthMg": 125,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "TDS",
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "3–8 months", "volumeMl": "2.5" },
+        { "ageLabel": "9 months–2 years", "volumeMl": "5" },
+        { "ageLabel": "2–5 years", "volumeMl": "7.5" },
+        { "ageLabel": "5–12 years", "volumeMl": "10" }
+      ]
+    },
+    {
+      "drugId": "amoxicillin",
+      "label": "Amoxicillin 250 mg/5 mL suspension (TDS)",
+      "strengthMg": 250,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "TDS",
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "9 months–2 years", "volumeMl": "2.5" },
+        { "ageLabel": "2–5 years", "volumeMl": "4" },
+        { "ageLabel": "5–12 years", "volumeMl": "5" }
+      ]
+    },
+    {
+      "drugId": "co-amoxiclav",
+      "label": "Co-amoxiclav 312.5 mg/5 mL suspension (BD)",
+      "strengthMg": 312.5,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "BD",
+      "notes": "Augmentin 312.5mg/5mL. Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "9 months–2 years", "volumeMl": "2" },
+        { "ageLabel": "2–7 years", "volumeMl": "4" },
+        { "ageLabel": "7–12 years", "volumeMl": "7.5" }
+      ]
+    },
+    {
+      "drugId": "co-amoxiclav",
+      "label": "Co-amoxiclav 156.25 mg/5 mL suspension (TDS)",
+      "strengthMg": 156.25,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "TDS",
+      "notes": "Augmentin 156.25mg/5mL TDS option. Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "9 months–2 years", "volumeMl": "2.5" },
+        { "ageLabel": "2–7 years", "volumeMl": "5" },
+        { "ageLabel": "7–12 years", "volumeMl": "10" }
+      ]
+    },
+    {
+      "drugId": "co-amoxiclav",
+      "label": "Co-amoxiclav 156.25 mg/5 mL suspension (BD)",
+      "strengthMg": 156.25,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "BD",
+      "notes": "Augmentin 156.25mg/5mL BD option. Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "9 months–2 years", "volumeMl": "4" },
+        { "ageLabel": "2–7 years", "volumeMl": "7.5" },
+        { "ageLabel": "7–12 years", "volumeMl": "15" }
+      ]
+    },
+    {
+      "drugId": "clarithromycin",
+      "label": "Clarithromycin 125 mg/5 mL suspension (BD)",
+      "strengthMg": 125,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "BD",
+      "notes": "Weight-based volumes. Based on Paeds_Meds_v2.",
+      "weightVolumes": [
+        { "weightLabel": "8–11 kg", "volumeMl": "2.5" },
+        { "weightLabel": "12–19 kg", "volumeMl": "5" },
+        { "weightLabel": "20–29 kg", "volumeMl": "7.5" },
+        { "weightLabel": "30–40 kg", "volumeMl": "10" }
+      ]
+    },
+    {
+      "drugId": "clarithromycin",
+      "label": "Clarithromycin 250 mg/5 mL suspension (BD)",
+      "strengthMg": 250,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "BD",
+      "notes": "Weight-based volumes. Based on Paeds_Meds_v2.",
+      "weightVolumes": [
+        { "weightLabel": "8–11 kg", "volumeMl": "1.25" },
+        { "weightLabel": "12–19 kg", "volumeMl": "2.5" },
+        { "weightLabel": "20–29 kg", "volumeMl": "3.75" },
+        { "weightLabel": "30–40 kg", "volumeMl": "5" }
+      ]
+    },
+    {
+      "drugId": "cephalexin",
+      "label": "Cephalexin 125 mg/5 mL suspension",
+      "strengthMg": 125,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": false,
+      "frequency": "TDS–QDS",
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "9 months–2 years", "volumeMl": "2.5" },
+        { "ageLabel": "5–10 years", "volumeMl": "5" }
+      ]
+    },
+    {
+      "drugId": "cephalexin",
+      "label": "Cephalexin 250 mg/5 mL suspension",
+      "strengthMg": 250,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "TDS–QDS",
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "5–10 years", "volumeMl": "2.5" }
+      ]
+    },
+    {
+      "drugId": "domperidone",
+      "label": "Domperidone 1 mg/mL suspension",
+      "strengthMg": 1,
+      "perVolumeMl": 1,
+      "route": "Oral",
+      "isDefault": true,
+      "frequency": "TDS–QDS",
+      "notes": "0.25–0.5 mL/kg/dose. Max 80 mL/day. Based on Paeds_Meds_v2."
+    },
+    {
+      "drugId": "domperidone",
+      "label": "Domperidone 10 mg suppository",
+      "strengthMg": 10,
+      "perVolumeMl": null,
+      "route": "Rectal",
+      "isDefault": false,
+      "frequency": "BD",
+      "notes": "2–3yo: up to 1 suppository BD. Based on Paeds_Meds_v2."
+    },
+    {
+      "drugId": "prednisolone",
+      "label": "Prednisolone 3 mg/5 mL syrup",
+      "strengthMg": 3,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "2–5 years", "volumeMl": "5–10", "frequency": "BD–TDS" },
+        { "ageLabel": "6–12 years", "volumeMl": "10–15", "frequency": "BD–TDS" }
+      ]
+    },
+    {
+      "drugId": "salbutamol",
+      "label": "Salbutamol 2 mg/5 mL syrup",
+      "strengthMg": 2,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "1 month–2 years", "volumeMl": "0.5 mL/kg (max 5 mL)", "frequency": "TDS–QDS" },
+        { "ageLabel": "Infant/young child (1–5 years)", "volumeMl": "2.5", "frequency": "TDS" },
+        { "ageLabel": "School child/adolescent (6–12 years)", "volumeMl": "5", "frequency": "TDS" },
+        { "ageLabel": ">13 years", "volumeMl": "5–7.5", "frequency": "TDS" }
+      ]
+    },
+    {
+      "drugId": "ambroxol",
+      "label": "Ambroxol 30 mg/5 mL syrup",
+      "strengthMg": 30,
+      "perVolumeMl": 5,
+      "route": "Oral",
+      "isDefault": true,
+      "notes": "Based on Paeds_Meds_v2.",
+      "ageVolumes": [
+        { "ageLabel": "1–2 years", "volumeMl": "2.5", "frequency": "BD" },
+        { "ageLabel": "2–6 years", "volumeMl": "2.5", "frequency": "TDS" },
+        { "ageLabel": "6–12 years", "volumeMl": "5", "frequency": "BD–TDS" }
+      ]
+    }
+  ]
+}

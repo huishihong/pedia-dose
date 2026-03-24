@@ -2,8 +2,10 @@
   "_meta": {
     "title": "PediaDose — Drug Library",
     "sources": [
-      "KKH CE Clinical Guidelines, January 2026 edition",
-      "NHG Pharmacy Paediatric Dose Calculator, July 2024 (Version 2024.07.26)"
+      "KKH CE Clinical Guidelines, January 2026 edition (Revised 4 Mar 2026)",
+      "NHG Pharmacy Paediatric Dose Calculator, July 2024 (Version 2024.07.26)",
+      "PaedsENGAGE Common Paediatric Drug Reference Guide, 1st Edition February 2025",
+      "Paeds_Meds_v2 — Paediatric Medication Quick Reference"
     ],
     "warning": "For clinical decision support only. All dose values must be verified by a qualified clinician against current formulary guidelines before use with real patients.",
     "lastUpdated": "2026-03"
@@ -13,17 +15,549 @@
       "id": "paracetamol",
       "name": "Paracetamol",
       "aliases": ["acetaminophen", "panadol"],
+      "category": "Analgesic / Antipyretic",
       "dosePerKg": 15,
       "doseUnit": "mg/kg",
+      "minDosePerKg": 10,
+      "maxDosePerKg": 15,
       "maxDose": 1000,
       "maxDoseUnit": "mg",
+      "maxDailyDose": 75,
+      "maxDailyDoseUnit": "mg/kg/day",
       "maxDailyDoses": 4,
-      "formulation": "250 mg/5 mL suspension",
-      "formulationStrength": 250,
-      "formulationVolume": 5,
       "frequency": "Q4–6H PRN",
-      "route": "Oral or rectal",
-      "source": "KKH CE Guidelines Jan 2026, p.9; NHG Pharmacy Calculator Jul 2024"
+      "routes": [
+        {
+          "route": "Oral",
+          "dosePerKg": 15,
+          "minDosePerKg": 10,
+          "maxDosePerKg": 15,
+          "notes": "Use higher end of dose range for analgesia"
+        },
+        {
+          "route": "Rectal",
+          "dosePerKg": 15,
+          "minDosePerKg": 10,
+          "maxDosePerKg": 20,
+          "notes": "Rectal dose range 10–20 mg/kg"
+        }
+      ],
+      "cautions": ["Caution in hepatic failure"],
+      "minAge": "neonate",
+      "source": "KKH CE Guidelines Jan 2026, p.9; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ibuprofen",
+      "name": "Ibuprofen",
+      "aliases": ["brufen", "bifen", "advil", "nurofen"],
+      "category": "Analgesic / Antipyretic / NSAID",
+      "dosePerKg": 10,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 5,
+      "maxDosePerKg": 10,
+      "maxDose": 400,
+      "maxDoseUnit": "mg",
+      "maxDailyDose": 40,
+      "maxDailyDoseUnit": "mg/kg/day",
+      "maxDailyDoseCap": 1200,
+      "maxDailyDoseCapUnit": "mg",
+      "maxDailyDoses": 4,
+      "frequency": "Q6–8H",
+      "routes": [
+        {
+          "route": "Oral",
+          "notes": "Lower range for antipyretic effect; higher range for anti-inflammatory effect"
+        }
+      ],
+      "cautions": [
+        "Caution in renal impairment",
+        "Caution in dehydration",
+        "Caution in asthma",
+        "Risk of bleeding"
+      ],
+      "minAge": "6 months",
+      "source": "KKH CE Guidelines Jan 2026, p.9; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "diclofenac",
+      "name": "Diclofenac",
+      "aliases": ["voltaren"],
+      "category": "Analgesic / NSAID",
+      "dosePerKg": 1,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 0.5,
+      "maxDosePerKg": 1,
+      "maxDose": 50,
+      "maxDoseUnit": "mg",
+      "frequency": "Q8–12H",
+      "routes": [
+        { "route": "Oral" },
+        { "route": "Rectal" }
+      ],
+      "cautions": ["Caution in renal impairment"],
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "morphine",
+      "name": "Morphine Sulphate",
+      "aliases": ["morphine"],
+      "category": "Opioid Analgesic",
+      "dosePerKg": 0.1,
+      "doseUnit": "mg/kg",
+      "maxDose": null,
+      "maxDoseUnit": "mg",
+      "frequency": "PRN; repeat dose at 1/2 initial dose, max 0.1 mg/kg",
+      "routes": [
+        {
+          "route": "IV",
+          "minDosePerKg": 0.025,
+          "maxDosePerKg": 0.1,
+          "ageNote": "1–6 months: 0.025–0.1 mg/kg; >6 months: 0.05–0.1 mg/kg",
+          "notes": "Administer slowly over 3–5 minutes. Inform senior doctor before use."
+        },
+        {
+          "route": "IM",
+          "minDosePerKg": 0.025,
+          "maxDosePerKg": 0.1,
+          "ageNote": "1–6 months: 0.025–0.1 mg/kg; >6 months: 0.05–0.1 mg/kg"
+        }
+      ],
+      "cautions": [
+        "Inform senior doctor before any patient receives parenteral morphine",
+        "Use with caution in asthma or pre-existing respiratory compromise",
+        "Use with caution in obstructive sleep apnea — halve the dose",
+        "Monitor vital signs post-administration until conscious level returns to baseline",
+        "Antidote: Naloxone 0.01 mg/kg (max 0.4 mg) IV, may repeat every 2–3 min"
+      ],
+      "minAge": "1 month",
+      "hospitalOnly": true,
+      "source": "KKH CE Guidelines Jan 2026, p.9–11"
+    },
+    {
+      "id": "oseltamivir",
+      "name": "Oseltamivir",
+      "aliases": ["tamiflu"],
+      "category": "Antiviral",
+      "doseUnit": "mg (fixed weight-based)",
+      "weightBandedDosing": [
+        { "maxWeightKg": 15, "doseMg": 30, "frequency": "BD", "notes": "≤15 kg" },
+        { "maxWeightKg": 23, "doseMg": 45, "frequency": "BD", "notes": ">15–23 kg" },
+        { "maxWeightKg": 40, "doseMg": 60, "frequency": "BD", "notes": ">23–40 kg" },
+        { "maxWeightKg": null, "doseMg": 75, "frequency": "BD", "notes": ">40 kg (adult dose)" }
+      ],
+      "infantDosing": [
+        { "ageLabel": "≤8 months", "doseMgPerKg": 3, "frequency": "BD" },
+        { "ageLabel": "9–11 months", "doseMgPerKg": 3.5, "frequency": "BD" }
+      ],
+      "treatmentDuration": "5 days",
+      "prophylaxisNote": "OD dosing for prophylaxis",
+      "routes": [{ "route": "Oral" }],
+      "cautions": ["Needs dose adjustment in renal impairment"],
+      "minAge": "Any age",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "acyclovir",
+      "name": "Acyclovir",
+      "aliases": ["aciclovir", "zovirax"],
+      "category": "Antiviral",
+      "indications": [
+        {
+          "indication": "Varicella zoster (VZV) — within 24h of rash",
+          "dosePerKg": 20,
+          "maxDose": 800,
+          "maxDoseUnit": "mg",
+          "frequency": "QDS (4 times daily)",
+          "duration": "5 days"
+        },
+        {
+          "indication": "HSV gingivostomatitis",
+          "dosePerKg": 20,
+          "maxDose": 800,
+          "maxDoseUnit": "mg",
+          "frequency": "QDS (4 times daily)"
+        }
+      ],
+      "routes": [{ "route": "Oral" }],
+      "minAge": "> 28 days",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "amoxicillin",
+      "name": "Amoxicillin",
+      "aliases": ["amoxil", "flemoxin"],
+      "category": "Antibiotic — Penicillin",
+      "dosePerKg": 25,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 15,
+      "maxDosePerKg": 30,
+      "maxDose": 1000,
+      "maxDoseUnit": "mg",
+      "frequency": "TDS (3 times daily)",
+      "indications": [
+        {
+          "indication": "Standard infections",
+          "dosePerKg": 25,
+          "minDosePerKg": 15,
+          "maxDosePerKg": 30,
+          "frequency": "TDS"
+        },
+        {
+          "indication": "Acute otitis media / Severe pneumonia (high-dose)",
+          "dailyDoseMgPerKg": 90,
+          "frequency": "BD or TDS",
+          "notes": "Can prescribe 20–45 mg/kg BD for compliance"
+        }
+      ],
+      "neonateDose": "10–15 mg/kg BD",
+      "routes": [{ "route": "Oral" }],
+      "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "co-amoxiclav",
+      "name": "Co-amoxiclav",
+      "aliases": ["augmentin", "curam", "amoxicillin-clavulanate"],
+      "category": "Antibiotic — Penicillin + Beta-lactamase inhibitor",
+      "notes": "Dose based on amoxicillin component. Formulation choice depends on amoxicillin:clavulanate ratio",
+      "maxClavulanate": "10 mg/kg/day (max 500 mg/day)",
+      "indications": [
+        {
+          "formulation": "Augmentin 228mg/5mL (amox 200mg, clav 28mg per 5mL)",
+          "dosePerKg": 25,
+          "frequency": "BD–TDS"
+        },
+        {
+          "formulation": "Augmentin ES 642.9mg/5mL (amox 600mg, clav 42.9mg per 5mL)",
+          "dosePerKg": 48,
+          "frequency": "BD"
+        },
+        {
+          "formulation": "Augmentin 625mg tablet (≥12yo)",
+          "fixedDose": "1 tablet BD–TDS"
+        },
+        {
+          "formulation": "Augmentin 1g tablet (≥12yo)",
+          "fixedDose": "1 tablet BD"
+        }
+      ],
+      "routes": [{ "route": "Oral" }],
+      "minAge": "neonate",
+      "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "cephalexin",
+      "name": "Cephalexin",
+      "aliases": ["cefalexin", "keflex"],
+      "category": "Antibiotic — 1st generation cephalosporin",
+      "dosePerKg": 12.5,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 10,
+      "maxDosePerKg": 15,
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "maxDailyDose": 50,
+      "maxDailyDoseUnit": "mg/kg/day",
+      "frequency": "QDS (4 times daily)",
+      "notes": "Split total daily dose to 3 divided doses for compliance if needed. Severe: 15–25 mg/kg QDS",
+      "routes": [{ "route": "Oral" }],
+      "source": "KKH CE Guidelines Jan 2026, p.346; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "cloxacillin",
+      "name": "Cloxacillin",
+      "aliases": ["orbenin"],
+      "category": "Antibiotic — Penicillinase-resistant penicillin",
+      "dosePerKg": 12.5,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 6.25,
+      "maxDosePerKg": 12.5,
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "frequency": "QDS (4 times daily)",
+      "routes": [{ "route": "Oral" }],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "cefuroxime",
+      "name": "Cefuroxime",
+      "aliases": ["zinnat"],
+      "category": "Antibiotic — 2nd generation cephalosporin",
+      "dosePerKg": 12.5,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 10,
+      "maxDosePerKg": 15,
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "frequency": "BD (twice daily)",
+      "notes": "Suspension and tablets are NOT interchangeable. Tablet dose for >12yo: 250–500mg BD",
+      "routes": [{ "route": "Oral" }],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "cefaclor",
+      "name": "Cefaclor",
+      "aliases": ["distaclor"],
+      "category": "Antibiotic — 2nd generation cephalosporin",
+      "dosePerKg": 12.5,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 10,
+      "maxDosePerKg": 15,
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "frequency": "TDS (3 times daily)",
+      "cautions": ["Potential for serum sickness"],
+      "routes": [{ "route": "Oral" }],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "azithromycin",
+      "name": "Azithromycin",
+      "aliases": ["zithromax"],
+      "category": "Antibiotic — Macrolide",
+      "indications": [
+        {
+          "indication": "Standard (3-day course)",
+          "dosePerKg": 10,
+          "frequency": "OD for 3 days"
+        },
+        {
+          "indication": "Alternative (5-day course)",
+          "day1DosePerKg": 10,
+          "day2to5DosePerKg": 5,
+          "notes": "Day 1: 10 mg/kg, Days 2–5: 5 mg/kg OD"
+        }
+      ],
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "routes": [{ "route": "Oral" }],
+      "minAge": "> 28 days",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "clarithromycin",
+      "name": "Clarithromycin",
+      "aliases": ["klacid", "klaricid"],
+      "category": "Antibiotic — Macrolide",
+      "dosePerKg": 7.5,
+      "doseUnit": "mg/kg",
+      "maxDose": 500,
+      "maxDoseUnit": "mg",
+      "frequency": "BD (twice daily)",
+      "routes": [{ "route": "Oral" }],
+      "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "co-trimoxazole",
+      "name": "Co-trimoxazole (Trimethoprim/Sulfamethoxazole)",
+      "aliases": ["bactrim", "septra", "tmp-smx"],
+      "category": "Antibiotic — Sulfonamide",
+      "notes": "Dose expressed as Trimethoprim (TMP) component",
+      "dosePerKg": 5,
+      "doseUnit": "mg TMP/kg",
+      "minDosePerKg": 4,
+      "maxDosePerKg": 6,
+      "maxDose": 160,
+      "maxDoseUnit": "mg TMP",
+      "frequency": "Q12H (BD)",
+      "routes": [{ "route": "Oral" }],
+      "minAge": "≥2 months",
+      "cautions": ["Contraindicated in G6PD deficiency (risk of haemolysis)"],
+      "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "clindamycin",
+      "name": "Clindamycin",
+      "aliases": ["dalacin"],
+      "category": "Antibiotic — Lincosamide",
+      "indications": [
+        {
+          "indication": "Mild infection",
+          "dosePerKg": 6,
+          "minDosePerKg": 5,
+          "maxDosePerKg": 7,
+          "frequency": "TDS"
+        },
+        {
+          "indication": "Moderate / Severe infection",
+          "dosePerKg": 10,
+          "minDosePerKg": 7,
+          "maxDosePerKg": 13,
+          "frequency": "Q8H (TDS)"
+        }
+      ],
+      "maxDose": 600,
+      "maxDoseUnit": "mg",
+      "cautions": ["May cause pseudomembranous colitis"],
+      "routes": [{ "route": "Oral" }],
+      "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ciprofloxacin",
+      "name": "Ciprofloxacin",
+      "aliases": ["cifran", "ciproxin"],
+      "category": "Antibiotic — Fluoroquinolone",
+      "dosePerKg": 15,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 10,
+      "maxDosePerKg": 20,
+      "maxDose": 750,
+      "maxDoseUnit": "mg",
+      "frequency": "BD (twice daily)",
+      "cautions": ["Not routinely first-line. Use only after assessment of risks and benefits. Risks of tendinopathy in children."],
+      "routes": [{ "route": "Oral" }],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "domperidone",
+      "name": "Domperidone",
+      "aliases": ["motilium"],
+      "category": "Anti-emetic / Prokinetic",
+      "dosePerKg": 0.25,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 0.25,
+      "maxDosePerKg": 0.5,
+      "maxDose": 10,
+      "maxDoseUnit": "mg",
+      "frequency": "TDS",
+      "maxDuration": "1 week",
+      "routes": [
+        {
+          "route": "Oral",
+          "notes": "Suspension 1mg/1mL: 0.25–0.5 mL/kg/dose"
+        },
+        {
+          "route": "Rectal",
+          "notes": "10mg suppository: 2–3yo up to 1 supp BD"
+        }
+      ],
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "ondansetron",
+      "name": "Ondansetron",
+      "aliases": ["zofran"],
+      "category": "Anti-emetic — 5-HT3 antagonist",
+      "dosePerKg": 0.15,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 0.1,
+      "maxDosePerKg": 0.2,
+      "maxDose": 8,
+      "maxDoseUnit": "mg",
+      "frequency": "Q8H (TDS)",
+      "routes": [
+        { "route": "Sublingual" },
+        { "route": "Oral" }
+      ],
+      "minAge": "> 6 months",
+      "cautions": ["To be given in clinic setting only per PaedsENGAGE guidance"],
+      "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "promethazine",
+      "name": "Promethazine",
+      "aliases": ["phenergan"],
+      "category": "Anti-emetic / Antihistamine",
+      "dosePerKg": 0.375,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 0.25,
+      "maxDosePerKg": 0.5,
+      "maxDose": 25,
+      "maxDoseUnit": "mg",
+      "frequency": "Q6–8H",
+      "routes": [{ "route": "Oral" }],
+      "cautions": ["Contraindicated in children < 2 years old"],
+      "minAge": "2 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "prednisolone",
+      "name": "Prednisolone",
+      "aliases": ["pred", "dhasolone"],
+      "category": "Corticosteroid",
+      "indications": [
+        {
+          "indication": "Asthma — moderate to severe exacerbation",
+          "dosePerKg": 1.25,
+          "minDosePerKg": 1,
+          "maxDosePerKg": 1.5,
+          "maxDose": 40,
+          "maxDoseUnit": "mg/day",
+          "frequency": "OD",
+          "duration": "3–5 days",
+          "notes": "Start as early as possible — takes at least 4 hours to act"
+        }
+      ],
+      "routes": [
+        {
+          "route": "Oral",
+          "notes": "Syrup: 3mg/5mL — 2–5yo: 5–10mL BD/TDS; 6–12yo: 10–15mL BD/TDS"
+        }
+      ],
+      "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2"
+    },
+    {
+      "id": "salbutamol",
+      "name": "Salbutamol",
+      "aliases": ["albuterol", "ventolin", "zenmolin"],
+      "category": "Bronchodilator — Beta-2 agonist",
+      "indications": [
+        {
+          "indication": "Asthma — nebulisation",
+          "notes": "<10 kg: 0.5 mL nebuliser solution per cycle; ≥10 kg: 1 mL per cycle. Cycle = 3 back-to-back nebs"
+        },
+        {
+          "indication": "Oral (maintenance / mild wheeze)",
+          "dosePerKg": 0.1,
+          "maxDose": 2,
+          "maxDoseUnit": "mg",
+          "frequency": "TDS–QDS",
+          "ageNote": "1 month–2yo: 0.1 mg/kg (max 2mg) TDS/QDS"
+        }
+      ],
+      "routes": [
+        { "route": "Inhaled (MDI)" },
+        { "route": "Nebulised" },
+        { "route": "Oral" }
+      ],
+      "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2"
+    },
+    {
+      "id": "albendazole",
+      "name": "Albendazole",
+      "aliases": ["zentel"],
+      "category": "Antihelmintic",
+      "indications": [
+        {
+          "indication": "Pinworm / Hookworm / Roundworm / Whipworm",
+          "weightBandedDosing": [
+            { "ageLabel": "1–2 years", "doseMg": 200, "notes": "Single dose pre-meal" },
+            { "ageLabel": ">2 years", "doseMg": 400, "notes": "Single dose pre-meal" }
+          ],
+          "maxDose": 400,
+          "maxDoseUnit": "mg",
+          "duration": "Single dose; may use up to 3–5 consecutive days depending on indication"
+        }
+      ],
+      "routes": [{ "route": "Oral" }],
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ambroxol",
+      "name": "Ambroxol",
+      "aliases": ["mucosolvan", "abrilar"],
+      "category": "Mucolytic",
+      "weightBandedDosing": [
+        { "ageLabel": "2–5 years", "volumeMl": "2.5", "formulation": "30mg/5mL", "frequency": "TDS" },
+        { "ageLabel": "6–12 years", "volumeMl": "5", "formulation": "30mg/5mL", "frequency": "BD–TDS" },
+        { "ageLabel": ">12 years", "volumeMl": "10", "formulation": "30mg/5mL", "frequency": "BD" }
+      ],
+      "maxDose": 60,
+      "maxDoseUnit": "mg",
+      "routes": [{ "route": "Oral" }],
+      "minAge": "2 years",
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
     }
   ]
 }
