@@ -5,6 +5,8 @@ interface DoseResultProps {
 }
 
 export function DoseResultCard({ result }: DoseResultProps) {
+  const isLiquid = result.volumeMl !== null
+
   return (
     <div className="w-full mt-6 space-y-4">
       {result.isCapped && (
@@ -18,18 +20,24 @@ export function DoseResultCard({ result }: DoseResultProps) {
       )}
 
       <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-5">
-        <p className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">
-          Dose
-        </p>
+        <p className="text-xs font-semibold text-blue-400 uppercase tracking-wider mb-1">Dose</p>
         <p className="text-5xl font-bold text-blue-800 leading-none">
           {result.cappedDoseMg} <span className="text-2xl font-semibold text-blue-500">mg</span>
         </p>
-        <p className="text-blue-600 text-lg mt-2 font-medium">
-          = {result.volumeMl} mL
-        </p>
-        <p className="text-blue-500 text-sm mt-0.5">
-          {result.formulation}
-        </p>
+
+        {isLiquid ? (
+          <>
+            <p className="text-blue-600 text-lg mt-2 font-medium">= {result.volumeMl} mL</p>
+            <p className="text-blue-500 text-sm mt-0.5">{result.formulation}</p>
+          </>
+        ) : (
+          <>
+            <p className="text-blue-600 text-lg mt-2 font-medium">
+              = {result.solidCount} {result.solidUnit}{result.solidCount !== 1 ? 's' : ''}
+            </p>
+            <p className="text-blue-500 text-sm mt-0.5">{result.formulation}</p>
+          </>
+        )}
       </div>
 
       <div className="grid grid-cols-2 gap-3">

@@ -2,20 +2,32 @@ import { useState } from 'react'
 import './index.css'
 import { WeightInput } from './components/WeightInput'
 import { DoseResultCard } from './components/DoseResult'
+import { FormulationSelector } from './components/FormulationSelector'
 import { calculateParacetamol } from './utils/doseCalculator'
-import type { DoseResult } from './utils/doseCalculator'
+import type { DoseResult, Formulation } from './utils/doseCalculator'
+import drugsData from './data/drugs.json'
+
+const paracetamol = drugsData.drugs.find(d => d.id === 'paracetamol')!
+const formulations = paracetamol.formulations as Formulation[]
+const defaultFormulation = formulations.find(f => f.id === 'paracetamol-250-oral')!
 
 function App() {
   const [weightKg, setWeightKg] = useState<number | null>(null)
+  const [formulation, setFormulation] = useState<Formulation>(defaultFormulation)
   const [result, setResult] = useState<DoseResult | null>(null)
 
   function handleCalculate() {
     if (weightKg === null) return
-    setResult(calculateParacetamol(weightKg))
+    setResult(calculateParacetamol(weightKg, formulation))
   }
 
   function handleWeightChange(kg: number | null) {
     setWeightKg(kg)
+    setResult(null)
+  }
+
+  function handleFormulationChange(f: Formulation) {
+    setFormulation(f)
     setResult(null)
   }
 
@@ -31,6 +43,12 @@ function App() {
           <h2 className="text-lg font-bold text-gray-800 mb-4">Paracetamol</h2>
 
           <WeightInput onWeightChange={handleWeightChange} />
+
+          <FormulationSelector
+            formulations={formulations}
+            selected={formulation}
+            onChange={handleFormulationChange}
+          />
 
           <button
             type="button"

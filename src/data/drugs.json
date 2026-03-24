@@ -44,6 +44,48 @@
       ],
       "cautions": ["Caution in hepatic failure"],
       "minAge": "neonate",
+      "formulations": [
+        {
+          "id": "paracetamol-120-oral",
+          "label": "120 mg/5 mL syrup",
+          "strengthMg": 120,
+          "volumeMl": 5,
+          "route": "Oral",
+          "ageNote": "For infants and younger children"
+        },
+        {
+          "id": "paracetamol-250-oral",
+          "label": "250 mg/5 mL suspension",
+          "strengthMg": 250,
+          "volumeMl": 5,
+          "route": "Oral",
+          "ageNote": "Standard paediatric suspension"
+        },
+        {
+          "id": "paracetamol-500-tablet",
+          "label": "500 mg tablet",
+          "strengthMg": 500,
+          "volumeMl": null,
+          "route": "Oral",
+          "ageNote": "For children who can swallow tablets"
+        },
+        {
+          "id": "paracetamol-125-suppository",
+          "label": "125 mg suppository",
+          "strengthMg": 125,
+          "volumeMl": null,
+          "route": "Rectal",
+          "ageNote": "Rectal route"
+        },
+        {
+          "id": "paracetamol-250-suppository",
+          "label": "250 mg suppository",
+          "strengthMg": 250,
+          "volumeMl": null,
+          "route": "Rectal",
+          "ageNote": "Rectal route"
+        }
+      ],
       "source": "KKH CE Guidelines Jan 2026, p.9; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
     },
     {

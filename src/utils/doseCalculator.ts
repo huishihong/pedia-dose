@@ -1,25 +1,45 @@
+export interface Formulation {
+  id: string
+  label: string
+  strengthMg: number
+  volumeMl: number | null // null = solid (tablet or suppository)
+  route: string
+  ageNote?: string
+}
+
 export interface DoseResult {
   weightKg: number
   dosePerKg: number
   calculatedDoseMg: number
   cappedDoseMg: number
-  volumeMl: number
+  volumeMl: number | null       // liquid formulations only
+  solidCount: number | null     // tablet / suppository count
+  solidUnit: string | null      // "tablet" or "suppository"
   isCapped: boolean
-  frequency: string
   formulation: string
   route: string
+  frequency: string
   maxDailyDoses: number
 }
 
-export function calculateParacetamol(weightKg: number): DoseResult {
+export function calculateParacetamol(weightKg: number, formulation: Formulation): DoseResult {
   const dosePerKg = 15 // mg/kg
   const maxDose = 1000 // mg
-  const formulationStrength = 250 // mg per 5 mL
-  const formulationVolume = 5 // mL
 
   const calculatedDoseMg = Math.round(weightKg * dosePerKg)
   const cappedDoseMg = Math.min(calculatedDoseMg, maxDose)
-  const volumeMl = parseFloat(((cappedDoseMg / formulationStrength) * formulationVolume).toFixed(1))
+
+  let volumeMl: number | null = null
+  let solidCount: number | null = null
+  const solidUnit: string | null = formulation.volumeMl === null
+    ? (formulation.route === 'Rectal' ? 'suppository' : 'tablet')
+    : null
+
+  if (formulation.volumeMl !== null) {
+    volumeMl = parseFloat(((cappedDoseMg / formulation.strengthMg) * formulation.volumeMl).toFixed(1))
+  } else {
+    solidCount = parseFloat((cappedDoseMg / formulation.strengthMg).toFixed(1))
+  }
 
   return {
     weightKg,
@@ -27,10 +47,12 @@ export function calculateParacetamol(weightKg: number): DoseResult {
     calculatedDoseMg,
     cappedDoseMg,
     volumeMl,
+    solidCount,
+    solidUnit,
     isCapped: calculatedDoseMg > maxDose,
+    formulation: formulation.label,
+    route: formulation.route,
     frequency: 'Q4–6H PRN',
-    formulation: '250 mg/5 mL suspension',
-    route: 'Oral or rectal',
     maxDailyDoses: 4,
   }
 }
