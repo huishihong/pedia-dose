@@ -1,0 +1,29 @@
+{
+  "_meta": {
+    "title": "PediaDose — Drug Library",
+    "sources": [
+      "KKH CE Clinical Guidelines, January 2026 edition",
+      "NHG Pharmacy Paediatric Dose Calculator, July 2024 (Version 2024.07.26)"
+    ],
+    "warning": "For clinical decision support only. All dose values must be verified by a qualified clinician against current formulary guidelines before use with real patients.",
+    "lastUpdated": "2026-03"
+  },
+  "drugs": [
+    {
+      "id": "paracetamol",
+      "name": "Paracetamol",
+      "aliases": ["acetaminophen", "panadol"],
+      "dosePerKg": 15,
+      "doseUnit": "mg/kg",
+      "maxDose": 1000,
+      "maxDoseUnit": "mg",
+      "maxDailyDoses": 4,
+      "formulation": "250 mg/5 mL suspension",
+      "formulationStrength": 250,
+      "formulationVolume": 5,
+      "frequency": "Q4–6H PRN",
+      "route": "Oral or rectal",
+      "source": "KKH CE Guidelines Jan 2026, p.9; NHG Pharmacy Calculator Jul 2024"
+    }
+  ]
+}

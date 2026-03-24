@@ -1,0 +1,842 @@
+{
+  "_meta": {
+    "title": "PediaDose — Condition-to-Drug Mapping",
+    "sources": [
+      "KKH Women's & Children's Hospital, Department of Emergency Medicine, Clinical Guidelines, January 2026 Edition (revised 4 Mar 2026)",
+      "NHG Pharmacy Paediatric Dose Calculator, Reviewed June 2024 (Version 2024.07.26)"
+    ],
+    "warning": "For clinical decision support only. All dose values must be verified by a qualified clinician against current formulary guidelines before use with real patients. Not for use in neonates (under 1 month old) unless neonatal dose is explicitly stated.",
+    "requiresClinicalReview": true,
+    "lastUpdated": "2026-03"
+  },
+  "conditions": [
+    {
+      "id": "asthma",
+      "name": "Asthma",
+      "aliases": ["wheeze", "wheezing", "bronchospasm", "reactive airway"],
+      "section": "D — Respiratory Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.163–173",
+      "notes": "Assess severity before prescribing. Children with severe asthma attacks may not appear distressed — do not under-treat based on appearance alone.",
+      "severityTiers": [
+        {
+          "tier": "mild",
+          "label": "Mild",
+          "description": "Breathless walking, talks in sentences, no accessory muscle use, HR <100, SpO2 >95%",
+          "drugs": [
+            {
+              "drugId": "salbutamol-mdi",
+              "dose_instruction": "MDI Salbutamol 0.3 puffs/kg (max 8 puffs)",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "0.3 puffs/kg",
+              "max_dose_label": "8 puffs",
+              "frequency": "PRN, reassess at 45 min",
+              "route": "MDI via spacer",
+              "clinicalNote": "Use spacer with face mask for children under 5 years. Spacer without face mask for children 5 years and older."
+            }
+          ]
+        },
+        {
+          "tier": "moderate-severe",
+          "label": "Moderate to severe",
+          "description": "Breathless talking/at rest, speaks in phrases, moderate-severe retractions, HR 100–200, SpO2 91–95% (moderate) or <91% (severe)",
+          "drugs": [
+            {
+              "drugId": "salbutamol-mdi",
+              "dose_instruction": "MDI Salbutamol: <10 kg = 5 puffs per cycle; >10 kg = 10 puffs per cycle",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "weight-banded",
+              "frequency": "Up to 2–3 cycles, review after each",
+              "route": "MDI via spacer",
+              "clinicalNote": "Give back-to-back cycles if severity is moderate or above."
+            },
+            {
+              "drugId": "ipratropium-mdi",
+              "dose_instruction": "MDI Ipratropium: <10 kg = 2 puffs per cycle; >10 kg = 4 puffs per cycle",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "weight-banded",
+              "frequency": "With each Salbutamol cycle",
+              "route": "MDI via spacer",
+              "clinicalNote": "Always combine with Salbutamol for moderate/severe. Do not give alone."
+            },
+            {
+              "drugId": "prednisolone",
+              "dose_mg_per_kg": 1.5,
+              "dose_mg_per_kg_range": [1, 1.5],
+              "max_dose_mg": 40,
+              "frequency": "Once daily for 3–5 days",
+              "route": "Oral",
+              "clinicalNote": "Start as early as possible — takes at least 4 hours to act. Indicated for: exacerbation >48h, moderate-severe, past history of severe episode."
+            }
+          ]
+        },
+        {
+          "tier": "severe-nebulised",
+          "label": "Severe (SpO2 <90%) — nebulised route",
+          "description": "SpO2 <90%, use nebulised route. Breathless at rest, infant stops feeding, severe retractions, audible wheeze, HR >200.",
+          "drugs": [
+            {
+              "drugId": "salbutamol-nebulised",
+              "dose_instruction": "Nebulised Salbutamol 0.5% undiluted continuous: <10 kg = 0.5 mL; >10 kg = 1 mL",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "weight-banded",
+              "frequency": "Continuous with at least 6 L/min O2",
+              "route": "Nebuliser",
+              "clinicalNote": "Use only when SpO2 <90%. Requires supplemental oxygen at ≥6 L/min."
+            },
+            {
+              "drugId": "ipratropium-nebulised",
+              "dose_instruction": "Nebulised Ipratropium 0.025%: <10 kg = 0.5 mL; >10 kg = 1 mL",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "weight-banded",
+              "frequency": "With each nebulised Salbutamol cycle",
+              "route": "Nebuliser",
+              "clinicalNote": null
+            },
+            {
+              "drugId": "prednisolone",
+              "dose_mg_per_kg": 1.5,
+              "dose_mg_per_kg_range": [1, 1.5],
+              "max_dose_mg": 40,
+              "frequency": "Once daily for 3–5 days",
+              "route": "Oral",
+              "clinicalNote": "Start as early as possible."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "croup",
+      "name": "Croup",
+      "aliases": ["stridor", "laryngotracheobronchitis", "barking cough", "seal-like cough"],
+      "section": "D — Respiratory Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.150–162",
+      "notes": "Severity assessed using Westley Croup Score. Score ≤2 = mild; 3–7 = moderate; >7 = severe.",
+      "severityTiers": [
+        {
+          "tier": "mild",
+          "label": "Mild (Westley score ≤2)",
+          "description": "Non-toxic, well hydrated, no stridor at rest",
+          "drugs": [
+            {
+              "drugId": "dexamethasone-oral",
+              "dose_mg_per_kg": 0.15,
+              "max_dose_mg": null,
+              "frequency": "Stat dose. If croup score ≥2 at 2h review, give additional 0.45 mg/kg.",
+              "route": "Oral",
+              "clinicalNote": "Review at 2 hours. Discharge if croup score <2 after review."
+            }
+          ]
+        },
+        {
+          "tier": "moderate",
+          "label": "Moderate (Westley score 3–7)",
+          "description": "Stridor at rest, mild to moderate agitation",
+          "drugs": [
+            {
+              "drugId": "dexamethasone-oral",
+              "dose_mg_per_kg": 0.6,
+              "max_dose_mg": null,
+              "frequency": "Stat dose",
+              "route": "Oral",
+              "clinicalNote": "Add nebulised adrenaline if score 4 or above. Review hourly."
+            },
+            {
+              "drugId": "adrenaline-nebulised-croup",
+              "dose_instruction": "Nebulised Adrenaline (1:1000) 3 mL + 1 mL normal saline",
+              "dose_mg_per_kg": null,
+              "fixed_dose_rule": "3 mL adrenaline (1:1000) + 1 mL normal saline (fixed dose)",
+              "frequency": "PRN, may repeat. Monitor for rebound.",
+              "route": "Nebuliser",
+              "clinicalNote": "Add for score ≥4. Observe for minimum 3–4 hours post-nebulisation before discharge."
+            }
+          ]
+        },
+        {
+          "tier": "severe",
+          "label": "Severe (Westley score >7)",
+          "description": "Severe stridor at rest, severe respiratory distress, SpO2 <95%",
+          "drugs": [
+            {
+              "drugId": "dexamethasone-iv-im",
+              "dose_mg_per_kg": 0.6,
+              "max_dose_mg": 12,
+              "frequency": "Stat dose",
+              "route": "IV or IM",
+              "clinicalNote": "ADMIT to CICU. Consider intubation in CE if altered sensorium, persistent cyanosis, or inability to maintain saturations."
+            },
+            {
+              "drugId": "adrenaline-nebulised-croup",
+              "dose_instruction": "Nebulised Adrenaline (1:1000) 3 mL + 1 mL normal saline",
+              "fixed_dose_rule": "3 mL adrenaline (1:1000) + 1 mL normal saline (fixed dose)",
+              "frequency": "Immediate, repeat PRN",
+              "route": "Nebuliser",
+              "clinicalNote": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "febrile-seizure",
+      "name": "Febrile seizure",
+      "aliases": ["febrile fit", "fever with fit", "seizure with fever", "convulsion with fever"],
+      "section": "F — Neurology",
+      "source": "KKH CE Guidelines Jan 2026, p.218–220",
+      "notes": "Distinguish simple (age 6m–6yr, <15 min, generalised, single episode in 24h) from complex (>15 min, focal, or recurrent within 24h). If seizure is ongoing, refer to Status Epilepticus pathway.",
+      "severityTiers": [
+        {
+          "tier": "post-ictal",
+          "label": "Post-ictal (seizure stopped)",
+          "description": "Child has stopped seizing. Provide antipyretics for comfort. Monitor for recurrence.",
+          "drugs": [
+            {
+              "drugId": "paracetamol",
+              "dose_mg_per_kg": 15,
+              "max_dose_mg": 1000,
+              "frequency": "Q4–6H PRN",
+              "route": "Oral or rectal",
+              "clinicalNote": "Antipyretics will not prevent recurrence of febrile seizure but improve comfort."
+            },
+            {
+              "drugId": "ibuprofen",
+              "dose_mg_per_kg": 10,
+              "dose_mg_per_kg_range": [5, 10],
+              "max_dose_mg": 400,
+              "frequency": "Q6–8H PRN",
+              "route": "Oral",
+              "clinicalNote": "Alternate with paracetamol if needed. Suitable for children ≥6 months, >5 kg."
+            }
+          ]
+        },
+        {
+          "tier": "active-seizure",
+          "label": "Active / recurrent seizure",
+          "description": "Child is actively seizing or seizure recurs. Treat to abort seizure.",
+          "drugs": [
+            {
+              "drugId": "lorazepam-iv",
+              "dose_mg_per_kg": 0.1,
+              "max_dose_mg": 4,
+              "frequency": "Once IV; may repeat once if no response after 5 min",
+              "route": "IV",
+              "clinicalNote": "Preferred if IV access available. Give slowly."
+            },
+            {
+              "drugId": "diazepam-rectal",
+              "dose_mg_per_kg": 0.4,
+              "dose_instruction": "0.4 mg/kg PR: use 0.5 vial (2.5 mg) if weight <10 kg; 1 vial (5 mg) if >10 kg",
+              "max_dose_mg": 10,
+              "frequency": "Once; may repeat once after 5 min if no IV access",
+              "route": "Rectal",
+              "clinicalNote": "Use if no IV access. Do not delay treatment waiting for IV access."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "status-epilepticus",
+      "name": "Status epilepticus",
+      "aliases": ["prolonged seizure", "seizure not stopping", "ongoing fit"],
+      "section": "F — Neurology",
+      "source": "KKH CE Guidelines Jan 2026, p.223–224",
+      "notes": "Follow clinical pathway (Fig 1.1). Check glucose — if <3 mmol/L give 5 mL/kg IV dextrose 10%.",
+      "severityTiers": [
+        {
+          "tier": "first-line",
+          "label": "First-line (0–5 min)",
+          "description": "Seizure ongoing. Establish airway. Check glucose.",
+          "drugs": [
+            {
+              "drugId": "lorazepam-iv",
+              "dose_mg_per_kg": 0.1,
+              "max_dose_mg": 4,
+              "frequency": "Once IV. Repeat once after 5 min if seizure persists.",
+              "route": "IV",
+              "clinicalNote": "Preferred if IV access available."
+            },
+            {
+              "drugId": "diazepam-iv",
+              "dose_mg_per_kg": 0.25,
+              "max_dose_mg": 10,
+              "frequency": "Alternative to lorazepam if lorazepam unavailable",
+              "route": "IV",
+              "clinicalNote": null
+            },
+            {
+              "drugId": "diazepam-rectal",
+              "dose_mg_per_kg": 0.4,
+              "max_dose_mg": 10,
+              "frequency": "If no IV access",
+              "route": "Rectal",
+              "clinicalNote": "Gain IV access while administering."
+            }
+          ]
+        },
+        {
+          "tier": "second-line",
+          "label": "Second-line (5–20 min, seizure persists)",
+          "description": "Seizure continues after first-line benzodiazepine.",
+          "drugs": [
+            {
+              "drugId": "levetiracetam-iv",
+              "dose_mg_per_kg": 60,
+              "max_dose_mg": 4500,
+              "frequency": "Once, over 5 minutes",
+              "route": "IV",
+              "clinicalNote": "Preferred second-line agent."
+            },
+            {
+              "drugId": "phenobarbitone-iv",
+              "dose_mg_per_kg": 20,
+              "max_dose_mg": null,
+              "frequency": "Once, over 20–30 min. Max infusion rate 1 mg/kg/min. Consider 5–10 mg/kg if already on phenobarbitone.",
+              "route": "IV",
+              "clinicalNote": "Dilute with normal saline. Monitor BP."
+            },
+            {
+              "drugId": "phenytoin-iv",
+              "dose_mg_per_kg": 20,
+              "max_dose_mg": 1500,
+              "frequency": "Once, over 20 min. Max infusion rate 1 mg/kg/min.",
+              "route": "IV",
+              "clinicalNote": "CAUTION: Do not use if cardiac risk factors or known SCN1A/SCN5A mutations. Monitor ECG and BP. Do not give if patient already on phenytoin maintenance."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "uti",
+      "name": "Urinary tract infection",
+      "aliases": ["UTI", "dysuria", "pyelonephritis", "urinary infection", "kidney infection"],
+      "section": "C — Febrile Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.110–117; NHG Pharmacy Calculator Jul 2024",
+      "notes": "Febrile UTI: treat empirically for 10–14 days. Afebrile UTI: treat 5–7 days. Not for use in children <3 months — admit and discuss with senior.",
+      "severityTiers": [
+        {
+          "tier": "febrile-uti",
+          "label": "Febrile UTI (age ≥3 months, uncomplicated, outpatient)",
+          "description": "Child ≥3 months, febrile, no sepsis, tolerating oral feeds, no renal tract abnormality",
+          "drugs": [
+            {
+              "drugId": "cephalexin",
+              "dose_mg_per_kg": 50,
+              "max_dose_mg": 500,
+              "frequency": "TDS (3 times daily) for 10–14 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "First-line for febrile UTI at KKH CE. Follow up urine C&S. Return if fever persists >48h on antibiotics."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg": 45,
+              "dose_label": "45 mg amoxicillin/kg/day",
+              "max_dose_mg": 800,
+              "max_dose_label": "800 mg amoxicillin component",
+              "frequency": "BD (twice daily) for 10–14 days",
+              "route": "Oral (syrup 228 mg/5 mL [200 mg amoxicillin + 28.5 mg clavulanate])",
+              "clinicalNote": "Alternative to cephalexin. Dose based on amoxicillin component."
+            }
+          ]
+        },
+        {
+          "tier": "afebrile-uti",
+          "label": "Afebrile UTI (lower tract, outpatient)",
+          "description": "No fever, lower tract symptoms only (dysuria, frequency)",
+          "drugs": [
+            {
+              "drugId": "cephalexin",
+              "dose_mg_per_kg": 50,
+              "max_dose_mg": 500,
+              "frequency": "TDS for 5–7 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "Per KKH CE guidelines. No prophylaxis needed unless underlying renal abnormality."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anaphylaxis",
+      "name": "Anaphylaxis",
+      "aliases": ["allergic reaction", "anaphylactic shock", "severe allergy", "adrenaline"],
+      "section": "H — Allergy",
+      "source": "KKH CE Guidelines Jan 2026, p.379–382",
+      "notes": "IM adrenaline is FIRST-LINE. Do not delay for any reason. Adjuvant treatments (antihistamine, salbutamol, steroid) must NOT delay adrenaline.",
+      "severityTiers": [
+        {
+          "tier": "acute",
+          "label": "Acute anaphylaxis — all cases",
+          "description": "Acute onset with skin/mucosal involvement AND respiratory compromise OR hypotension OR severe GI symptoms. Or acute hypotension/bronchospasm/laryngeal involvement after known allergen exposure.",
+          "drugs": [
+            {
+              "drugId": "adrenaline-im",
+              "dose_ml_per_kg": 0.01,
+              "dose_label": "0.01 mL/kg of 1:1000 adrenaline IM",
+              "dose_mg_per_kg": 0.01,
+              "max_dose_mg": 0.5,
+              "max_dose_label": "0.5 mg (0.5 mL of 1:1000)",
+              "frequency": "Stat IM. May repeat every 15 min if required.",
+              "route": "IM (anterolateral thigh preferred)",
+              "clinicalNote": "FIRST-LINE. Must be given immediately. Do not delay for IV access or other medications."
+            },
+            {
+              "drugId": "salbutamol-mdi",
+              "dose_instruction": "MDI/nebulised salbutamol if bronchospasm present",
+              "frequency": "Q15 min as required",
+              "route": "MDI or nebuliser",
+              "clinicalNote": "Adjuvant — only after adrenaline. For bronchospasm component."
+            },
+            {
+              "drugId": "cetirizine",
+              "dose_mg_per_kg": 0.25,
+              "max_dose_mg": 10,
+              "frequency": "Once, after stabilisation with adrenaline",
+              "route": "Oral",
+              "clinicalNote": "2nd-generation non-sedating antihistamine. Give only after patient stabilised with IM adrenaline. Do NOT use sedating 1st-generation antihistamines (e.g. diphenhydramine) routinely."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pneumonia-cap",
+      "name": "Pneumonia (community-acquired)",
+      "aliases": ["CAP", "chest infection", "lung infection", "pneumonia"],
+      "section": "D — Respiratory Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.178–184; NHG Pharmacy Calculator Jul 2024",
+      "notes": "CXR findings and age guide antibiotic choice. Viral pneumonia (common in <3 years with normal WCC) may not require antibiotics. Severe pneumonia requires admission — outpatient management not appropriate.",
+      "severityTiers": [
+        {
+          "tier": "3m-5yr-consolidation",
+          "label": "Age 3 months–5 years, CXR consolidation and/or raised WCC",
+          "description": "Consolidation on CXR, fever, tachypnoea. Non-toxic, suitable for outpatient.",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_mg_per_kg_per_day_range": [80, 90],
+              "dose_per_dose_label": "26.7–30 mg/kg/dose TDS",
+              "max_dose_mg": 1000,
+              "frequency": "TDS (3 times daily) for 7–10 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "High-dose amoxicillin is first-line for typical CAP in this age group. KKH CE 2023."
+            }
+          ]
+        },
+        {
+          "tier": "3m-5yr-interstitial",
+          "label": "Age 3 months–5 years, interstitial changes on CXR, normal/low WCC",
+          "description": "Likely viral. Antibiotics may not be required. Discuss with senior if concerns.",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 50,
+              "dose_per_dose_label": "~16.7 mg/kg/dose TDS (if antibiotics decided upon)",
+              "max_dose_mg": 500,
+              "frequency": "TDS for 5 days (if prescribing — discuss with senior)",
+              "route": "Oral",
+              "clinicalNote": "Most viral LRTIs with peribronchial cuffing do not require antibiotics. Limit to 5 days only if physician concern. No antibiotics if no radiologic lobar consolidation and no significant co-morbidities."
+            }
+          ]
+        },
+        {
+          "tier": "5-15yr-mycoplasma",
+          "label": "Age 5–15 years, interstitial / atypical pattern (suspect Mycoplasma)",
+          "description": "Non-toxic, CXR interstitial changes, normal/low WCC — likely Mycoplasma in this age group.",
+          "drugs": [
+            {
+              "drugId": "clarithromycin",
+              "dose_mg_per_kg_per_day": 15,
+              "dose_per_dose_label": "7.5 mg/kg/dose BD",
+              "max_dose_mg": 250,
+              "frequency": "BD (twice daily) for 7 days",
+              "route": "Oral (suspension 125 mg/5 mL)",
+              "clinicalNote": "Macrolide for suspected Mycoplasma, H. influenzae, M. Catarrhalis. Do not combine dual amoxicillin + clarithromycin."
+            }
+          ]
+        },
+        {
+          "tier": "5-15yr-consolidation",
+          "label": "Age 5–15 years, consolidation on CXR and/or raised WCC",
+          "description": "Typical bacterial pneumonia pattern.",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_mg_per_kg_per_day_range": [80, 90],
+              "dose_per_dose_label": "26.7–30 mg/kg/dose TDS",
+              "max_dose_mg": 1000,
+              "frequency": "TDS for 7–10 days",
+              "route": "Oral",
+              "clinicalNote": "If no response to amoxicillin ≥80 mg/kg/day after 48h, escalate to Augmentin or Clarithromycin (discuss with senior)."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "skin-soft-tissue-infection",
+      "name": "Skin and soft tissue infection",
+      "aliases": ["SSTI", "cellulitis", "impetigo", "skin infection", "wound infection", "erysipelas"],
+      "section": "KKH CE Antibiotic Guidance",
+      "source": "KKH CE Guidelines Jan 2026, p.346; NHG Pharmacy Calculator Jul 2024",
+      "notes": "Distinguish between impetigo/ecthyma (superficial) and cellulitis/erysipelas (deeper). Toxic or orbital cellulitis requires admission.",
+      "severityTiers": [
+        {
+          "tier": "impetigo",
+          "label": "Impetigo / ecthyma (superficial)",
+          "description": "Honey-crusted lesions, no systemic features",
+          "drugs": [
+            {
+              "drugId": "cephalexin",
+              "dose_mg_per_kg_per_day": 50,
+              "dose_per_dose_label": "~16.7 mg/kg/dose TDS",
+              "max_dose_mg": 500,
+              "frequency": "TDS for 5–7 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "KKH CE 2023: Cephalexin 50 mg/kg/day TDS for 1 week. Lexicomp: 25–50 mg/kg/day q6–8h."
+            }
+          ]
+        },
+        {
+          "tier": "cellulitis",
+          "label": "Cellulitis / erysipelas (non-toxic, non-orbital)",
+          "description": "Spreading skin erythema, warmth, non-toxic, manageable as outpatient",
+          "drugs": [
+            {
+              "drugId": "cloxacillin",
+              "dose_mg_per_kg_per_day": 50,
+              "dose_per_dose_label": "~12.5 mg/kg/dose QDS",
+              "max_dose_mg": 500,
+              "frequency": "QDS (4 times daily) for 5–10 days",
+              "route": "Oral (suspension 125 mg/5 mL)",
+              "clinicalNote": "KKH CE guideline first choice for skin infections. For ≤20 kg: 25–50 mg/kg/day div 6h."
+            },
+            {
+              "drugId": "cephalexin",
+              "dose_mg_per_kg_per_day": 50,
+              "dose_mg_per_kg_per_day_range": [25, 100],
+              "dose_per_dose_label": "~16.7 mg/kg/dose TDS",
+              "max_dose_mg": 500,
+              "frequency": "TDS for 5–10 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "Alternative to cloxacillin. KKH CE 2023: 50 mg/kg/day q8h for 1 week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tonsillitis-pharyngitis",
+      "name": "Tonsillitis / pharyngitis",
+      "aliases": ["sore throat", "tonsil", "Group A Strep", "GAS", "strep throat", "scarlet fever"],
+      "section": "KKH CE Antibiotic Guidance",
+      "source": "KKH CE Guidelines Jan 2026, p.346; NHG Pharmacy Calculator Jul 2024",
+      "notes": "Treat only if Group A Streptococcus (GAS) suspected or confirmed. Most viral pharyngitis does not require antibiotics.",
+      "severityTiers": [
+        {
+          "tier": "gas-pharyngitis",
+          "label": "Group A Strep pharyngitis / tonsillitis",
+          "description": "Fever, exudative tonsils, anterior cervical lymphadenopathy, no cough (Centor criteria). Rapid Strep test or clinical diagnosis.",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg": 25,
+              "dose_mg_per_kg_per_day": 50,
+              "dose_per_dose_label": "25 mg/kg/dose BD",
+              "max_dose_mg": 500,
+              "max_daily_dose_mg": 1000,
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "KKH CE / Lexicomp: 50 mg/kg/day q12h for 10 days. Max 1000 mg/day."
+            },
+            {
+              "drugId": "penicillin-v",
+              "dose_mg_per_kg_per_day": 50,
+              "dose_per_dose_label": "~12.5 mg/kg/dose QDS",
+              "max_dose_mg": 500,
+              "max_daily_dose_mg": 2000,
+              "frequency": "QDS for 10 days",
+              "route": "Oral (tablet 250 mg)",
+              "clinicalNote": "Alternative to amoxicillin. KKH CE: penicillin V 50 mg/kg/day q6–8h for 10 days."
+            },
+            {
+              "drugId": "clarithromycin",
+              "dose_mg_per_kg": 7.5,
+              "max_dose_mg": 250,
+              "frequency": "BD for 10 days",
+              "route": "Oral (suspension 125 mg/5 mL)",
+              "clinicalNote": "For penicillin-allergic patients. Lexicomp: 7.5 mg/kg/dose q12h for 10 days; max 250 mg/dose."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "otitis-media",
+      "name": "Otitis media",
+      "aliases": ["AOM", "ear infection", "acute otitis media", "ear pain", "ear discharge"],
+      "section": "KKH CE Antibiotic Guidance",
+      "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024 — Indication Specific Antibiotics sheet",
+      "notes": "High-dose amoxicillin recommended for AOM. Consider watchful waiting in children ≥2 years with mild symptoms.",
+      "severityTiers": [
+        {
+          "tier": "standard",
+          "label": "Acute otitis media (standard treatment)",
+          "description": "Fever, ear pain, bulging tympanic membrane",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_mg_per_kg_per_day_range": [80, 90],
+              "dose_per_dose_label": "40–45 mg/kg/dose BD",
+              "max_dose_mg": 1000,
+              "frequency": "BD for 10 days (TDS also acceptable: 80 mg/kg/day div 8h)",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "High-dose regimen per Lexicomp and NHGP CPG. For age ≥3 months."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "Based on amoxicillin component",
+              "max_dose_label": "800 mg amoxicillin + 114 mg clavulanate per dose",
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Use if no response to amoxicillin or recurrent AOM. Use amoxicillin component for dosing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bronchiolitis",
+      "name": "Bronchiolitis",
+      "aliases": ["RSV", "respiratory syncytial virus", "first wheeze", "infant wheeze"],
+      "section": "D — Respiratory Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.174–177",
+      "notes": "Bronchiolitis is primarily supportive. Bronchodilators are NOT routine. A trial may be considered in moderate/severe disease with significant personal or family history of atopy — document response clearly.",
+      "severityTiers": [
+        {
+          "tier": "supportive",
+          "label": "Supportive management (all cases)",
+          "description": "Clinical diagnosis. Usually in infants <2 years. Supportive care is mainstay.",
+          "drugs": [
+            {
+              "drugId": "saline-nasal",
+              "dose_instruction": "Iliadin nose drops: 0.01% for <1 year old; 0.025% for 1–2 years old",
+              "frequency": "PRN for nasal congestion",
+              "route": "Intranasal",
+              "clinicalNote": "Nasal saline/decongestant for symptom relief. Minimal handling to avoid agitation."
+            }
+          ]
+        },
+        {
+          "tier": "bronchodilator-trial",
+          "label": "Optional bronchodilator trial (moderate/severe with atopy history)",
+          "description": "Only if significant personal or family history of atopy AND moderate or severe disease. Must document response.",
+          "drugs": [
+            {
+              "drugId": "salbutamol-mdi",
+              "dose_instruction": "MDI Salbutamol 0.3 puffs/kg (max 8 puffs) — trial only",
+              "frequency": "Single trial. Discontinue if no clear response.",
+              "route": "MDI via spacer",
+              "clinicalNote": "IMPORTANT: Bronchodilator is NOT routine for bronchiolitis. Trial only in selected cases. Reassess after each dose and document response clearly. Do not continue if no benefit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gastroenteritis",
+      "name": "Gastroenteritis",
+      "aliases": ["GE", "vomiting and diarrhoea", "vomiting", "diarrhoea", "food poisoning", "stomach flu"],
+      "section": "E — Gastroenterology",
+      "source": "KKH CE Guidelines Jan 2026, p.206–217",
+      "notes": "Primarily supportive — oral rehydration therapy (ORS) is first-line. Antibiotics generally NOT recommended (mostly viral). Ondansetron single dose may reduce vomiting and lower IV rehydration rates.",
+      "severityTiers": [
+        {
+          "tier": "vomiting-management",
+          "label": "Anti-emetic for vomiting (single dose only)",
+          "description": "Child vomiting, unable to tolerate ORS. Single dose ondansetron in ED.",
+          "drugs": [
+            {
+              "drugId": "ondansetron",
+              "dose_mg_per_kg": 0.15,
+              "max_dose_mg": 4,
+              "fixed_dose_weight_bands": [
+                { "weight_label": "<8 kg", "dose_mg": 2 },
+                { "weight_label": "8–15 kg", "dose_mg": 4 },
+                { "weight_label": ">15 kg", "dose_mg": 4 }
+              ],
+              "frequency": "Single dose only in ED",
+              "route": "Oral (syrup 4 mg/5 mL) or IV if unable to tolerate oral",
+              "clinicalNote": "SINGLE DOSE ONLY — do not prescribe as discharge medication. Multiple doses risk QT prolongation. If unable to tolerate oral, may give IV."
+            }
+          ]
+        },
+        {
+          "tier": "fever-pain",
+          "label": "Fever and discomfort management",
+          "description": "Symptomatic treatment for fever accompanying gastroenteritis",
+          "drugs": [
+            {
+              "drugId": "paracetamol",
+              "dose_mg_per_kg": 15,
+              "max_dose_mg": 1000,
+              "frequency": "Q4–6H PRN",
+              "route": "Oral or rectal",
+              "clinicalNote": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "fever-pain",
+      "name": "Fever / pain (general)",
+      "aliases": ["fever", "temperature", "pain", "paracetamol", "panadol", "ibuprofen", "antipyretic", "analgesia"],
+      "section": "Pain Management / General",
+      "source": "KKH CE Guidelines Jan 2026, p.9–11; NHG Pharmacy Calculator Jul 2024",
+      "notes": "Fever defined as ≥38.0°C. Antipyretics treat discomfort — they do not reduce risk of febrile seizure recurrence.",
+      "severityTiers": [
+        {
+          "tier": "mild-moderate-pain-fever",
+          "label": "Mild to moderate fever / pain",
+          "description": "Pain score 4–5 or fever ≥38°C, child ≥1 year",
+          "drugs": [
+            {
+              "drugId": "paracetamol",
+              "dose_mg_per_kg": 15,
+              "max_dose_mg": 1000,
+              "frequency": "Q4–6H PRN. Max 4 doses in 24 hours.",
+              "route": "Oral or rectal (suppository)",
+              "clinicalNote": "First-line for fever and mild-moderate pain. KKH CE: nurse-initiated at pain score ≥4."
+            },
+            {
+              "drugId": "ibuprofen",
+              "dose_mg_per_kg": 10,
+              "dose_mg_per_kg_range": [5, 10],
+              "max_dose_mg": 400,
+              "frequency": "Q6–8H PRN",
+              "route": "Oral (syrup 100 mg/5 mL)",
+              "clinicalNote": "Suitable for ≥6 months, >5 kg. Avoid in dengue fever, renal impairment, active GI bleeding."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rhinosinusitis",
+      "name": "Rhinosinusitis",
+      "aliases": ["sinusitis", "sinus infection", "nasal congestion with fever"],
+      "section": "KKH CE Antibiotic Guidance",
+      "source": "NHG Pharmacy Calculator Jul 2024 — Indication Specific Antibiotics sheet; KKH CE Guidelines Jan 2026",
+      "notes": "Persistent/severe fever and prolonged purulent nasal discharge suggest need for antibiotics. Monitor for complications (orbital cellulitis, meningitis).",
+      "severityTiers": [
+        {
+          "tier": "standard-dose",
+          "label": "Standard dose (age ≥2 years)",
+          "description": "Non-toxic, acute sinusitis",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 45,
+              "dose_per_dose_label": "~22.5 mg/kg/dose BD",
+              "max_dose_label": "875 mg per dose",
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "Standard-dose regimen. Lexicomp: 45 mg/kg/day q12h."
+            }
+          ]
+        },
+        {
+          "tier": "high-dose",
+          "label": "High dose (age ≥2 years, severe or failed standard)",
+          "description": "Severe symptoms or failed standard-dose treatment",
+          "drugs": [
+            {
+              "drugId": "amoxicillin",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_mg_per_kg_per_day_range": [80, 90],
+              "dose_per_dose_label": "40–45 mg/kg/dose BD",
+              "max_dose_mg": 2000,
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 125 mg/5 mL)",
+              "clinicalNote": "High-dose regimen: 80–90 mg/kg/day q12h. Max 2000 mg/dose."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "~40 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_label": "800 mg amoxicillin per dose",
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Alternative high-dose option. Dose by amoxicillin component."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dengue",
+      "name": "Dengue fever",
+      "aliases": ["dengue", "dengue haemorrhagic fever", "DHF"],
+      "section": "C — Febrile Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.122–129",
+      "notes": "Dengue is managed supportively. No specific antiviral. AVOID NSAIDs (ibuprofen, diclofenac, aspirin) — risk of bleeding. Paracetamol only for fever control.",
+      "severityTiers": [
+        {
+          "tier": "supportive",
+          "label": "Supportive management",
+          "description": "Fever, myalgia, rash, thrombocytopaenia. Maintain hydration. Monitor FBC, haematocrit.",
+          "drugs": [
+            {
+              "drugId": "paracetamol",
+              "dose_mg_per_kg": 15,
+              "max_dose_mg": 1000,
+              "frequency": "Q4–6H PRN for fever/pain",
+              "route": "Oral or rectal",
+              "clinicalNote": "PARACETAMOL ONLY — do not use NSAIDs (ibuprofen, diclofenac, aspirin, mefenamic acid) in dengue due to risk of bleeding."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hfmd",
+      "name": "Hand, foot and mouth disease",
+      "aliases": ["HFMD", "hand foot mouth", "mouth ulcers rash", "enterovirus"],
+      "section": "C — Febrile Conditions",
+      "source": "KKH CE Guidelines Jan 2026, p.130–132",
+      "notes": "HFMD is self-limiting. No specific antiviral. Supportive care only. Educate parents on self-limiting nature. Refer immediately if encephalitis features (reduced consciousness, myoclonus, ataxia, seizure, cardiorespiratory instability).",
+      "severityTiers": [
+        {
+          "tier": "supportive",
+          "label": "Supportive management (uncomplicated)",
+          "description": "Oral ulcers, vesicular rash on palms/soles, fever. Well child.",
+          "drugs": [
+            {
+              "drugId": "paracetamol",
+              "dose_mg_per_kg": 15,
+              "max_dose_mg": 1000,
+              "frequency": "Q4–6H PRN for fever/pain from ulcers",
+              "route": "Oral or rectal",
+              "clinicalNote": "Symptom relief only. No antibiotics required. Advise adequate hydration."
+            },
+            {
+              "drugId": "ibuprofen",
+              "dose_mg_per_kg": 10,
+              "dose_mg_per_kg_range": [5, 10],
+              "max_dose_mg": 400,
+              "frequency": "Q6–8H PRN",
+              "route": "Oral",
+              "clinicalNote": "For children ≥6 months. May help with pain from oral ulcers."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
