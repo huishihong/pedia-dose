@@ -118,6 +118,7 @@
         "Risk of bleeding"
       ],
       "minAge": "6 months",
+      "defaultFormulation": { "label": "100 mg/5 mL suspension", "strengthMg": 100, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026, p.9; PaedsENGAGE Feb 2025"
     },
     {
@@ -254,6 +255,7 @@
       ],
       "neonateDose": "10–15 mg/kg BD",
       "routes": [{ "route": "Oral" }],
+      "defaultFormulation": { "label": "125 mg/5 mL suspension", "strengthMg": 125, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
     },
     {
@@ -285,6 +287,7 @@
       ],
       "routes": [{ "route": "Oral" }],
       "minAge": "neonate",
+      "defaultFormulation": { "label": "228 mg/5 mL suspension (amox 200 mg/5 mL)", "strengthMg": 200, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
     },
     {
@@ -303,6 +306,7 @@
       "frequency": "QDS (4 times daily)",
       "notes": "Split total daily dose to 3 divided doses for compliance if needed. Severe: 15–25 mg/kg QDS",
       "routes": [{ "route": "Oral" }],
+      "defaultFormulation": { "label": "125 mg/5 mL suspension", "strengthMg": 125, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026, p.346; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
     },
     {
@@ -318,6 +322,7 @@
       "maxDoseUnit": "mg",
       "frequency": "QDS (4 times daily)",
       "routes": [{ "route": "Oral" }],
+      "defaultFormulation": { "label": "125 mg/5 mL suspension", "strengthMg": 125, "volumeMl": 5, "route": "Oral" },
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -387,6 +392,7 @@
       "maxDoseUnit": "mg",
       "frequency": "BD (twice daily)",
       "routes": [{ "route": "Oral" }],
+      "defaultFormulation": { "label": "125 mg/5 mL suspension", "strengthMg": 125, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
     },
     {
@@ -493,6 +499,7 @@
       ],
       "minAge": "> 6 months",
       "cautions": ["To be given in clinic setting only per PaedsENGAGE guidance"],
+      "defaultFormulation": { "label": "4 mg/5 mL oral solution", "strengthMg": 4, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
     },
     {
@@ -530,13 +537,18 @@
           "notes": "Start as early as possible — takes at least 4 hours to act"
         }
       ],
+      "dosePerKg": 1,
+      "maxDose": 40,
+      "maxDoseUnit": "mg",
+      "frequency": "OD",
       "routes": [
         {
           "route": "Oral",
           "notes": "Syrup: 3mg/5mL — 2–5yo: 5–10mL BD/TDS; 6–12yo: 10–15mL BD/TDS"
         }
       ],
-      "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2"
+      "defaultFormulation": { "label": "5 mg/5 mL oral solution", "strengthMg": 5, "volumeMl": 5, "route": "Oral" },
+      "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2; PRD Phase 2"
     },
     {
       "id": "salbutamol",
@@ -600,6 +612,66 @@
       "routes": [{ "route": "Oral" }],
       "minAge": "2 years",
       "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "dexamethasone",
+      "name": "Dexamethasone",
+      "aliases": ["dex", "decadron"],
+      "category": "Corticosteroid",
+      "dosePerKg": 0.15,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 0.15,
+      "maxDosePerKg": 0.6,
+      "maxDose": 12,
+      "maxDoseUnit": "mg",
+      "frequency": "See condition",
+      "routes": [{ "route": "Oral" }, { "route": "IV" }],
+      "defaultFormulation": { "label": "2 mg/5 mL oral solution", "strengthMg": 2, "volumeMl": 5, "route": "Oral" },
+      "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
+    },
+    {
+      "id": "cetirizine",
+      "name": "Cetirizine",
+      "aliases": ["zyrtec", "zirtec"],
+      "category": "Antihistamine",
+      "dosePerKg": 0.25,
+      "doseUnit": "mg/kg",
+      "maxDose": 10,
+      "maxDoseUnit": "mg",
+      "frequency": "OD",
+      "routes": [{ "route": "Oral" }],
+      "minAge": "6 months",
+      "defaultFormulation": { "label": "5 mg/5 mL syrup", "strengthMg": 5, "volumeMl": 5, "route": "Oral" },
+      "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
+    },
+    {
+      "id": "lorazepam",
+      "name": "Lorazepam",
+      "aliases": ["ativan"],
+      "category": "Benzodiazepine — Anticonvulsant",
+      "dosePerKg": 0.1,
+      "doseUnit": "mg/kg",
+      "maxDose": 4,
+      "maxDoseUnit": "mg",
+      "frequency": "See condition",
+      "routes": [{ "route": "IV" }],
+      "cautions": ["Hospital/clinic use only", "Respiratory monitoring required"],
+      "hospitalOnly": true,
+      "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
+    },
+    {
+      "id": "diazepam",
+      "name": "Diazepam",
+      "aliases": ["valium", "stesolid"],
+      "category": "Benzodiazepine — Anticonvulsant",
+      "dosePerKg": 0.4,
+      "doseUnit": "mg/kg",
+      "maxDose": 10,
+      "maxDoseUnit": "mg",
+      "frequency": "See condition",
+      "routes": [{ "route": "Rectal" }, { "route": "IV" }],
+      "defaultFormulation": { "label": "5 mg/2.5 mL rectal tube", "strengthMg": 5, "volumeMl": 2.5, "route": "Rectal" },
+      "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
     }
   ]
 }
