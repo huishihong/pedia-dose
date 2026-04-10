@@ -121,10 +121,10 @@
             {
               "drugId": "dexamethasone-oral",
               "dose_mg_per_kg": 0.15,
-              "max_dose_mg": null,
+              "max_dose_mg": 10,
               "frequency": "Stat dose. If croup score ≥2 at 2h review, give additional 0.45 mg/kg.",
               "route": "Oral",
-              "clinicalNote": "Review at 2 hours. Discharge if croup score <2 after review."
+              "clinicalNote": "Review at 2 hours. Discharge if croup score <2 after review. Max 3 doses, 12h apart."
             }
           ]
         },
@@ -136,10 +136,10 @@
             {
               "drugId": "dexamethasone-oral",
               "dose_mg_per_kg": 0.6,
-              "max_dose_mg": null,
+              "max_dose_mg": 10,
               "frequency": "Stat dose",
               "route": "Oral",
-              "clinicalNote": "Add nebulised adrenaline if score 4 or above. Review hourly."
+              "clinicalNote": "Add nebulised adrenaline if score 4 or above. Review hourly. Max 3 doses, 12h apart."
             },
             {
               "drugId": "adrenaline-nebulised-croup",
@@ -160,10 +160,10 @@
             {
               "drugId": "dexamethasone-iv-im",
               "dose_mg_per_kg": 0.6,
-              "max_dose_mg": 12,
+              "max_dose_mg": 10,
               "frequency": "Stat dose",
               "route": "IV or IM",
-              "clinicalNote": "ADMIT to CICU. Consider intubation in CE if altered sensorium, persistent cyanosis, or inability to maintain saturations."
+              "clinicalNote": "ADMIT to CICU. Consider intubation in CE if altered sensorium, persistent cyanosis, or inability to maintain saturations. Max 3 doses, 12h apart."
             },
             {
               "drugId": "adrenaline-nebulised-croup",
@@ -330,13 +330,12 @@
             },
             {
               "drugId": "co-amoxiclav",
-              "dose_mg_per_kg": 45,
-              "dose_label": "45 mg amoxicillin/kg/day",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "40–45 mg/kg/dose BD (amoxicillin component)",
               "max_dose_mg": 800,
-              "max_dose_label": "800 mg amoxicillin component",
               "frequency": "BD (twice daily) for 10–14 days",
-              "route": "Oral (syrup 228 mg/5 mL [200 mg amoxicillin + 28.5 mg clavulanate])",
-              "clinicalNote": "Alternative to cephalexin. Dose based on amoxicillin component."
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Alternative to cephalexin. Dose 80–90 mg/kg/day based on amoxicillin component. KKH CE Guidelines Jan 2026."
             }
           ]
         },
@@ -379,7 +378,7 @@
               "max_dose_label": "0.5 mg (0.5 mL of 1:1000)",
               "frequency": "Stat IM. May repeat every 15 min if required.",
               "route": "IM (anterolateral thigh preferred)",
-              "clinicalNote": "FIRST-LINE. Must be given immediately. Do not delay for IV access or other medications."
+              "clinicalNote": "FIRST-LINE. Must be given immediately. Do not delay for IV access or other medications. EpiPen weight banding: 7.5–25 kg → EpiPen Jr 0.15 mg IM; >25 kg → EpiPen 0.3 mg IM. Do NOT give IV."
             },
             {
               "drugId": "salbutamol-mdi",
@@ -414,14 +413,23 @@
           "description": "Consolidation on CXR, fever, tachypnoea. Non-toxic, suitable for outpatient.",
           "drugs": [
             {
-              "drugId": "amoxicillin",
+              "drugId": "amoxicillin-high-dose",
               "dose_mg_per_kg_per_day": 80,
               "dose_mg_per_kg_per_day_range": [80, 90],
               "dose_per_dose_label": "26.7–30 mg/kg/dose TDS",
               "max_dose_mg": 1000,
               "frequency": "TDS (3 times daily) for 7–10 days",
-              "route": "Oral (syrup 125 mg/5 mL)",
+              "route": "Oral (syrup 250 mg/5 mL)",
               "clinicalNote": "High-dose amoxicillin is first-line for typical CAP in this age group. KKH CE 2023."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "40 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_mg": 800,
+              "frequency": "BD for 7–10 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Alternative to amoxicillin — use if no response at 48h or suspected beta-lactamase-producing organism."
             }
           ]
         },
@@ -463,14 +471,23 @@
           "description": "Typical bacterial pneumonia pattern.",
           "drugs": [
             {
-              "drugId": "amoxicillin",
+              "drugId": "amoxicillin-high-dose",
               "dose_mg_per_kg_per_day": 80,
               "dose_mg_per_kg_per_day_range": [80, 90],
               "dose_per_dose_label": "26.7–30 mg/kg/dose TDS",
               "max_dose_mg": 1000,
               "frequency": "TDS for 7–10 days",
-              "route": "Oral",
-              "clinicalNote": "If no response to amoxicillin ≥80 mg/kg/day after 48h, escalate to Augmentin or Clarithromycin (discuss with senior)."
+              "route": "Oral (syrup 250 mg/5 mL)",
+              "clinicalNote": "If no response at 48h, escalate to Augmentin or Clarithromycin (discuss with senior)."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "40 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_mg": 800,
+              "frequency": "BD for 7–10 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Alternative to amoxicillin — use if no response at 48h or suspected beta-lactamase-producing organism."
             }
           ]
         }
@@ -523,6 +540,14 @@
               "frequency": "TDS for 5–10 days",
               "route": "Oral (syrup 125 mg/5 mL)",
               "clinicalNote": "Alternative to cloxacillin. KKH CE 2023: 50 mg/kg/day q8h for 1 week."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg": 25,
+              "max_dose_mg": 400,
+              "frequency": "BD for 5–10 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "For animal/human bite wounds or mixed polymicrobial infection. Not first-line for simple cellulitis per KKH CE — use cloxacillin or cephalexin instead."
             }
           ]
         }
@@ -580,31 +605,57 @@
       "aliases": ["AOM", "ear infection", "acute otitis media", "ear pain", "ear discharge"],
       "section": "KKH CE Antibiotic Guidance",
       "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024 — Indication Specific Antibiotics sheet",
-      "notes": "High-dose amoxicillin recommended for AOM. Consider watchful waiting in children ≥2 years with mild symptoms.",
+      "notes": "High-dose amoxicillin recommended for AOM. Consider watchful waiting in children ≥2 years with mild symptoms and no severe otalgia.",
       "severityTiers": [
         {
           "tier": "standard",
-          "label": "Acute otitis media (standard treatment)",
-          "description": "Fever, ear pain, bulging tympanic membrane",
+          "label": "Acute otitis media (confirmed or suspected)",
+          "description": "Fever, ear pain, bulging tympanic membrane. <2 years: treat 10 days. ≥2 years: treat 7 days or watchful waiting if mild.",
           "drugs": [
             {
-              "drugId": "amoxicillin",
+              "drugId": "amoxicillin-high-dose",
               "dose_mg_per_kg_per_day": 80,
               "dose_mg_per_kg_per_day_range": [80, 90],
               "dose_per_dose_label": "40–45 mg/kg/dose BD",
               "max_dose_mg": 1000,
-              "frequency": "BD for 10 days (TDS also acceptable: 80 mg/kg/day div 8h)",
-              "route": "Oral (syrup 125 mg/5 mL)",
-              "clinicalNote": "High-dose regimen per Lexicomp and NHGP CPG. For age ≥3 months."
+              "frequency": "BD — 10 days if <2 years; 7 days if ≥2 years",
+              "route": "Oral (syrup 250 mg/5 mL)",
+              "clinicalNote": "High-dose amoxicillin is preferred first-line. KKH CE Guidelines Jan 2026."
             },
             {
               "drugId": "co-amoxiclav",
               "dose_mg_per_kg_per_day": 80,
-              "dose_per_dose_label": "Based on amoxicillin component",
-              "max_dose_label": "800 mg amoxicillin + 114 mg clavulanate per dose",
+              "dose_per_dose_label": "40–45 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_mg": 800,
+              "frequency": "BD — 10 days if <2 years; 7 days if ≥2 years",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "Alternative to amoxicillin. Use if no response or recurrent AOM. Dose based on amoxicillin component."
+            }
+          ]
+        },
+        {
+          "tier": "perforated",
+          "label": "Perforated acute otitis media",
+          "description": "Ear discharge through perforated tympanic membrane",
+          "drugs": [
+            {
+              "drugId": "amoxicillin-high-dose",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_mg_per_kg_per_day_range": [80, 90],
+              "dose_per_dose_label": "40–45 mg/kg/dose BD",
+              "max_dose_mg": 1000,
+              "frequency": "BD for 10 days",
+              "route": "Oral (syrup 250 mg/5 mL)",
+              "clinicalNote": "Oral antibiotics plus topical ciprofloxacin 0.3% ear drops TDS for 5 days. KKH CE Guidelines Jan 2026."
+            },
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 80,
+              "dose_per_dose_label": "40–45 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_mg": 800,
               "frequency": "BD for 10 days",
               "route": "Oral (syrup 228 mg/5 mL)",
-              "clinicalNote": "Use if no response to amoxicillin or recurrent AOM. Use amoxicillin component for dosing."
+              "clinicalNote": "Alternative to amoxicillin. Also add ciprofloxacin 0.3% ear drops TDS 5 days. Dose based on amoxicillin component."
             }
           ]
         }
@@ -757,13 +808,13 @@
           "description": "Severe symptoms or failed standard-dose treatment",
           "drugs": [
             {
-              "drugId": "amoxicillin",
+              "drugId": "amoxicillin-high-dose",
               "dose_mg_per_kg_per_day": 80,
               "dose_mg_per_kg_per_day_range": [80, 90],
               "dose_per_dose_label": "40–45 mg/kg/dose BD",
               "max_dose_mg": 2000,
               "frequency": "BD for 10 days",
-              "route": "Oral (syrup 125 mg/5 mL)",
+              "route": "Oral (syrup 250 mg/5 mL)",
               "clinicalNote": "High-dose regimen: 80–90 mg/kg/day q12h. Max 2000 mg/dose."
             },
             {
@@ -833,6 +884,32 @@
               "frequency": "Q6–8H PRN",
               "route": "Oral",
               "clinicalNote": "For children ≥6 months. May help with pain from oral ulcers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "preseptal-cellulitis",
+      "name": "Preseptal cellulitis",
+      "aliases": ["periorbital cellulitis", "eyelid swelling", "preseptal", "periorbital"],
+      "section": "R — Ophthalmology",
+      "source": "KKH CE Guidelines Jan 2026, p.421–424",
+      "notes": "Preseptal (periorbital) cellulitis is anterior to the orbital septum. Orbital cellulitis is posterior — requires admission and IV antibiotics. Distinguish by proptosis, restricted eye movement, pain on eye movement, or vision changes.",
+      "severityTiers": [
+        {
+          "tier": "non-toxic",
+          "label": "Preseptal cellulitis (non-toxic, outpatient)",
+          "description": "Eyelid swelling and erythema, no proptosis, no restricted eye movement, no fever requiring admission",
+          "drugs": [
+            {
+              "drugId": "co-amoxiclav",
+              "dose_mg_per_kg_per_day": 90,
+              "dose_per_dose_label": "45 mg/kg/dose BD (amoxicillin component)",
+              "max_dose_mg": 800,
+              "frequency": "BD for 7–14 days",
+              "route": "Oral (syrup 228 mg/5 mL)",
+              "clinicalNote": "KKH CE first-line for preseptal cellulitis. Review in 24–48h. If worsening or no response, admit for IV antibiotics. Dose based on amoxicillin component."
             }
           ]
         }

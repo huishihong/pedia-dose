@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './index.css'
 import { SearchBar } from './components/SearchBar'
 import { SearchResults } from './components/SearchResults'
@@ -18,6 +18,16 @@ type Screen = 'home' | 'condition' | 'drug'
 // Types for drug data
 type DrugFormulation = { id: string; label: string; strengthMg: number; volumeMl: number | null; route: string; ageNote?: string }
 type DrugEntry = { id: string; name: string; category?: string; formulations?: DrugFormulation[]; defaultFormulation?: { label: string; strengthMg: number; volumeMl: number; route: string }; dosePerKg?: number; maxDose?: number | null; frequency?: string }
+
+function deriveMaxDailyDoses(frequency: string): number | null {
+  const f = frequency.toUpperCase()
+  if (f.includes('OD') || f.includes('ONCE DAILY') || f.includes('SINGLE DOSE')) return 1
+  if (f.includes('BD') || f.includes('TWICE')) return 2
+  if (f.includes('TDS') || f.includes('THREE TIMES')) return 3
+  if (f.includes('QDS') || f.includes('FOUR TIMES') || f.includes('Q6')) return 4
+  if (f.includes('Q4')) return 6
+  return null
+}
 
 function getParacetamolFormulations(): Formulation[] {
   const p = drugsData.drugs.find(d => d.id === 'paracetamol') as DrugEntry | undefined
@@ -46,6 +56,25 @@ export default function App() {
   const [weightKg, setWeightKg] = useState<number | null>(null)
   const [formulation, setFormulation] = useState<Formulation>(defaultParacetamolFormulation)
   const [doseResult, setDoseResult] = useState<DoseResult | null>(null)
+
+  // DEBUG: URL param routing for Figma capture
+  useEffect(() => {
+    const p = new URLSearchParams(window.location.search).get('debug')
+    if (!p) return
+    if (p === 'search') {
+      setQuery('as')
+    } else if (p === 'asthma') {
+      setSelectedId('asthma')
+      setScreen('condition')
+    } else if (p === 'asthma-mild' || p === 'asthma-doses') {
+      setSelectedId('asthma')
+      setScreen('condition')
+    } else if (p === 'paracetamol') {
+      setSelectedId('paracetamol')
+      setFormulation(defaultParacetamolFormulation)
+      setScreen('drug')
+    }
+  }, [])
 
   const searchResults = search(query)
 
@@ -109,7 +138,7 @@ export default function App() {
           formulation: result.formulation ?? formulation.label,
           route: result.route,
           frequency: result.frequency,
-          maxDailyDoses: (drug as any)?.maxDailyDoses ?? 0,
+          maxDailyDoses: drug?.frequency ? deriveMaxDailyDoses(drug.frequency) : null,
         })
       }
     }
@@ -143,11 +172,20 @@ export default function App() {
         )}
 
         {/* CONDITION FLOW */}
-        {screen === 'condition' && selectedId && (
-          <div className="bg-white rounded-2xl border-2 border-gray-100 p-5 shadow-sm">
-            <ConditionView conditionId={selectedId} onBack={handleBack} />
-          </div>
-        )}
+        {screen === 'condition' && selectedId && (() => {
+          const dbg = new URLSearchParams(window.location.search).get('debug')
+          return (
+            <div className="bg-white rounded-2xl border-2 border-gray-100 p-5 shadow-sm">
+              <ConditionView
+                conditionId={selectedId}
+                onBack={handleBack}
+                initialTier={dbg === 'asthma-mild' || dbg === 'asthma-doses' ? 'mild' : undefined}
+                initialWeight={dbg === 'asthma-doses' ? 10 : undefined}
+                autoCalculate={dbg === 'asthma-doses'}
+              />
+            </div>
+          )
+        })()}
 
         {/* DRUG FLOW */}
         {screen === 'drug' && selectedDrug && (

@@ -6,23 +6,47 @@ import { calculateConditionDrug } from '../utils/genericDoseCalculator'
 interface ConditionViewProps {
   conditionId: string
   onBack: () => void
+  initialTier?: string
+  initialWeight?: number
+  autoCalculate?: boolean
 }
 
 type ConditionDrug = {
   drugId: string
   dose_instruction?: string | null
   dose_mg_per_kg?: number | null
+  dose_mg_per_kg_per_day?: number | null
+  dose_per_dose_label?: string | null
   max_dose_mg?: number | null
   frequency: string
   route: string
   clinicalNote?: string | null
+  requiresClinicalDecision?: boolean
 }
 
-export function ConditionView({ conditionId, onBack }: ConditionViewProps) {
+function dosesPerDay(frequency: string): number | null {
+  const f = frequency.toUpperCase()
+  if (f.includes('QDS') || f.includes('Q6') || f.includes('FOUR')) return 4
+  if (f.includes('TDS') || f.includes('Q8') || f.includes('THREE')) return 3
+  if (f.includes('BD') || f.includes('Q12') || f.includes('TWICE')) return 2
+  if (f.includes('OD') || f.includes('ONCE') || f.includes('DAILY')) return 1
+  return null
+}
+
+function derivePerDoseMgPerKg(drug: ConditionDrug): number | null {
+  if (drug.dose_mg_per_kg != null) return drug.dose_mg_per_kg
+  if (drug.dose_mg_per_kg_per_day != null) {
+    const n = dosesPerDay(drug.frequency)
+    if (n) return parseFloat((drug.dose_mg_per_kg_per_day / n).toFixed(2))
+  }
+  return null
+}
+
+export function ConditionView({ conditionId, onBack, initialTier, initialWeight, autoCalculate }: ConditionViewProps) {
   const condition = conditionsData.conditions.find(c => c.id === conditionId)
-  const [selectedTier, setSelectedTier] = useState<string | null>(null)
-  const [weightKg, setWeightKg] = useState<number | null>(null)
-  const [showDoses, setShowDoses] = useState(false)
+  const [selectedTier, setSelectedTier] = useState<string | null>(initialTier ?? null)
+  const [weightKg, setWeightKg] = useState<number | null>(initialWeight ?? null)
+  const [showDoses, setShowDoses] = useState(autoCalculate ?? false)
 
   if (!condition) return null
 
@@ -82,7 +106,7 @@ export function ConditionView({ conditionId, onBack }: ConditionViewProps) {
       {/* Weight input — only shown after severity selected */}
       {selectedTier && (
         <div className="pt-2">
-          <WeightInput onWeightChange={handleWeightChange} />
+          <WeightInput onWeightChange={handleWeightChange} initialValue={initialWeight} />
           <button
             type="button"
             onClick={() => setShowDoses(true)}
@@ -103,11 +127,12 @@ export function ConditionView({ conditionId, onBack }: ConditionViewProps) {
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Doses for {tier.label} — {weightKg} kg
           </p>
-          {(tier.drugs as ConditionDrug[]).map((drug, i) => {
+          {(tier.drugs as ConditionDrug[]).filter(drug => !drug.requiresClinicalDecision).map((drug, i) => {
+            const perDoseMgPerKg = derivePerDoseMgPerKg(drug)
             const result = calculateConditionDrug(
               drug.drugId,
               weightKg,
-              drug.dose_mg_per_kg ?? null,
+              perDoseMgPerKg,
               drug.max_dose_mg ?? null,
               drug.frequency,
               drug.route,
@@ -136,6 +161,14 @@ export function ConditionView({ conditionId, onBack }: ConditionViewProps) {
                     )}
                     {result.formulation && (
                       <p className="text-xs text-blue-400 mt-0.5">{result.formulation}</p>
+                    )}
+                    {perDoseMgPerKg && (
+                      <p className="text-xs text-blue-400 mt-1">
+                        {drug.dose_mg_per_kg_per_day
+                          ? `${drug.dose_mg_per_kg_per_day} mg/kg/day ÷ ${dosesPerDay(drug.frequency)} = ${perDoseMgPerKg} mg/kg/dose × ${weightKg} kg = ${result.calculatedMg} mg`
+                          : `${perDoseMgPerKg} mg/kg × ${weightKg} kg = ${result.calculatedMg} mg`}
+                        {result.isCapped ? ` → capped at ${result.cappedMg} mg` : ''}
+                      </p>
                     )}
                   </div>
                 ) : (

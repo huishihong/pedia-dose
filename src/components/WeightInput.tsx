@@ -2,11 +2,12 @@ import { useState } from 'react'
 
 interface WeightInputProps {
   onWeightChange: (weightKg: number | null) => void
+  initialValue?: number
 }
 
-export function WeightInput({ onWeightChange }: WeightInputProps) {
+export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) {
   const [unit, setUnit] = useState<'kg' | 'lbs'>('kg')
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(initialValue != null ? String(initialValue) : '')
 
   function handleValueChange(raw: string) {
     setValue(raw)

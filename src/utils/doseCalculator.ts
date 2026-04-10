@@ -19,7 +19,7 @@ export interface DoseResult {
   formulation: string
   route: string
   frequency: string
-  maxDailyDoses: number
+  maxDailyDoses: number | null
 }
 
 export function calculateParacetamol(weightKg: number, formulation: Formulation): DoseResult {

@@ -38,8 +38,8 @@
           "route": "Rectal",
           "dosePerKg": 15,
           "minDosePerKg": 10,
-          "maxDosePerKg": 20,
-          "notes": "Rectal dose range 10–20 mg/kg"
+          "maxDosePerKg": 15,
+          "notes": "15 mg/kg rectal dose"
         }
       ],
       "cautions": ["Caution in hepatic failure"],
@@ -228,42 +228,50 @@
     },
     {
       "id": "amoxicillin",
-      "name": "Amoxicillin",
-      "aliases": ["amoxil", "flemoxin"],
+      "name": "Amoxicillin — standard dose",
+      "aliases": ["amoxil", "flemoxin", "amoxicillin standard", "amoxicillin low dose"],
       "category": "Antibiotic — Penicillin",
-      "dosePerKg": 25,
+      "notes": "Standard dose for most infections. Use high-dose regimen for AOM, CAP, sinusitis.",
+      "dosePerKg": 15,
       "doseUnit": "mg/kg",
-      "minDosePerKg": 15,
-      "maxDosePerKg": 30,
-      "maxDose": 1000,
+      "minDosePerKg": 10,
+      "maxDosePerKg": 15,
+      "maxDose": 500,
       "maxDoseUnit": "mg",
       "frequency": "TDS (3 times daily)",
-      "indications": [
-        {
-          "indication": "Standard infections",
-          "dosePerKg": 25,
-          "minDosePerKg": 15,
-          "maxDosePerKg": 30,
-          "frequency": "TDS"
-        },
-        {
-          "indication": "Acute otitis media / Severe pneumonia (high-dose)",
-          "dailyDoseMgPerKg": 90,
-          "frequency": "BD or TDS",
-          "notes": "Can prescribe 20–45 mg/kg BD for compliance"
-        }
-      ],
       "neonateDose": "10–15 mg/kg BD",
       "routes": [{ "route": "Oral" }],
       "defaultFormulation": { "label": "125 mg/5 mL suspension", "strengthMg": 125, "volumeMl": 5, "route": "Oral" },
-      "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025"
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "amoxicillin-high-dose",
+      "name": "Amoxicillin — high dose",
+      "aliases": ["amoxil high dose", "amoxicillin high dose", "high dose amoxicillin", "amoxicillin hd"],
+      "category": "Antibiotic — Penicillin",
+      "notes": "High-dose regimen for AOM, community-acquired pneumonia, sinusitis. 80–90 mg/kg/day given as BD for compliance.",
+      "dosePerKg": 45,
+      "doseUnit": "mg/kg",
+      "minDosePerKg": 40,
+      "maxDosePerKg": 45,
+      "maxDose": 1000,
+      "maxDoseUnit": "mg",
+      "frequency": "BD (twice daily)",
+      "routes": [{ "route": "Oral" }],
+      "defaultFormulation": { "label": "250 mg/5 mL suspension", "strengthMg": 250, "volumeMl": 5, "route": "Oral" },
+      "source": "PaedsENGAGE Feb 2025; KKH CE Guidelines Jan 2026"
     },
     {
       "id": "co-amoxiclav",
       "name": "Co-amoxiclav",
       "aliases": ["augmentin", "curam", "amoxicillin-clavulanate"],
       "category": "Antibiotic — Penicillin + Beta-lactamase inhibitor",
-      "notes": "Dose based on amoxicillin component. Formulation choice depends on amoxicillin:clavulanate ratio",
+      "notes": "Dose based on amoxicillin component. Standard: 25 mg/kg/dose BD. High-dose (AOM/CAP/sinusitis): 40–45 mg/kg/dose BD.",
+      "dosePerKg": 25,
+      "doseUnit": "mg/kg",
+      "maxDose": 400,
+      "maxDoseUnit": "mg",
+      "frequency": "BD (twice daily)",
       "maxClavulanate": "10 mg/kg/day (max 500 mg/day)",
       "indications": [
         {
@@ -490,15 +498,15 @@
       "doseUnit": "mg/kg",
       "minDosePerKg": 0.1,
       "maxDosePerKg": 0.2,
-      "maxDose": 8,
+      "maxDose": 4,
       "maxDoseUnit": "mg",
-      "frequency": "Q8H (TDS)",
+      "frequency": "Single dose only (ED use)",
       "routes": [
         { "route": "Sublingual" },
         { "route": "Oral" }
       ],
       "minAge": "> 6 months",
-      "cautions": ["To be given in clinic setting only per PaedsENGAGE guidance"],
+      "cautions": ["Single dose only — QT prolongation risk. KKH CE ED protocol."],
       "defaultFormulation": { "label": "4 mg/5 mL oral solution", "strengthMg": 4, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
     },
@@ -622,12 +630,13 @@
       "doseUnit": "mg/kg",
       "minDosePerKg": 0.15,
       "maxDosePerKg": 0.6,
-      "maxDose": 12,
+      "maxDose": 10,
       "maxDoseUnit": "mg",
       "frequency": "See condition",
+      "notes": "Maximum 3 doses, 12h apart",
       "routes": [{ "route": "Oral" }, { "route": "IV" }],
       "defaultFormulation": { "label": "2 mg/5 mL oral solution", "strengthMg": 2, "volumeMl": 5, "route": "Oral" },
-      "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
+      "source": "PaedsENGAGE Feb 2025; KKH CE Guidelines Jan 2026"
     },
     {
       "id": "cetirizine",

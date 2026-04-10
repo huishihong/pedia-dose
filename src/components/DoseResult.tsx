@@ -38,17 +38,24 @@ export function DoseResultCard({ result }: DoseResultProps) {
             <p className="text-blue-500 text-sm mt-0.5">{result.formulation}</p>
           </>
         )}
+
+        <p className="text-blue-400 text-xs mt-3">
+          {result.dosePerKg} mg/kg × {result.weightKg} kg = {result.calculatedDoseMg} mg
+          {result.isCapped ? ` → capped at ${result.cappedDoseMg} mg` : ''}
+        </p>
       </div>
 
       <div className="grid grid-cols-2 gap-3">
-        <div className="bg-gray-50 rounded-xl p-4">
+        <div className={`bg-gray-50 rounded-xl p-4 ${result.maxDailyDoses === null ? 'col-span-2' : ''}`}>
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Frequency</p>
           <p className="text-lg font-bold text-gray-800">{result.frequency}</p>
         </div>
-        <div className="bg-gray-50 rounded-xl p-4">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Max daily</p>
-          <p className="text-lg font-bold text-gray-800">{result.maxDailyDoses} doses</p>
-        </div>
+        {result.maxDailyDoses !== null && (
+          <div className="bg-gray-50 rounded-xl p-4">
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Max daily</p>
+            <p className="text-lg font-bold text-gray-800">{result.maxDailyDoses} doses</p>
+          </div>
+        )}
         <div className="bg-gray-50 rounded-xl p-4 col-span-2">
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Route</p>
           <p className="text-lg font-bold text-gray-800">{result.route}</p>
@@ -56,9 +63,7 @@ export function DoseResultCard({ result }: DoseResultProps) {
       </div>
 
       <p className="text-xs text-gray-400 text-center">
-        {result.dosePerKg} mg/kg × {result.weightKg} kg = {result.calculatedDoseMg} mg
-        {result.isCapped ? ' → capped at 1000 mg' : ''}
-        {' '}· Source: KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024
+        Source: KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025
       </p>
     </div>
   )
