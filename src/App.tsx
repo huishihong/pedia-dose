@@ -12,6 +12,7 @@ import { calculateParacetamol } from './utils/doseCalculator'
 import { calculateGenericDose } from './utils/genericDoseCalculator'
 import type { DoseResult, Formulation } from './utils/doseCalculator'
 import drugsData from './data/drugs.json'
+import conditionsData from './data/conditions.json'
 
 type Screen = 'home' | 'condition' | 'drug'
 
@@ -64,6 +65,7 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('home')
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
+  const [homeTab, setHomeTab] = useState<'conditions' | 'drugs'>('conditions')
 
   // Drug screen state
   const [weightKg, setWeightKg] = useState<number | null>(null)
@@ -180,12 +182,64 @@ export default function App() {
         {screen === 'home' && (
           <div>
             <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
-            {query.length < 2 && (
-              <p className="text-sm text-gray-400 mt-4 text-center">
-                Search by condition (e.g. "asthma") or drug (e.g. "paracetamol")
-              </p>
+
+            {query.length >= 2 ? (
+              <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
+            ) : (
+              <>
+                {/* Tab toggle */}
+                <div className="flex mt-4 bg-gray-100 rounded-xl p-1 gap-1">
+                  <button
+                    type="button"
+                    onClick={() => setHomeTab('conditions')}
+                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-blue-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                  >
+                    Conditions
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setHomeTab('drugs')}
+                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-blue-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                  >
+                    Drugs
+                  </button>
+                </div>
+
+                {/* Alphabetical list */}
+                <div className="mt-3 space-y-1">
+                  {homeTab === 'conditions' &&
+                    [...conditionsData.conditions]
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map(c => (
+                        <button
+                          key={c.id}
+                          type="button"
+                          onClick={() => handleSelect({ id: c.id, name: c.name, subtitle: c.section ?? '', type: 'condition' })}
+                          className="w-full text-left px-4 py-3 rounded-xl bg-white border-2 border-gray-100 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                        >
+                          <p className="font-semibold text-gray-800">{c.name}</p>
+                          <p className="text-xs text-gray-400 mt-0.5">{c.section}</p>
+                        </button>
+                      ))
+                  }
+                  {homeTab === 'drugs' &&
+                    [...drugsData.drugs]
+                      .sort((a, b) => a.name.localeCompare(b.name))
+                      .map(d => (
+                        <button
+                          key={d.id}
+                          type="button"
+                          onClick={() => handleSelect({ id: d.id, name: d.name, subtitle: (d as DrugEntry).category ?? '', type: 'drug' })}
+                          className="w-full text-left px-4 py-3 rounded-xl bg-white border-2 border-gray-100 hover:border-blue-300 hover:bg-blue-50 transition-colors"
+                        >
+                          <p className="font-semibold text-gray-800">{d.name}</p>
+                          <p className="text-xs text-gray-400 mt-0.5">{(d as DrugEntry).category}</p>
+                        </button>
+                      ))
+                  }
+                </div>
+              </>
             )}
-            <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
           </div>
         )}
 
