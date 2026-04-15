@@ -890,6 +890,84 @@
       ]
     },
     {
+      "id": "conjunctivitis",
+      "name": "Conjunctivitis",
+      "aliases": ["red eye", "pink eye", "eye infection", "bacterial conjunctivitis", "viral conjunctivitis", "allergic conjunctivitis"],
+      "section": "R — Ophthalmology",
+      "source": "KKH CE Guidelines Jan 2026, p.409–418",
+      "notes": "Distinguish viral (watery, bilateral, follicular), bacterial (purulent discharge), and allergic (itching, bilateral, seasonal). Most viral cases are self-limiting.",
+      "severityTiers": [
+        {
+          "tier": "viral",
+          "label": "Viral conjunctivitis",
+          "description": "Watery discharge, bilateral, often associated with URTI. Usually self-limiting.",
+          "drugs": [
+            {
+              "drugId": "hypromellose-drops",
+              "dose_instruction": "Hypromellose 0.3% eye drops — 1–2 drops affected eye(s)",
+              "frequency": "1–2 hourly PRN for symptom relief",
+              "route": "Topical (eye drops)",
+              "clinicalNote": "Lubricating drops for symptom relief only. No antibiotics required for viral conjunctivitis."
+            }
+          ]
+        },
+        {
+          "tier": "bacterial",
+          "label": "Bacterial conjunctivitis",
+          "description": "Purulent or mucopurulent discharge, may be unilateral or bilateral",
+          "drugs": [
+            {
+              "drugId": "tobramycin-eye-drops",
+              "dose_instruction": "Tobramycin 0.3% eye drops — 1–2 drops affected eye(s)",
+              "frequency": "QDS (4 times daily)",
+              "route": "Topical (eye drops)",
+              "clinicalNote": "KKH CE first-line for bacterial conjunctivitis. Continue until 48h after resolution. If no response at 48h or worsening, review."
+            }
+          ]
+        },
+        {
+          "tier": "allergic",
+          "label": "Allergic conjunctivitis",
+          "description": "Bilateral itching, watery discharge, seasonal or perennial, often with allergic rhinitis",
+          "drugs": [
+            {
+              "drugId": "cetirizine",
+              "dose_mg_per_kg": 0.25,
+              "max_dose_mg": 10,
+              "frequency": "OD",
+              "route": "Oral",
+              "clinicalNote": "Oral antihistamine for relief of ocular and systemic allergic symptoms. 2nd-generation non-sedating."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "allergic-rhinitis",
+      "name": "Allergic rhinitis",
+      "aliases": ["hay fever", "runny nose allergy", "nasal allergy", "rhinitis", "allergic rhinoconjunctivitis"],
+      "section": "P — Allergic Conditions",
+      "source": "KKH CE Guidelines Jan 2026",
+      "notes": "Distinguish from infective rhinitis. Antihistamines for mild/intermittent. Nasal corticosteroid spray for moderate/persistent. Refer ENT/allergy if poorly controlled.",
+      "severityTiers": [
+        {
+          "tier": "mild-intermittent",
+          "label": "Mild / intermittent symptoms",
+          "description": "Sneezing, rhinorrhoea, nasal congestion, itchy nose/eyes — not daily or brief episodes",
+          "drugs": [
+            {
+              "drugId": "cetirizine",
+              "dose_mg_per_kg": 0.25,
+              "max_dose_mg": 10,
+              "frequency": "OD",
+              "route": "Oral",
+              "clinicalNote": "2nd-generation non-sedating antihistamine. First-line for mild/intermittent allergic rhinitis."
+            }
+          ]
+        }
+      ]
+    },
+    {
       "id": "preseptal-cellulitis",
       "name": "Preseptal cellulitis",
       "aliases": ["periorbital cellulitis", "eyelid swelling", "preseptal", "periorbital"],

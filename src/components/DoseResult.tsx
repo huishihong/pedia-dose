@@ -14,7 +14,7 @@ export function DoseResultCard({ result }: DoseResultProps) {
           <span className="text-red-500 text-xl leading-none mt-0.5">⚠️</span>
           <p className="text-red-700 text-sm font-medium leading-snug">
             Weight-based dose ({result.calculatedDoseMg} mg) exceeds maximum.
-            Dose capped at <strong>1000 mg</strong>.
+            Dose capped at <strong>{result.cappedDoseMg} mg</strong>.
           </p>
         </div>
       )}

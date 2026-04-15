@@ -35,6 +35,12 @@ type DrugEntry = {
   hospitalOnly?: boolean
 }
 
+function roundMg(mg: number): number {
+  if (mg < 1) return parseFloat(mg.toFixed(2))
+  if (mg < 10) return parseFloat(mg.toFixed(1))
+  return Math.round(mg)
+}
+
 export function calculateGenericDose(
   drugId: string,
   weightKg: number,
@@ -50,7 +56,7 @@ export function calculateGenericDose(
   if (dosePerKg == null) return null
 
   const maxDose = overrideMaxDose ?? (drug.maxDose ?? null)
-  const calculatedMg = Math.round(weightKg * dosePerKg)
+  const calculatedMg = roundMg(weightKg * dosePerKg)
   const cappedMg = maxDose !== null ? Math.min(calculatedMg, maxDose) : calculatedMg
   const isCapped = maxDose !== null && calculatedMg > maxDose
 
@@ -130,7 +136,7 @@ export function calculateConditionDrug(
     }
   }
 
-  const calculatedMg = Math.round(weightKg * doseMgPerKg)
+  const calculatedMg = roundMg(weightKg * doseMgPerKg)
   const cappedMg = maxDoseMg !== null ? Math.min(calculatedMg, maxDoseMg) : calculatedMg
   const isCapped = maxDoseMg !== null && calculatedMg > maxDoseMg
 

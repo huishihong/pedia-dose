@@ -525,6 +525,7 @@
       "routes": [{ "route": "Oral" }],
       "cautions": ["Contraindicated in children < 2 years old"],
       "minAge": "2 years",
+      "defaultFormulation": { "label": "5 mg/5 mL syrup", "strengthMg": 5, "volumeMl": 5, "route": "Oral" },
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -563,6 +564,11 @@
       "name": "Salbutamol",
       "aliases": ["albuterol", "ventolin", "zenmolin"],
       "category": "Bronchodilator — Beta-2 agonist",
+      "dosePerKg": 0.1,
+      "maxDose": 2,
+      "maxDoseUnit": "mg",
+      "frequency": "TDS–QDS",
+      "notes": "Oral dose shown (0.1 mg/kg, max 2 mg). For nebulised/MDI dosing, search by condition (e.g. Asthma, Bronchiolitis).",
       "indications": [
         {
           "indication": "Asthma — nebulisation",
@@ -582,6 +588,7 @@
         { "route": "Nebulised" },
         { "route": "Oral" }
       ],
+      "defaultFormulation": { "label": "2 mg/5 mL syrup", "strengthMg": 2, "volumeMl": 5, "route": "Oral" },
       "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2"
     },
     {
@@ -651,6 +658,7 @@
       "routes": [{ "route": "Oral" }],
       "minAge": "6 months",
       "defaultFormulation": { "label": "5 mg/5 mL syrup", "strengthMg": 5, "volumeMl": 5, "route": "Oral" },
+      "ageDosingNote": "Age-based reference (KKH CE): 6m–<2yr: 2.5 mg OD; 2–6yr: 2.5–5 mg OD; 6–12yr: 5–10 mg OD; >12yr: 10 mg OD. Weight-based calculation should align with these bands.",
       "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
     },
     {
