@@ -20,6 +20,7 @@ type Screen = 'home' | 'condition' | 'drug'
 type DrugFormulation = { id: string; label: string; strengthMg: number; volumeMl: number | null; route: string; ageNote?: string }
 type WeightBand = { maxWeightKg: number | null; doseMg: number; frequency: string; notes: string }
 type InfantDose = { ageLabel: string; doseMgPerKg: number; frequency: string }
+type AgeBand = { ageLabel: string; doseMg?: number; volumeMl?: string; formulation?: string; frequency?: string; notes?: string }
 type DrugEntry = {
   id: string; name: string; category?: string;
   formulations?: DrugFormulation[];
@@ -27,8 +28,9 @@ type DrugEntry = {
   dosePerKg?: number; maxDose?: number | null; frequency?: string;
   weightBandedDosing?: WeightBand[];
   infantDosing?: InfantDose[];
+  ageBandedDosing?: AgeBand[];
   treatmentDuration?: string;
-  ageDosingNote?: string;
+  dosingNote?: string;
   cautions?: string[];
   source?: string;
 }
@@ -107,7 +109,9 @@ export default function App() {
         setFormulation(defaultParacetamolFormulation)
       } else {
         const drug = drugsData.drugs.find(d => d.id === result.id) as DrugEntry | undefined
-        if (drug?.weightBandedDosing) {
+        if (drug?.ageBandedDosing) {
+          setFormulation({ id: 'age-banded', label: 'Age-banded dosing', strengthMg: 0, volumeMl: null, route: 'Oral' })
+        } else if (drug?.weightBandedDosing) {
           setFormulation({ id: 'weight-banded', label: 'Weight-banded dosing', strengthMg: 0, volumeMl: null, route: 'Oral' })
         } else {
           const def = drug?.defaultFormulation
@@ -168,6 +172,7 @@ export default function App() {
   const hasFormulations = isParacetamol && paracetamolFormulations.length > 0
   const isIVOnly = formulation.id === 'iv-only'
   const isWeightBanded = formulation.id === 'weight-banded'
+  const isAgeBanded = formulation.id === 'age-banded'
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col max-w-lg mx-auto">
@@ -281,6 +286,36 @@ export default function App() {
                   Search by condition for dosing guidance.
                 </p>
               </div>
+            ) : isAgeBanded ? (
+              <div className="mt-2 space-y-4">
+                {selectedDrug?.ageBandedDosing && (
+                  <div className="bg-gray-50 rounded-xl p-4">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Dose by age</p>
+                    <div className="space-y-1">
+                      {selectedDrug.ageBandedDosing.map((band, i) => (
+                        <div key={i} className="flex justify-between items-start text-sm px-3 py-2 rounded-lg bg-white border border-gray-100">
+                          <span className="font-medium text-gray-700">{band.ageLabel}</span>
+                          <span className="text-right text-gray-800 font-semibold ml-4">
+                            {band.doseMg != null ? `${band.doseMg} mg` : band.volumeMl ? `${band.volumeMl} mL` : ''}
+                            {band.formulation ? ` (${band.formulation})` : ''}
+                            {band.frequency ? ` — ${band.frequency}` : ''}
+                            {band.notes ? <span className="block text-xs text-gray-400 font-normal">{band.notes}</span> : null}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+                {selectedDrug?.treatmentDuration && (
+                  <div className="bg-gray-50 rounded-xl px-4 py-3">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Duration</p>
+                    <p className="text-sm text-gray-700">{selectedDrug.treatmentDuration}</p>
+                  </div>
+                )}
+                <p className="text-xs text-gray-400 text-center">
+                  {selectedDrug?.source ?? 'Source: KKH CE Guidelines Jan 2026'}
+                </p>
+              </div>
             ) : isWeightBanded ? (
               <>
                 <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
@@ -371,10 +406,10 @@ export default function App() {
 
                 {doseResult && <DoseResultCard result={doseResult} />}
 
-                {doseResult && selectedDrug?.ageDosingNote && (
+                {doseResult && selectedDrug?.dosingNote && (
                   <div className="mt-3 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
-                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Age-based reference</p>
-                    <p className="text-sm text-amber-800">{selectedDrug.ageDosingNote}</p>
+                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
+                    <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
                   </div>
                 )}
               </>

@@ -205,23 +205,12 @@
       "name": "Acyclovir",
       "aliases": ["aciclovir", "zovirax"],
       "category": "Antiviral",
-      "indications": [
-        {
-          "indication": "Varicella zoster (VZV) — within 24h of rash",
-          "dosePerKg": 20,
-          "maxDose": 800,
-          "maxDoseUnit": "mg",
-          "frequency": "QDS (4 times daily)",
-          "duration": "5 days"
-        },
-        {
-          "indication": "HSV gingivostomatitis",
-          "dosePerKg": 20,
-          "maxDose": 800,
-          "maxDoseUnit": "mg",
-          "frequency": "QDS (4 times daily)"
-        }
-      ],
+      "dosePerKg": 20,
+      "maxDose": 800,
+      "maxDoseUnit": "mg",
+      "frequency": "QDS (4 times daily)",
+      "defaultFormulation": { "label": "200 mg/5 mL suspension", "strengthMg": 200, "volumeMl": 5, "route": "Oral" },
+      "dosingNote": "VZV (chickenpox): start within 24h of rash, treat for 5 days. HSV gingivostomatitis: same dose.",
       "routes": [{ "route": "Oral" }],
       "minAge": "> 28 days",
       "source": "PaedsENGAGE Feb 2025"
@@ -370,21 +359,12 @@
       "name": "Azithromycin",
       "aliases": ["zithromax"],
       "category": "Antibiotic — Macrolide",
-      "indications": [
-        {
-          "indication": "Standard (3-day course)",
-          "dosePerKg": 10,
-          "frequency": "OD for 3 days"
-        },
-        {
-          "indication": "Alternative (5-day course)",
-          "day1DosePerKg": 10,
-          "day2to5DosePerKg": 5,
-          "notes": "Day 1: 10 mg/kg, Days 2–5: 5 mg/kg OD"
-        }
-      ],
+      "dosePerKg": 10,
       "maxDose": 500,
       "maxDoseUnit": "mg",
+      "frequency": "OD for 3 days",
+      "defaultFormulation": { "label": "200 mg/5 mL suspension", "strengthMg": 200, "volumeMl": 5, "route": "Oral" },
+      "dosingNote": "3-day course shown. 5-day alternative: 10 mg/kg OD day 1, then 5 mg/kg OD days 2–5.",
       "routes": [{ "route": "Oral" }],
       "minAge": "> 28 days",
       "source": "PaedsENGAGE Feb 2025"
@@ -426,24 +406,12 @@
       "name": "Clindamycin",
       "aliases": ["dalacin"],
       "category": "Antibiotic — Lincosamide",
-      "indications": [
-        {
-          "indication": "Mild infection",
-          "dosePerKg": 6,
-          "minDosePerKg": 5,
-          "maxDosePerKg": 7,
-          "frequency": "TDS"
-        },
-        {
-          "indication": "Moderate / Severe infection",
-          "dosePerKg": 10,
-          "minDosePerKg": 7,
-          "maxDosePerKg": 13,
-          "frequency": "Q8H (TDS)"
-        }
-      ],
+      "dosePerKg": 6,
       "maxDose": 600,
       "maxDoseUnit": "mg",
+      "frequency": "TDS (3 times daily)",
+      "defaultFormulation": { "label": "75 mg/5 mL suspension", "strengthMg": 75, "volumeMl": 5, "route": "Oral" },
+      "dosingNote": "Mild infection dose shown (5–7 mg/kg/dose TDS). Moderate/severe: 10 mg/kg/dose TDS (7–13 mg/kg/dose), max 600 mg/dose.",
       "cautions": ["May cause pseudomembranous colitis"],
       "routes": [{ "route": "Oral" }],
       "source": "KKH CE Guidelines Jan 2026; PaedsENGAGE Feb 2025"
@@ -596,18 +564,11 @@
       "name": "Albendazole",
       "aliases": ["zentel"],
       "category": "Antihelmintic",
-      "indications": [
-        {
-          "indication": "Pinworm / Hookworm / Roundworm / Whipworm",
-          "weightBandedDosing": [
-            { "ageLabel": "1–2 years", "doseMg": 200, "notes": "Single dose pre-meal" },
-            { "ageLabel": ">2 years", "doseMg": 400, "notes": "Single dose pre-meal" }
-          ],
-          "maxDose": 400,
-          "maxDoseUnit": "mg",
-          "duration": "Single dose; may use up to 3–5 consecutive days depending on indication"
-        }
+      "ageBandedDosing": [
+        { "ageLabel": "1–2 years", "doseMg": 200, "notes": "Single dose pre-meal" },
+        { "ageLabel": ">2 years", "doseMg": 400, "notes": "Single dose pre-meal" }
       ],
+      "treatmentDuration": "Single dose; may repeat for 3–5 days depending on indication",
       "routes": [{ "route": "Oral" }],
       "minAge": "1 year",
       "source": "PaedsENGAGE Feb 2025"
@@ -617,13 +578,11 @@
       "name": "Ambroxol",
       "aliases": ["mucosolvan", "abrilar"],
       "category": "Mucolytic",
-      "weightBandedDosing": [
-        { "ageLabel": "2–5 years", "volumeMl": "2.5", "formulation": "30mg/5mL", "frequency": "TDS" },
-        { "ageLabel": "6–12 years", "volumeMl": "5", "formulation": "30mg/5mL", "frequency": "BD–TDS" },
-        { "ageLabel": ">12 years", "volumeMl": "10", "formulation": "30mg/5mL", "frequency": "BD" }
+      "ageBandedDosing": [
+        { "ageLabel": "2–5 years", "volumeMl": "2.5", "formulation": "30 mg/5 mL syrup", "frequency": "TDS" },
+        { "ageLabel": "6–12 years", "volumeMl": "5", "formulation": "30 mg/5 mL syrup", "frequency": "BD–TDS" },
+        { "ageLabel": ">12 years", "volumeMl": "10", "formulation": "30 mg/5 mL syrup", "frequency": "BD" }
       ],
-      "maxDose": 60,
-      "maxDoseUnit": "mg",
       "routes": [{ "route": "Oral" }],
       "minAge": "2 years",
       "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
@@ -658,7 +617,7 @@
       "routes": [{ "route": "Oral" }],
       "minAge": "6 months",
       "defaultFormulation": { "label": "5 mg/5 mL syrup", "strengthMg": 5, "volumeMl": 5, "route": "Oral" },
-      "ageDosingNote": "Age-based reference (KKH CE): 6m–<2yr: 2.5 mg OD; 2–6yr: 2.5–5 mg OD; 6–12yr: 5–10 mg OD; >12yr: 10 mg OD. Weight-based calculation should align with these bands.",
+      "dosingNote": "Age-based reference (KKH CE): 6m–<2yr: 2.5 mg OD; 2–6yr: 2.5–5 mg OD; 6–12yr: 5–10 mg OD; >12yr: 10 mg OD. Weight-based calculation should align with these bands.",
       "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
     },
     {
