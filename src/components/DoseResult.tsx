@@ -30,13 +30,15 @@ export function DoseResultCard({ result }: DoseResultProps) {
             <p className="text-blue-600 text-lg mt-2 font-medium">= {result.volumeMl} mL</p>
             <p className="text-blue-500 text-sm mt-0.5">{result.formulation}</p>
           </>
-        ) : (
+        ) : result.solidCount !== null ? (
           <>
             <p className="text-blue-600 text-lg mt-2 font-medium">
               = {result.solidCount} {result.solidUnit}{result.solidCount !== 1 ? 's' : ''}
             </p>
             <p className="text-blue-500 text-sm mt-0.5">{result.formulation}</p>
           </>
+        ) : (
+          <p className="text-blue-500 text-sm mt-2">{result.formulation}</p>
         )}
 
         <p className="text-blue-400 text-xs mt-3">

@@ -648,6 +648,190 @@
       "routes": [{ "route": "Rectal" }, { "route": "IV" }],
       "defaultFormulation": { "label": "5 mg/2.5 mL rectal tube", "strengthMg": 5, "volumeMl": 2.5, "route": "Rectal" },
       "source": "KKH CE Guidelines Jan 2026; PRD Phase 2"
+    },
+    {
+      "id": "adrenaline",
+      "name": "Adrenaline (Epinephrine)",
+      "aliases": ["epinephrine", "epipen", "adrenalin", "adrenaline im"],
+      "category": "Emergency — Anaphylaxis / Croup",
+      "dosePerKg": 0.01,
+      "maxDose": 0.5,
+      "frequency": "Stat IM; repeat every 15 min if required",
+      "defaultFormulation": { "label": "1 mg/mL (1:1000) ampoule", "strengthMg": 1, "volumeMl": 1, "route": "IM" },
+      "dosingNote": "EpiPen banding: 7.5–25 kg → EpiPen Jr 0.15 mg IM; >25 kg → EpiPen 0.3 mg IM. Nebulised for croup (0.5 mL/kg of 1:1000, max 4 mL) — search by condition.",
+      "cautions": ["Do not give IV in anaphylaxis", "Anterolateral thigh preferred", "Hospital/clinic use only"],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "acetylcysteine",
+      "name": "Acetylcysteine (N-Acetylcysteine)",
+      "aliases": ["fluimucil", "nac", "n-acetylcysteine", "mucolytic"],
+      "category": "Mucolytic",
+      "ageBandedDosing": [
+        { "ageLabel": ">2–<6 years", "doseMg": 100, "notes": "1 × 100 mg sachet BD" },
+        { "ageLabel": "6–12 years", "doseMg": 200, "notes": "2 × 100 mg sachets BD" },
+        { "ageLabel": ">12 years", "doseMg": 600, "notes": "1 × 600 mg effervescent tablet BD" }
+      ],
+      "minAge": ">2 years",
+      "cautions": ["Do not use ≤2 years"],
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "chlorpheniramine",
+      "name": "Chlorpheniramine",
+      "aliases": ["piriton", "chlormine", "chlorphenamine"],
+      "category": "Antihistamine — 1st generation",
+      "dosePerKg": 0.1,
+      "maxDose": 4,
+      "frequency": "Q6–8H (TDS–QDS)",
+      "defaultFormulation": { "label": "4 mg/5 mL syrup", "strengthMg": 4, "volumeMl": 5, "route": "Oral" },
+      "cautions": ["Avoid concurrent antihistamine use", "Use with caution in children 1–2 years", "May cause drowsiness"],
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "famotidine",
+      "name": "Famotidine",
+      "aliases": ["pepcid"],
+      "category": "H2 receptor antagonist",
+      "dosePerKg": 0.5,
+      "maxDose": 40,
+      "frequency": "BD (twice daily)",
+      "defaultFormulation": { "label": "20 mg tablet", "strengthMg": 20, "volumeMl": 0, "route": "Oral" },
+      "dosingNote": "Infants <3 months: 0.5–1 mg/kg OD (once daily). Dose shown is for ≥3 months.",
+      "minAge": "3 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "fexofenadine",
+      "name": "Fexofenadine",
+      "aliases": ["telfast", "allegra"],
+      "category": "Antihistamine — 2nd generation",
+      "ageBandedDosing": [
+        { "ageLabel": "6 months–<2 years (≥10.5 kg)", "doseMg": 15, "frequency": "BD", "notes": "30 mg/5 mL suspension — 2.5 mL BD. Proven for urticaria only." },
+        { "ageLabel": "2–11 years", "doseMg": 30, "frequency": "BD", "notes": "30 mg/5 mL suspension — 5 mL BD" },
+        { "ageLabel": "≥12 years", "doseMg": 60, "frequency": "BD or 180 mg OD", "notes": "60 mg tablet BD or 180 mg tablet OD" }
+      ],
+      "cautions": ["Avoid concurrent antihistamine use"],
+      "minAge": "6 months",
+      "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
+    },
+    {
+      "id": "hydroxyzine",
+      "name": "Hydroxyzine",
+      "aliases": ["atarax", "vistaril"],
+      "category": "Antihistamine — 1st generation",
+      "dosePerKg": 0.5,
+      "maxDose": 25,
+      "frequency": "TDS–QDS PRN",
+      "defaultFormulation": { "label": "10 mg/5 mL syrup", "strengthMg": 10, "volumeMl": 5, "route": "Oral" },
+      "dosingNote": "Max dose by age: <6yr → 12.5 mg/dose; ≥6yr → 25 mg/dose.",
+      "cautions": ["Avoid concurrent antihistamine use", "May cause drowsiness"],
+      "minAge": "6 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "hyoscine-butylbromide",
+      "name": "Hyoscine butylbromide",
+      "aliases": ["buscopan", "hyoscine"],
+      "category": "Antispasmodic",
+      "ageBandedDosing": [
+        { "ageLabel": "6–12 years", "doseMg": 10, "volumeMl": "10", "formulation": "5 mg/5 mL syrup", "frequency": "TDS" },
+        { "ageLabel": ">12 years", "doseMg": 10, "volumeMl": "10", "formulation": "5 mg/5 mL syrup", "frequency": "TDS" }
+      ],
+      "minAge": "6 years",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "lactulose",
+      "name": "Lactulose",
+      "aliases": ["dhactulose", "duphalac"],
+      "category": "Laxative — osmotic",
+      "ageBandedDosing": [
+        { "ageLabel": "Infant–<1 year", "volumeMl": "2.5", "formulation": "3.35 g/5 mL syrup", "frequency": "BD" },
+        { "ageLabel": "1–5 years", "volumeMl": "5", "formulation": "3.35 g/5 mL syrup", "frequency": "BD" },
+        { "ageLabel": "6–12 years", "volumeMl": "10", "formulation": "3.35 g/5 mL syrup", "frequency": "BD" }
+      ],
+      "dosingNote": "PaedsENGAGE weight-based alternative: 0.5 mL/kg every 12–24H. Titrate to effect.",
+      "source": "Paeds_Meds_v2; PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "loperamide",
+      "name": "Loperamide",
+      "aliases": ["diatrol", "imodium"],
+      "category": "Anti-diarrhoeal",
+      "ageBandedDosing": [
+        { "ageLabel": "4–8 years", "doseMg": 1, "volumeMl": "5", "formulation": "1 mg/5 mL suspension", "frequency": "TDS/QDS", "notes": "Max 3 days" },
+        { "ageLabel": "9–12 years", "doseMg": 2, "volumeMl": "10", "formulation": "1 mg/5 mL suspension", "frequency": "TDS/QDS", "notes": "Max 5 days" }
+      ],
+      "minAge": "4 years",
+      "cautions": ["Do not use in children <4 years", "Strict maximum duration — see age band notes"],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "loratadine",
+      "name": "Loratadine",
+      "aliases": ["clarityn", "clarinase"],
+      "category": "Antihistamine — 2nd generation",
+      "ageBandedDosing": [
+        { "ageLabel": "2–5 years", "doseMg": 5, "frequency": "OD", "notes": "5 mg/5 mL syrup — 5 mL OD" },
+        { "ageLabel": "≥6 years", "doseMg": 10, "frequency": "OD", "notes": "10 mg tablet OD" }
+      ],
+      "cautions": ["Avoid concurrent antihistamine use"],
+      "minAge": "2 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "mefenamic-acid",
+      "name": "Mefenamic acid",
+      "aliases": ["ponstan", "ponstel"],
+      "category": "NSAID analgesic",
+      "ageBandedDosing": [
+        { "ageLabel": "≥12 years only", "notes": "Loading: 500 mg, then 250 mg every 6H PRN. Max 3 days." }
+      ],
+      "minAge": "12 years",
+      "cautions": ["Not for use in children <12 years", "Max 3 days use"],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "omeprazole",
+      "name": "Omeprazole",
+      "aliases": ["losec", "prilosec"],
+      "category": "Proton pump inhibitor",
+      "dosePerKg": 1,
+      "maxDose": 40,
+      "frequency": "OD (once daily)",
+      "defaultFormulation": { "label": "20 mg capsule", "strengthMg": 20, "volumeMl": 0, "route": "Oral" },
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "oxymetazoline",
+      "name": "Oxymetazoline (Iliadin)",
+      "aliases": ["iliadin", "nazolin", "afrin", "nasal decongestant", "nasal drops"],
+      "category": "Nasal decongestant",
+      "ageBandedDosing": [
+        { "ageLabel": "<1 month", "notes": "Use Normal Saline drops instead — do not use oxymetazoline" },
+        { "ageLabel": "1 month–1 year", "notes": "0.01% nasal drops — 1 drop each nostril TDS" },
+        { "ageLabel": "1–6 years", "notes": "0.025% nasal drops — 1 drop each nostril TDS" },
+        { "ageLabel": ">6 years", "notes": "0.05% nasal drops/spray — 1 drop/spray each nostril TDS" }
+      ],
+      "treatmentDuration": "≤5 days — do not exceed to avoid rebound congestion",
+      "cautions": ["Do not use >5 days (rebound congestion)", "Do not use in infants <1 month — use saline instead"],
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "tramadol",
+      "name": "Tramadol",
+      "aliases": ["tramal", "ultram"],
+      "category": "Opioid analgesic",
+      "dosePerKg": 1,
+      "maxDose": 100,
+      "frequency": "Q6H PRN",
+      "defaultFormulation": { "label": "50 mg capsule", "strengthMg": 50, "volumeMl": 0, "route": "Oral" },
+      "dosingNote": "Max 50 mg/dose for patients <50 kg. Max daily dose 400 mg.",
+      "minAge": "12 years",
+      "cautions": ["Avoid in children <12 years", "Reduce to max 50 mg/dose if patient <50 kg", "Causes nausea — consider antiemetic", "Opioid — monitor for dependence"],
+      "source": "PaedsENGAGE Feb 2025"
     }
   ]
 }

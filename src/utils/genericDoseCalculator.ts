@@ -62,7 +62,7 @@ export function calculateGenericDose(
 
   const formulation = drug.defaultFormulation ?? null
   let volumeMl: number | null = null
-  if (formulation) {
+  if (formulation && formulation.volumeMl > 0) {
     volumeMl = parseFloat(((cappedMg / formulation.strengthMg) * formulation.volumeMl).toFixed(1))
   }
 
