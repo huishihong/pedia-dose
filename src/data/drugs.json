@@ -818,7 +818,7 @@
       "maxDose": 2,
       "maxDoseUnit": "mg",
       "frequency": "TDS–QDS",
-      "notes": "Oral dose shown (0.1 mg/kg, max 2 mg). For nebulised/MDI dosing, search by condition (e.g. Asthma, Bronchiolitis).",
+      "dosingNote": "Oral syrup shown (0.1 mg/kg, max 2 mg). For nebulised or MDI dosing in acute asthma or bronchiolitis, search by condition instead.",
       "indications": [
         {
           "indication": "Asthma — nebulisation",

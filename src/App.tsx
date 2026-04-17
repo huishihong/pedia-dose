@@ -474,14 +474,14 @@ export default function App() {
                   Calculate dose
                 </button>
 
-                {doseResult && <DoseResultCard result={doseResult} />}
-
-                {doseResult && selectedDrug?.dosingNote && (
+                {selectedDrug?.dosingNote && (
                   <div className="mt-3 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
                     <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
                     <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
                   </div>
                 )}
+
+                {doseResult && <DoseResultCard result={doseResult} />}
               </>
             )}
           </div>
