@@ -1552,6 +1552,135 @@
       ],
       "hospitalOnly": true,
       "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "chloramphenicol-eye",
+      "name": "Chloramphenicol eye drops",
+      "aliases": [
+        "chloromycetin",
+        "chloramphenicol eye"
+      ],
+      "category": "Antibiotic — Ophthalmic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 drop per affected eye Q2H (while awake) for 48h, then QDS until 48h after symptoms resolve"
+        }
+      ],
+      "dosingNote": "0.5% eye drops. Also available as 1% ointment — apply QDS or at bedtime alongside drops. Usual course: 5–7 days.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "fusidic-acid-eye",
+      "name": "Fusidic acid eye drops",
+      "aliases": [
+        "fucithalmic",
+        "fusidic acid"
+      ],
+      "category": "Antibiotic — Ophthalmic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 drop per affected eye BD"
+        }
+      ],
+      "dosingNote": "1% viscous eye drops (Fucithalmic). BD dosing is sufficient due to viscous formulation. Usual course: 7 days.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "fluticasone-nasal",
+      "name": "Fluticasone nasal spray",
+      "aliases": [
+        "flixonase",
+        "avamys",
+        "fluticasone"
+      ],
+      "category": "Corticosteroid — Intranasal",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "4–11 years",
+          "notes": "1 spray per nostril OD"
+        },
+        {
+          "ageLabel": "≥12 years",
+          "notes": "2 sprays per nostril OD; reduce to 1 spray per nostril once controlled"
+        }
+      ],
+      "dosingNote": "50 mcg per spray. Onset may take 3–7 days — use regularly for best effect. Not for use under 4 years.",
+      "minAge": "4 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "mupirocin",
+      "name": "Mupirocin ointment",
+      "aliases": [
+        "bactroban"
+      ],
+      "category": "Antibiotic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply small amount to affected area TDS for 5–7 days"
+        }
+      ],
+      "dosingNote": "2% ointment (Bactroban). Cover with dressing if needed. Discontinue if no improvement after 3–5 days.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "clotrimazole-cream",
+      "name": "Clotrimazole cream",
+      "aliases": [
+        "canesten",
+        "clotrimazole"
+      ],
+      "category": "Antifungal — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply to affected area BD–TDS"
+        }
+      ],
+      "dosingNote": "1% cream (Canesten). Duration: 2–4 weeks for tinea; continue for 2 weeks after clearing. Active against Candida and dermatophytes.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "permethrin",
+      "name": "Permethrin",
+      "aliases": [
+        "lyclear",
+        "scabies treatment",
+        "head lice treatment"
+      ],
+      "category": "Antiparasitic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "Scabies (≥2 months)",
+          "notes": "5% cream — apply to whole body (neck down) overnight, wash off after 8–12h. Repeat after 1 week."
+        },
+        {
+          "ageLabel": "Head lice (all ages)",
+          "notes": "1% lotion — apply to damp hair, leave 10 min, rinse thoroughly"
+        }
+      ],
+      "dosingNote": "Treat all household contacts simultaneously for scabies. Wash clothing and bedding after treatment.",
+      "minAge": "2 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "calamine",
+      "name": "Calamine lotion",
+      "aliases": [
+        "calamine"
+      ],
+      "category": "Antipruritic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply to affected areas PRN for itch relief"
+        }
+      ],
+      "dosingNote": "Cooling and antipruritic. Shake before use. Used for chickenpox, insect bites, and pruritic rashes.",
+      "source": "PaedsENGAGE Feb 2025"
     }
   ]
 }
