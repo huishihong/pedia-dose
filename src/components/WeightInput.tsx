@@ -34,7 +34,7 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
 
   return (
     <div className="w-full">
-      <label className="block text-sm font-medium text-gray-600 mb-2">
+      <label className="block text-sm font-medium text-gray-500 mb-2">
         Patient weight
       </label>
       <div className="flex gap-2">
@@ -46,16 +46,16 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           onChange={(e) => handleValueChange(e.target.value)}
           min="0"
           step="0.1"
-          className="flex-1 text-2xl font-semibold border-2 border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-blue-500 text-gray-800 placeholder-gray-300"
+          className="flex-1 text-2xl font-semibold bg-gray-100 rounded-xl px-4 py-3 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-300 transition-all"
         />
-        <div className="flex rounded-xl border-2 border-gray-200 overflow-hidden">
+        <div className="flex rounded-xl bg-gray-100 overflow-hidden p-1 gap-1">
           <button
             type="button"
             onClick={() => handleUnitToggle('kg')}
-            className={`px-4 py-3 text-base font-semibold transition-colors ${
+            className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors ${
               unit === 'kg'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-500 hover:bg-gray-50'
+                ? 'bg-white text-blue-600 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
             }`}
           >
             kg
@@ -63,10 +63,10 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           <button
             type="button"
             onClick={() => handleUnitToggle('lbs')}
-            className={`px-4 py-3 text-base font-semibold transition-colors ${
+            className={`px-4 py-2 rounded-lg text-base font-semibold transition-colors ${
               unit === 'lbs'
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-500 hover:bg-gray-50'
+                ? 'bg-white text-blue-600 shadow-sm'
+                : 'text-gray-500 hover:text-gray-700'
             }`}
           >
             lbs
