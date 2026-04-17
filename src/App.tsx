@@ -312,6 +312,22 @@ export default function App() {
                     <p className="text-sm text-gray-700">{selectedDrug.treatmentDuration}</p>
                   </div>
                 )}
+                {selectedDrug?.dosingNote && (
+                  <div className="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3">
+                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
+                    <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
+                  </div>
+                )}
+                {selectedDrug?.cautions && selectedDrug.cautions.length > 0 && (
+                  <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                    <p className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">Cautions</p>
+                    <ul className="space-y-1">
+                      {selectedDrug.cautions.map((c, i) => (
+                        <li key={i} className="text-sm text-red-700">{c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
                 <p className="text-xs text-gray-400 text-center">
                   {selectedDrug?.source ?? 'Source: KKH CE Guidelines Jan 2026'}
                 </p>

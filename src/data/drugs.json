@@ -1415,6 +1415,143 @@
         "Opioid — monitor for dependence"
       ],
       "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "montelukast",
+      "name": "Montelukast",
+      "aliases": [
+        "singulair"
+      ],
+      "category": "Leukotriene receptor antagonist",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "6 months–5 years",
+          "doseMg": 4,
+          "frequency": "OD at bedtime",
+          "notes": "4 mg granules sachet or chewable tablet"
+        },
+        {
+          "ageLabel": "6–14 years",
+          "doseMg": 5,
+          "frequency": "OD at bedtime",
+          "notes": "5 mg chewable tablet"
+        },
+        {
+          "ageLabel": "≥15 years",
+          "doseMg": 10,
+          "frequency": "OD at bedtime",
+          "notes": "10 mg film-coated tablet"
+        }
+      ],
+      "minAge": "6 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "erythromycin",
+      "name": "Erythromycin",
+      "aliases": [
+        "erythrocin"
+      ],
+      "category": "Antibiotic — Macrolide",
+      "dosePerKg": 12.5,
+      "maxDose": 500,
+      "frequency": "QDS (4 times daily)",
+      "defaultFormulation": {
+        "label": "125 mg/5 mL suspension",
+        "strengthMg": 125,
+        "volumeMl": 5,
+        "route": "Oral"
+      },
+      "cautions": [
+        "Risk of hypertrophic pyloric stenosis in infants <6 weeks",
+        "QT prolongation — check drug interactions"
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "nystatin",
+      "name": "Nystatin",
+      "aliases": [
+        "mycostatin"
+      ],
+      "category": "Antifungal",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "Neonates / Infants",
+          "notes": "100,000 units (1 mL) QDS — apply to each side of mouth after feeds"
+        },
+        {
+          "ageLabel": "Children",
+          "notes": "100,000–500,000 units (1–5 mL) QDS — rinse and swallow"
+        }
+      ],
+      "dosingNote": "Oral drops: 100,000 units/mL. Continue for 48h after symptoms resolve.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ipratropium",
+      "name": "Ipratropium bromide",
+      "aliases": [
+        "atrovent"
+      ],
+      "category": "Bronchodilator — Anticholinergic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "<5 years",
+          "notes": "250 mcg per dose via nebuliser"
+        },
+        {
+          "ageLabel": "≥5 years",
+          "notes": "500 mcg per dose via nebuliser"
+        }
+      ],
+      "dosingNote": "Give with salbutamol in acute severe asthma. Frequency: Q20min for first 3 doses, then Q4–6H.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "budesonide-nebulised",
+      "name": "Budesonide (nebulised)",
+      "aliases": [
+        "pulmicort"
+      ],
+      "category": "Corticosteroid — Inhaled",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "2 mg single dose — use 2× 1 mg/2 mL nebules or 4× 0.5 mg/2 mL nebules"
+        }
+      ],
+      "dosingNote": "For moderate-severe croup. May repeat once after 12h if symptoms recur. Alternative to oral dexamethasone.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "hydrocortisone-iv",
+      "name": "Hydrocortisone (IV)",
+      "aliases": [
+        "solu-cortef",
+        "hydrocortisone"
+      ],
+      "category": "Corticosteroid — IV",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "Anaphylaxis",
+          "notes": "2–4 mg/kg IV (max 200–250 mg) — single dose"
+        },
+        {
+          "ageLabel": "Acute severe asthma",
+          "notes": "4 mg/kg IV (max 100 mg) — Q6H"
+        },
+        {
+          "ageLabel": "Adrenal crisis",
+          "notes": "2 mg/kg IV/IM (max 100 mg) — stat, then Q6H"
+        }
+      ],
+      "cautions": [
+        "Hospital use only — IV/IM administration required",
+        "Monitor blood glucose and electrolytes"
+      ],
+      "hospitalOnly": true,
+      "source": "PaedsENGAGE Feb 2025"
     }
   ]
 }
