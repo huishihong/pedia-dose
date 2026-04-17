@@ -814,43 +814,25 @@
         "zenmolin"
       ],
       "category": "Bronchodilator — Beta-2 agonist",
-      "dosePerKg": 0.1,
-      "maxDose": 2,
-      "maxDoseUnit": "mg",
-      "frequency": "TDS–QDS",
-      "dosingNote": "Oral syrup shown (0.1 mg/kg, max 2 mg). For nebulised or MDI dosing in acute asthma or bronchiolitis, search by condition instead.",
-      "indications": [
+      "ageBandedDosing": [
         {
-          "indication": "Asthma — nebulisation",
-          "notes": "<10 kg: 0.5 mL nebuliser solution per cycle; ≥10 kg: 1 mL per cycle. Cycle = 3 back-to-back nebs"
+          "ageLabel": "MDI — all ages",
+          "notes": "2–6 puffs via spacer and mask",
+          "frequency": "Q4–6H"
         },
         {
-          "indication": "Oral (maintenance / mild wheeze)",
-          "dosePerKg": 0.1,
-          "maxDose": 2,
-          "maxDoseUnit": "mg",
-          "frequency": "TDS–QDS",
-          "ageNote": "1 month–2yo: 0.1 mg/kg (max 2mg) TDS/QDS"
+          "ageLabel": "Nebuliser — <5 years",
+          "notes": "0.5 mL 0.5% salbutamol + 2.5 mL 0.9% NaCl",
+          "frequency": "Q4–6H"
+        },
+        {
+          "ageLabel": "Nebuliser — ≥5 years",
+          "notes": "1 mL 0.5% salbutamol + 2 mL 0.9% NaCl",
+          "frequency": "Q4–6H"
         }
       ],
-      "routes": [
-        {
-          "route": "Inhaled (MDI)"
-        },
-        {
-          "route": "Nebulised"
-        },
-        {
-          "route": "Oral"
-        }
-      ],
-      "defaultFormulation": {
-        "label": "2 mg/5 mL syrup",
-        "strengthMg": 2,
-        "volumeMl": 5,
-        "route": "Oral"
-      },
-      "source": "KKH CE Guidelines Jan 2026, p.163–173; Paeds_Meds_v2"
+      "dosingNote": "Each MDI puff delivers 100 mcg. Minimum nebuliser volume 0.5 mL. For acute severe asthma protocol, search 'Asthma' by condition.",
+      "source": "Paeds_Meds_v2"
     },
     {
       "id": "albendazole",

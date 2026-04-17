@@ -348,13 +348,26 @@ export default function App() {
                     <div>
                       {selectedDrug.ageBandedDosing.map((band, i) => (
                         <div key={i} className={`flex justify-between items-start px-4 py-3 text-sm ${i < selectedDrug.ageBandedDosing!.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                          <span className="font-medium text-gray-700">{band.ageLabel}</span>
-                          <span className="text-right text-gray-900 font-semibold ml-4">
-                            {band.doseMg != null ? `${band.doseMg} mg` : band.volumeMl ? `${band.volumeMl} mL` : ''}
-                            {band.formulation ? ` (${band.formulation})` : ''}
-                            {band.frequency ? ` — ${band.frequency}` : ''}
-                            {band.notes ? <span className="block text-xs text-gray-400 font-normal mt-0.5">{band.notes}</span> : null}
-                          </span>
+                          <span className="font-medium text-gray-700 flex-shrink-0">{band.ageLabel}</span>
+                          {(() => {
+                            const hasValue = band.doseMg != null || band.volumeMl != null
+                            if (hasValue) {
+                              return (
+                                <span className="text-right text-gray-900 font-semibold ml-4">
+                                  {band.doseMg != null ? `${band.doseMg} mg` : `${band.volumeMl} mL`}
+                                  {band.formulation ? ` (${band.formulation})` : ''}
+                                  {band.frequency ? ` — ${band.frequency}` : ''}
+                                  {band.notes && <span className="block text-xs text-gray-400 font-normal mt-0.5">{band.notes}</span>}
+                                </span>
+                              )
+                            }
+                            return (
+                              <span className="text-right ml-4">
+                                <span className="font-semibold text-gray-900">{band.notes ?? ''}</span>
+                                {band.frequency && <span className="block text-xs text-gray-500 font-normal mt-0.5">{band.frequency}</span>}
+                              </span>
+                            )
+                          })()}
                         </div>
                       ))}
                     </div>
