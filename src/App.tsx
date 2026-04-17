@@ -178,7 +178,7 @@ export default function App() {
     <div className="min-h-screen bg-gray-50 flex flex-col max-w-lg md:max-w-2xl mx-auto">
       <header className="px-5 pt-8 pb-4 bg-gray-50">
         <h1 className="text-3xl font-bold text-blue-800 tracking-tight">PediaDose</h1>
-        <p className="text-gray-400 text-sm mt-0.5">Paediatric drug dose guide</p>
+        <p className="text-gray-400 text-sm mt-0.5">Paediatric drug dosing tool</p>
       </header>
 
       <main className="flex-1 px-5 pb-8">
