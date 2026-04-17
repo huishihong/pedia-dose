@@ -19,7 +19,7 @@ export function SearchBar({ value, onChange, onClear }: SearchBarProps) {
         placeholder="Search drug or condition…"
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full pl-10 pr-10 py-3 text-base rounded-full bg-gray-100 text-gray-900 placeholder-gray-400 placeholder:text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 transition-all"
+        className="w-full pl-10 pr-10 py-3 text-base rounded-full bg-white border border-gray-200 text-gray-900 placeholder-gray-400 placeholder:text-sm focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 transition-all"
       />
       {value.length > 0 && (
         <button
