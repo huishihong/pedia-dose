@@ -178,7 +178,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col max-w-lg md:max-w-2xl mx-auto">
       <header className="sticky top-0 z-50 bg-white border-b border-gray-100 px-5 py-4 flex flex-col items-center">
-        <img src={logoUrl} alt="PediaDose" className="h-9" />
+        <img src={logoUrl} alt="PediaDose" className="h-10" />
         <p className="text-gray-400 text-sm mt-1">Paediatric drug dosing tool</p>
       </header>
 
