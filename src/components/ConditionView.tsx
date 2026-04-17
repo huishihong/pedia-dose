@@ -127,7 +127,21 @@ export function ConditionView({ conditionId, onBack, initialTier, initialWeight,
           <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">
             Doses for {tier.label} — {weightKg} kg
           </p>
-          {(tier.drugs as ConditionDrug[]).filter(drug => !drug.requiresClinicalDecision).map((drug, i) => {
+          {(tier.drugs as ConditionDrug[]).map((drug, i) => {
+            if (drug.requiresClinicalDecision) {
+              const displayName = drug.drugId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())
+              return (
+                <div key={i} className="bg-amber-50 border-2 border-amber-200 rounded-xl p-4">
+                  <div className="flex items-start justify-between gap-2">
+                    <p className="font-bold text-gray-800">{displayName}</p>
+                    <span className="text-xs bg-amber-100 text-amber-700 rounded-full px-2 py-0.5 whitespace-nowrap">{drug.route}</span>
+                  </div>
+                  <p className="mt-2 text-sm text-amber-800">
+                    Dosing for this drug is complex and context-dependent. Clinical assessment required — do not use this app as the sole guide.
+                  </p>
+                </div>
+              )
+            }
             const perDoseMgPerKg = derivePerDoseMgPerKg(drug)
             const result = calculateConditionDrug(
               drug.drugId,
