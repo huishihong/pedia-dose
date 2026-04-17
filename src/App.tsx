@@ -187,7 +187,9 @@ export default function App() {
         {/* HOME / SEARCH */}
         {screen === 'home' && (
           <div>
-            <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
+            <div className="mt-4">
+              <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
+            </div>
 
             {query.length >= 2 ? (
               <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
