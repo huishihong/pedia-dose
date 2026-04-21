@@ -76,7 +76,7 @@ export default function App() {
   const [screen, setScreen] = useState<Screen>('home')
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
-  const [homeTab, setHomeTab] = useState<'conditions' | 'drugs'>('conditions')
+  const [homeTab, setHomeTab] = useState<'conditions' | 'drugs'>('drugs')
 
   const [weightKg, setWeightKg] = useState<number | null>(null)
   const [formulation, setFormulation] = useState<Formulation>(defaultParacetamolFormulation)
@@ -182,8 +182,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#F2F2F7] flex flex-col max-w-lg md:max-w-2xl mx-auto">
       <header className="sticky top-0 z-50 bg-white shadow-sm px-5 py-4 flex flex-col items-center">
-        <img src={logoUrl} alt="PediaDose" className="h-10" />
-        <p className="text-gray-400 text-xs mt-1 tracking-wide">Paediatric drug dosing tool</p>
+        <button type="button" onClick={handleBack} className="flex flex-col items-center">
+          <img src={logoUrl} alt="PediaDose" className="h-10" />
+          <p className="text-gray-400 text-xs mt-1 tracking-wide">Paediatric drug dosing tool</p>
+        </button>
       </header>
 
       <main className="flex-1 px-4 pb-8">
@@ -203,17 +205,17 @@ export default function App() {
                 <div className="flex mt-4 bg-gray-200 rounded-xl p-1 gap-1">
                   <button
                     type="button"
-                    onClick={() => setHomeTab('conditions')}
-                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
-                  >
-                    Conditions
-                  </button>
-                  <button
-                    type="button"
                     onClick={() => setHomeTab('drugs')}
                     className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                   >
                     Drugs
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setHomeTab('conditions')}
+                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                  >
+                    Conditions
                   </button>
                 </div>
 
