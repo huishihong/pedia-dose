@@ -492,7 +492,7 @@ export default function App() {
                   type="button"
                   onClick={handleCalculate}
                   disabled={weightKg === null}
-                  className="mt-4 w-full py-4 rounded-full text-base font-bold transition-colors
+                  className="mt-4 w-full py-3 rounded-full text-base font-semibold transition-colors
                     bg-blue-600 text-white
                     disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed
                     hover:enabled:bg-blue-700 active:enabled:bg-blue-800"

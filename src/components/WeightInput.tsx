@@ -46,13 +46,13 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           onChange={(e) => handleValueChange(e.target.value)}
           min="0"
           step="0.1"
-          className="flex-1 text-2xl font-semibold bg-gray-100 rounded-full px-4 py-3 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-300 transition-all"
+          className="flex-1 min-w-0 text-base bg-white border border-gray-200 rounded-full px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-gray-900 placeholder-gray-400 placeholder:text-sm transition-all"
         />
-        <div className="flex rounded-full bg-gray-100 overflow-hidden p-1 gap-1">
+        <div className="flex bg-gray-200 rounded-full p-1 gap-1">
           <button
             type="button"
             onClick={() => handleUnitToggle('kg')}
-            className={`px-4 py-2 rounded-full text-base font-semibold transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               unit === 'kg'
                 ? 'bg-white text-blue-600 shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
@@ -63,7 +63,7 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           <button
             type="button"
             onClick={() => handleUnitToggle('lbs')}
-            className={`px-4 py-2 rounded-full text-base font-semibold transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               unit === 'lbs'
                 ? 'bg-white text-blue-600 shadow-sm'
                 : 'text-gray-500 hover:text-gray-700'
