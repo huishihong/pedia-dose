@@ -320,7 +320,7 @@ export default function App() {
           </div>
         ) : isWeightBanded ? (
           <>
-            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
+            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} onEnter={() => { /* weight-banded shows result automatically */ }} />
             {weightKg !== null && selectedDrug?.weightBandedDosing && (() => {
               const bands = selectedDrug.weightBandedDosing!
               const matched = bands.find(b => b.maxWeightKg === null || weightKg <= b.maxWeightKg)
@@ -375,7 +375,7 @@ export default function App() {
           </>
         ) : (
           <>
-            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
+            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} onEnter={handleCalculate} />
 
             {hasFormulations && (
               <FormulationSelector
@@ -499,6 +499,7 @@ export default function App() {
             return (
               <div className="mt-4 md:mt-0 bg-white rounded-2xl p-6 shadow-sm">
                 <ConditionView
+                  key={selectedId}
                   conditionId={selectedId}
                   onBack={handleBack}
                   initialTier={dbg === 'asthma-mild' || dbg === 'asthma-doses' ? 'mild' : undefined}

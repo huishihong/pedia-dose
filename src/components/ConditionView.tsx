@@ -115,7 +115,7 @@ export function ConditionView({ conditionId, onBack, initialTier, initialWeight,
       {/* Weight input — only shown after severity selected */}
       {selectedTier && (
         <div className="pt-2">
-          <WeightInput onWeightChange={handleWeightChange} initialValue={initialWeight} />
+          <WeightInput onWeightChange={handleWeightChange} initialValue={initialWeight} onEnter={() => { if (weightKg !== null) setShowDoses(true) }} />
           <button
             type="button"
             onClick={() => setShowDoses(true)}

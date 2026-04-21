@@ -3,9 +3,10 @@ import { useState } from 'react'
 interface WeightInputProps {
   onWeightChange: (weightKg: number | null) => void
   initialValue?: number
+  onEnter?: () => void
 }
 
-export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) {
+export function WeightInput({ onWeightChange, initialValue, onEnter }: WeightInputProps) {
   const [unit, setUnit] = useState<'kg' | 'lbs'>('kg')
   const [value, setValue] = useState(initialValue != null ? String(initialValue) : '')
 
@@ -32,6 +33,10 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
     onWeightChange(parseFloat(kg.toFixed(2)))
   }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') onEnter?.()
+  }
+
   return (
     <div className="w-full">
       <label className="block text-sm font-medium text-gray-500 mb-2">
@@ -44,6 +49,7 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           placeholder={unit === 'kg' ? 'e.g. 15' : 'e.g. 33'}
           value={value}
           onChange={(e) => handleValueChange(e.target.value)}
+          onKeyDown={handleKeyDown}
           min="0"
           step="0.1"
           className="flex-1 min-w-0 text-base font-semibold bg-white border border-gray-200 rounded-full px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-gray-900 placeholder-gray-400 placeholder:text-sm placeholder:font-semibold transition-all"
