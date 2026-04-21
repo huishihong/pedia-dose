@@ -202,18 +202,18 @@ export default function App() {
             ) : (
               <>
                 {/* Tab toggle */}
-                <div className="flex mt-4 bg-gray-200 rounded-xl p-1 gap-1">
+                <div className="flex mt-4 bg-gray-200 rounded-full p-1 gap-1">
                   <button
                     type="button"
                     onClick={() => setHomeTab('drugs')}
-                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                    className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                   >
                     Drugs
                   </button>
                   <button
                     type="button"
                     onClick={() => setHomeTab('conditions')}
-                    className={`flex-1 py-2 rounded-lg text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                    className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                   >
                     Conditions
                   </button>
