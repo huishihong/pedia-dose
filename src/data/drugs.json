@@ -291,7 +291,7 @@
           "route": "Oral"
         }
       ],
-      "minAge": "> 28 days",
+      "minAge": "28 days",
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -546,7 +546,7 @@
           "route": "Oral"
         }
       ],
-      "minAge": "> 28 days",
+      "minAge": "28 days",
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -597,7 +597,7 @@
           "route": "Oral"
         }
       ],
-      "minAge": "≥2 months",
+      "minAge": "2 months",
       "cautions": [
         "Contraindicated in G6PD deficiency (risk of haemolysis)"
       ],
@@ -723,7 +723,7 @@
           "route": "Oral"
         }
       ],
-      "minAge": "> 6 months",
+      "minAge": "6 months",
       "cautions": [
         "Single dose only — QT prolongation risk. KKH CE ED protocol."
       ],
@@ -753,9 +753,6 @@
         {
           "route": "Oral"
         }
-      ],
-      "cautions": [
-        "Contraindicated in children < 2 years old"
       ],
       "minAge": "2 years",
       "defaultFormulation": {
@@ -1065,10 +1062,7 @@
           "notes": "1 × 600 mg effervescent tablet BD"
         }
       ],
-      "minAge": ">2 years",
-      "cautions": [
-        "Do not use ≤2 years"
-      ],
+      "minAge": "2 years",
       "source": "PaedsENGAGE Feb 2025; Paeds_Meds_v2"
     },
     {
@@ -1261,10 +1255,6 @@
         }
       ],
       "minAge": "4 years",
-      "cautions": [
-        "Do not use in children <4 years",
-        "Strict maximum duration — see age band notes"
-      ],
       "source": "Paeds_Meds_v2"
     },
     {
@@ -1311,7 +1301,6 @@
       ],
       "minAge": "12 years",
       "cautions": [
-        "Not for use in children <12 years",
         "Max 3 days use"
       ],
       "source": "PaedsENGAGE Feb 2025"
@@ -1391,7 +1380,6 @@
       "dosingNote": "Max 50 mg/dose for patients <50 kg. Max daily dose 400 mg.",
       "minAge": "12 years",
       "cautions": [
-        "Avoid in children <12 years",
         "Reduce to max 50 mg/dose if patient <50 kg",
         "Causes nausea — consider antiemetic",
         "Opioid — monitor for dependence"
