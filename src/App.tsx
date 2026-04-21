@@ -32,6 +32,7 @@ type DrugEntry = {
   treatmentDuration?: string;
   dosingNote?: string;
   cautions?: string[];
+  minAge?: string;
   source?: string;
 }
 
@@ -330,8 +331,18 @@ export default function App() {
 
             <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedDrug.name}</h2>
             {selectedDrug.category && (
-              <p className="text-sm text-gray-400 mb-4">{selectedDrug.category}</p>
+              <p className="text-sm text-gray-400">{selectedDrug.category}</p>
             )}
+            {(() => {
+              const age = selectedDrug.minAge
+              const showBadge = age && age !== 'Any age' && age !== 'neonate'
+              return showBadge ? (
+                <span className="inline-flex items-center text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-2.5 py-1 mt-2">
+                  Min. age: {age}
+                </span>
+              ) : null
+            })()}
+            <div className="mb-4" />
 
             {isIVOnly ? (
               <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
