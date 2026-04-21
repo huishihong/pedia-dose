@@ -179,8 +179,249 @@ export default function App() {
   const isWeightBanded = formulation.id === 'weight-banded'
   const isAgeBanded = formulation.id === 'age-banded'
 
+  // Browse list — single-column, used in both mobile and the desktop left panel
+  function BrowseList() {
+    if (homeTab === 'conditions') {
+      const items = [...conditionsData.conditions].sort((a, b) => a.name.localeCompare(b.name))
+      return (
+        <div className="rounded-2xl overflow-hidden bg-white shadow-sm">
+          {items.map((c, i) => (
+            <button
+              key={c.id}
+              type="button"
+              onClick={() => handleSelect({ id: c.id, name: c.name, subtitle: c.section ?? '', type: 'condition' })}
+              className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${selectedId === c.id && screen === 'condition' ? 'bg-blue-50' : ''} ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
+            >
+              <div>
+                <p className={`font-semibold text-sm ${selectedId === c.id && screen === 'condition' ? 'text-blue-700' : 'text-gray-900'}`}>{c.name}</p>
+                <p className="text-xs text-gray-400 mt-0.5">{c.section}</p>
+              </div>
+              <ChevronRight />
+            </button>
+          ))}
+        </div>
+      )
+    }
+
+    const items = [...drugsData.drugs].sort((a, b) => a.name.localeCompare(b.name))
+    return (
+      <div className="rounded-2xl overflow-hidden bg-white shadow-sm">
+        {items.map((d, i) => (
+          <button
+            key={d.id}
+            type="button"
+            onClick={() => handleSelect({ id: d.id, name: d.name, subtitle: (d as DrugEntry).category ?? '', type: 'drug' })}
+            className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${selectedId === d.id && screen === 'drug' ? 'bg-blue-50' : ''} ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
+          >
+            <div>
+              <p className={`font-semibold text-sm ${selectedId === d.id && screen === 'drug' ? 'text-blue-700' : 'text-gray-900'}`}>{d.name}</p>
+              <p className="text-xs text-gray-400 mt-0.5">{(d as DrugEntry).category}</p>
+            </div>
+            <ChevronRight />
+          </button>
+        ))}
+      </div>
+    )
+  }
+
+  // Drug detail content (shared between mobile and desktop right panel)
+  function DrugDetail() {
+    if (!selectedDrug) return null
+    return (
+      <div className="bg-white rounded-2xl p-6 shadow-sm">
+        {/* Back button — only on mobile */}
+        <button type="button" onClick={handleBack} className="md:hidden flex items-center gap-1 text-blue-600 text-sm font-medium mb-4">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Back
+        </button>
+
+        <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedDrug.name}</h2>
+        {selectedDrug.category && (
+          <p className="text-sm text-gray-400">{selectedDrug.category}</p>
+        )}
+        {(() => {
+          const age = selectedDrug.minAge
+          const showBadge = age && age !== 'Any age' && age !== 'neonate'
+          return showBadge ? (
+            <span className="inline-flex items-center text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-3 py-1 mt-2">
+              Min. age: {age}
+            </span>
+          ) : null
+        })()}
+        <div className="mb-4" />
+
+        {isIVOnly ? (
+          <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
+            <p className="text-amber-800 text-sm font-medium">
+              This drug is administered intravenously (IV) or in a hospital setting only.
+              Search by condition for dosing guidance.
+            </p>
+          </div>
+        ) : isAgeBanded ? (
+          <div className="mt-2 space-y-4">
+            {selectedDrug?.ageBandedDosing && (
+              <div className="bg-gray-50 rounded-2xl overflow-hidden">
+                <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-4 pt-3 pb-2">Dose by age</p>
+                <div>
+                  {selectedDrug.ageBandedDosing.map((band, i) => (
+                    <div key={i} className={`flex justify-between items-start px-4 py-3 text-sm ${i < selectedDrug.ageBandedDosing!.length - 1 ? 'border-b border-gray-100' : ''}`}>
+                      <span className="font-medium text-gray-700 flex-shrink-0">{band.ageLabel}</span>
+                      {(() => {
+                        const hasValue = band.doseMg != null || band.volumeMl != null
+                        if (hasValue) {
+                          return (
+                            <span className="text-right text-gray-900 font-semibold ml-4">
+                              {band.doseMg != null ? `${band.doseMg} mg` : `${band.volumeMl} mL`}
+                              {band.formulation ? ` (${band.formulation})` : ''}
+                              {band.frequency ? ` — ${band.frequency}` : ''}
+                              {band.notes && <span className="block text-xs text-gray-400 font-normal mt-0.5">{band.notes}</span>}
+                            </span>
+                          )
+                        }
+                        return (
+                          <span className="text-right ml-4">
+                            <span className="font-semibold text-gray-900">{band.notes ?? ''}</span>
+                            {band.frequency && <span className="block text-xs text-gray-500 font-normal mt-0.5">{band.frequency}</span>}
+                          </span>
+                        )
+                      })()}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {selectedDrug?.treatmentDuration && (
+              <div className="flex justify-between items-center bg-gray-50 rounded-2xl px-4 py-3">
+                <p className="text-sm text-gray-500">Duration</p>
+                <p className="text-sm font-semibold text-gray-900">{selectedDrug.treatmentDuration}</p>
+              </div>
+            )}
+            {selectedDrug?.dosingNote && (
+              <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
+                <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
+                <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
+              </div>
+            )}
+            {selectedDrug?.cautions && selectedDrug.cautions.length > 0 && (
+              <div className="bg-red-50 border border-red-200 rounded-2xl px-4 py-3">
+                <p className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">Cautions</p>
+                <ul className="space-y-1">
+                  {selectedDrug.cautions.map((c, i) => (
+                    <li key={i} className="text-sm text-red-700">{c}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+            <p className="text-xs text-gray-400 text-center">
+              {selectedDrug?.source ?? 'Source: KKH CE Guidelines Jan 2026'}
+            </p>
+          </div>
+        ) : isWeightBanded ? (
+          <>
+            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
+            {weightKg !== null && selectedDrug?.weightBandedDosing && (() => {
+              const bands = selectedDrug.weightBandedDosing!
+              const matched = bands.find(b => b.maxWeightKg === null || weightKg <= b.maxWeightKg)
+              return (
+                <div className="mt-6 space-y-3">
+                  {matched && (
+                    <div className="bg-blue-600 rounded-2xl p-6 text-white">
+                      <p className="text-xs font-semibold uppercase tracking-wider text-blue-200 mb-1">Dose</p>
+                      <p className="text-6xl font-bold leading-none">
+                        {matched.doseMg} <span className="text-3xl font-semibold text-blue-200">mg</span>
+                      </p>
+                      <p className="text-blue-200 text-base mt-2 font-medium">{matched.frequency}</p>
+                      <p className="text-blue-300 text-xs mt-1">{matched.notes}</p>
+                      {selectedDrug.treatmentDuration && (
+                        <p className="text-blue-200 text-sm mt-2">Duration: {selectedDrug.treatmentDuration}</p>
+                      )}
+                    </div>
+                  )}
+                  <div className="bg-gray-50 rounded-2xl overflow-hidden">
+                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-4 pt-3 pb-2">All weight bands</p>
+                    <div>
+                      {bands.map((band, i) => (
+                        <div
+                          key={i}
+                          className={`flex justify-between items-center px-4 py-3 text-sm ${matched === band ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600'} ${i < bands.length - 1 ? 'border-b border-gray-100' : ''}`}
+                        >
+                          <span>{band.notes}</span>
+                          <span>{band.doseMg} mg {band.frequency}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  {selectedDrug.infantDosing && (
+                    <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
+                      <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-2">Infant dosing (&lt;1 year)</p>
+                      <div className="space-y-1">
+                        {selectedDrug.infantDosing.map((inf, i) => (
+                          <div key={i} className="flex justify-between items-center text-sm text-amber-800">
+                            <span>{inf.ageLabel}</span>
+                            <span>{inf.doseMgPerKg} mg/kg {inf.frequency}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  <p className="text-xs text-gray-400 text-center">
+                    {selectedDrug.source ?? 'Source: KKH CE Guidelines Jan 2026'}
+                  </p>
+                </div>
+              )
+            })()}
+          </>
+        ) : (
+          <>
+            <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
+
+            {hasFormulations && (
+              <FormulationSelector
+                formulations={paracetamolFormulations}
+                selected={formulation}
+                onChange={f => { setFormulation(f); setDoseResult(null) }}
+              />
+            )}
+
+            {!hasFormulations && formulation.label && (
+              <div className="mt-3">
+                <p className="text-sm font-medium text-gray-500 mb-1">Formulation</p>
+                <p className="text-sm text-gray-700 bg-gray-50 rounded-xl px-3 py-2">
+                  {formulation.label}
+                </p>
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={handleCalculate}
+              disabled={weightKg === null}
+              className="mt-4 w-full py-3 rounded-full text-base font-semibold transition-colors
+                bg-blue-600 text-white
+                disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed
+                hover:enabled:bg-blue-700 active:enabled:bg-blue-800"
+            >
+              Calculate dose
+            </button>
+
+            {selectedDrug?.dosingNote && (
+              <div className="mt-3 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
+                <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
+                <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
+              </div>
+            )}
+
+            {doseResult && <DoseResultCard result={doseResult} />}
+          </>
+        )}
+      </div>
+    )
+  }
+
   return (
-    <div className="min-h-screen bg-[#F2F2F7] flex flex-col max-w-lg md:max-w-2xl mx-auto">
+    <div className="min-h-screen bg-[#F2F2F7] flex flex-col max-w-lg md:max-w-5xl mx-auto">
       <header className="sticky top-0 z-50 bg-white shadow-sm px-4 py-4 flex flex-col items-center">
         <button type="button" onClick={handleBack} className="flex flex-col items-center">
           <img src={logoUrl} alt="PediaDose" className="h-10" />
@@ -188,330 +429,87 @@ export default function App() {
         </button>
       </header>
 
-      <main className="flex-1 px-4 pb-8">
+      <main className="flex-1 px-4 pb-8 md:flex md:gap-6 md:items-start md:pt-6">
 
-        {/* HOME / SEARCH */}
-        {screen === 'home' && (
-          <div>
-            <div className="mt-4">
-              <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
-            </div>
-
-            {query.length >= 2 ? (
-              <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
-            ) : (
-              <>
-                {/* Tab toggle */}
-                <div className="flex mt-4 bg-gray-200 rounded-full p-1 gap-1">
-                  <button
-                    type="button"
-                    onClick={() => setHomeTab('drugs')}
-                    className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
-                  >
-                    Drugs
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setHomeTab('conditions')}
-                    className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
-                  >
-                    Conditions
-                  </button>
-                </div>
-
-                {/* Alphabetical list — grouped MFP-style on mobile, grid on desktop */}
-                <div className="mt-3">
-                  {homeTab === 'conditions' && (() => {
-                    const items = [...conditionsData.conditions].sort((a, b) => a.name.localeCompare(b.name))
-                    return (
-                      <>
-                        <div className="rounded-2xl overflow-hidden bg-white shadow-sm md:hidden">
-                          {items.map((c, i) => (
-                            <button
-                              key={c.id}
-                              type="button"
-                              onClick={() => handleSelect({ id: c.id, name: c.name, subtitle: c.section ?? '', type: 'condition' })}
-                              className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
-                            >
-                              <div>
-                                <p className="font-semibold text-gray-900 text-sm">{c.name}</p>
-                                <p className="text-xs text-gray-400 mt-0.5">{c.section}</p>
-                              </div>
-                              <ChevronRight />
-                            </button>
-                          ))}
-                        </div>
-                        <div className="hidden md:grid grid-cols-2 gap-2">
-                          {items.map(c => (
-                            <button
-                              key={c.id}
-                              type="button"
-                              onClick={() => handleSelect({ id: c.id, name: c.name, subtitle: c.section ?? '', type: 'condition' })}
-                              className="w-full text-left px-4 py-4 rounded-2xl bg-white shadow-sm hover:bg-gray-50 active:bg-gray-100 transition-colors flex items-center justify-between"
-                            >
-                              <div>
-                                <p className="font-semibold text-gray-900 text-sm">{c.name}</p>
-                                <p className="text-xs text-gray-400 mt-0.5">{c.section}</p>
-                              </div>
-                              <ChevronRight />
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )
-                  })()}
-                  {homeTab === 'drugs' && (() => {
-                    const items = [...drugsData.drugs].sort((a, b) => a.name.localeCompare(b.name))
-                    return (
-                      <>
-                        <div className="rounded-2xl overflow-hidden bg-white shadow-sm md:hidden">
-                          {items.map((d, i) => (
-                            <button
-                              key={d.id}
-                              type="button"
-                              onClick={() => handleSelect({ id: d.id, name: d.name, subtitle: (d as DrugEntry).category ?? '', type: 'drug' })}
-                              className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
-                            >
-                              <div>
-                                <p className="font-semibold text-gray-900 text-sm">{d.name}</p>
-                                <p className="text-xs text-gray-400 mt-0.5">{(d as DrugEntry).category}</p>
-                              </div>
-                              <ChevronRight />
-                            </button>
-                          ))}
-                        </div>
-                        <div className="hidden md:grid grid-cols-2 gap-2">
-                          {items.map(d => (
-                            <button
-                              key={d.id}
-                              type="button"
-                              onClick={() => handleSelect({ id: d.id, name: d.name, subtitle: (d as DrugEntry).category ?? '', type: 'drug' })}
-                              className="w-full text-left px-4 py-4 rounded-2xl bg-white shadow-sm hover:bg-gray-50 active:bg-gray-100 transition-colors flex items-center justify-between"
-                            >
-                              <div>
-                                <p className="font-semibold text-gray-900 text-sm">{d.name}</p>
-                                <p className="text-xs text-gray-400 mt-0.5">{(d as DrugEntry).category}</p>
-                              </div>
-                              <ChevronRight />
-                            </button>
-                          ))}
-                        </div>
-                      </>
-                    )
-                  })()}
-                </div>
-              </>
-            )}
+        {/* LEFT PANEL — search + tabs + browse list
+            Mobile: shown only on home screen
+            Desktop: always visible, sticky */}
+        <div className={`md:w-[360px] md:flex-shrink-0 md:sticky md:top-24 md:max-h-[calc(100vh-120px)] md:overflow-y-auto md:pb-4 ${screen !== 'home' ? 'hidden md:block' : ''}`}>
+          <div className="mt-4">
+            <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
           </div>
-        )}
 
-        {/* CONDITION FLOW */}
-        {screen === 'condition' && selectedId && (() => {
-          const dbg = new URLSearchParams(window.location.search).get('debug')
-          return (
-            <div className="mt-4 bg-white rounded-2xl p-6 shadow-sm">
-              <ConditionView
-                conditionId={selectedId}
-                onBack={handleBack}
-                initialTier={dbg === 'asthma-mild' || dbg === 'asthma-doses' ? 'mild' : undefined}
-                initialWeight={dbg === 'asthma-doses' ? 10 : undefined}
-                autoCalculate={dbg === 'asthma-doses'}
-              />
-            </div>
-          )
-        })()}
-
-        {/* DRUG FLOW */}
-        {screen === 'drug' && selectedDrug && (
-          <div className="mt-4 bg-white rounded-2xl p-6 shadow-sm">
-            <button type="button" onClick={handleBack} className="flex items-center gap-1 text-blue-600 text-sm font-medium mb-4">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Back
-            </button>
-
-            <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedDrug.name}</h2>
-            {selectedDrug.category && (
-              <p className="text-sm text-gray-400">{selectedDrug.category}</p>
-            )}
-            {(() => {
-              const age = selectedDrug.minAge
-              const showBadge = age && age !== 'Any age' && age !== 'neonate'
-              return showBadge ? (
-                <span className="inline-flex items-center text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-3 py-1 mt-2">
-                  Min. age: {age}
-                </span>
-              ) : null
-            })()}
-            <div className="mb-4" />
-
-            {isIVOnly ? (
-              <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
-                <p className="text-amber-800 text-sm font-medium">
-                  This drug is administered intravenously (IV) or in a hospital setting only.
-                  Search by condition for dosing guidance.
-                </p>
-              </div>
-            ) : isAgeBanded ? (
-              <div className="mt-2 space-y-4">
-                {selectedDrug?.ageBandedDosing && (
-                  <div className="bg-gray-50 rounded-2xl overflow-hidden">
-                    <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-4 pt-3 pb-2">Dose by age</p>
-                    <div>
-                      {selectedDrug.ageBandedDosing.map((band, i) => (
-                        <div key={i} className={`flex justify-between items-start px-4 py-3 text-sm ${i < selectedDrug.ageBandedDosing!.length - 1 ? 'border-b border-gray-100' : ''}`}>
-                          <span className="font-medium text-gray-700 flex-shrink-0">{band.ageLabel}</span>
-                          {(() => {
-                            const hasValue = band.doseMg != null || band.volumeMl != null
-                            if (hasValue) {
-                              return (
-                                <span className="text-right text-gray-900 font-semibold ml-4">
-                                  {band.doseMg != null ? `${band.doseMg} mg` : `${band.volumeMl} mL`}
-                                  {band.formulation ? ` (${band.formulation})` : ''}
-                                  {band.frequency ? ` — ${band.frequency}` : ''}
-                                  {band.notes && <span className="block text-xs text-gray-400 font-normal mt-0.5">{band.notes}</span>}
-                                </span>
-                              )
-                            }
-                            return (
-                              <span className="text-right ml-4">
-                                <span className="font-semibold text-gray-900">{band.notes ?? ''}</span>
-                                {band.frequency && <span className="block text-xs text-gray-500 font-normal mt-0.5">{band.frequency}</span>}
-                              </span>
-                            )
-                          })()}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {selectedDrug?.treatmentDuration && (
-                  <div className="flex justify-between items-center bg-gray-50 rounded-2xl px-4 py-3">
-                    <p className="text-sm text-gray-500">Duration</p>
-                    <p className="text-sm font-semibold text-gray-900">{selectedDrug.treatmentDuration}</p>
-                  </div>
-                )}
-                {selectedDrug?.dosingNote && (
-                  <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
-                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
-                    <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
-                  </div>
-                )}
-                {selectedDrug?.cautions && selectedDrug.cautions.length > 0 && (
-                  <div className="bg-red-50 border border-red-200 rounded-2xl px-4 py-3">
-                    <p className="text-xs font-semibold text-red-500 uppercase tracking-wider mb-1">Cautions</p>
-                    <ul className="space-y-1">
-                      {selectedDrug.cautions.map((c, i) => (
-                        <li key={i} className="text-sm text-red-700">{c}</li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                <p className="text-xs text-gray-400 text-center">
-                  {selectedDrug?.source ?? 'Source: KKH CE Guidelines Jan 2026'}
-                </p>
-              </div>
-            ) : isWeightBanded ? (
-              <>
-                <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
-                {weightKg !== null && selectedDrug?.weightBandedDosing && (() => {
-                  const bands = selectedDrug.weightBandedDosing!
-                  const matched = bands.find(b => b.maxWeightKg === null || weightKg <= b.maxWeightKg)
-                  return (
-                    <div className="mt-6 space-y-3">
-                      {matched && (
-                        <div className="bg-blue-600 rounded-2xl p-6 text-white">
-                          <p className="text-xs font-semibold uppercase tracking-wider text-blue-200 mb-1">Dose</p>
-                          <p className="text-6xl font-bold leading-none">
-                            {matched.doseMg} <span className="text-3xl font-semibold text-blue-200">mg</span>
-                          </p>
-                          <p className="text-blue-200 text-base mt-2 font-medium">{matched.frequency}</p>
-                          <p className="text-blue-300 text-xs mt-1">{matched.notes}</p>
-                          {selectedDrug.treatmentDuration && (
-                            <p className="text-blue-200 text-sm mt-2">Duration: {selectedDrug.treatmentDuration}</p>
-                          )}
-                        </div>
-                      )}
-                      <div className="bg-gray-50 rounded-2xl overflow-hidden">
-                        <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-4 pt-3 pb-2">All weight bands</p>
-                        <div>
-                          {bands.map((band, i) => (
-                            <div
-                              key={i}
-                              className={`flex justify-between items-center px-4 py-3 text-sm ${matched === band ? 'bg-blue-50 text-blue-800 font-semibold' : 'text-gray-600'} ${i < bands.length - 1 ? 'border-b border-gray-100' : ''}`}
-                            >
-                              <span>{band.notes}</span>
-                              <span>{band.doseMg} mg {band.frequency}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      {selectedDrug.infantDosing && (
-                        <div className="bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
-                          <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-2">Infant dosing (&lt;1 year)</p>
-                          <div className="space-y-1">
-                            {selectedDrug.infantDosing.map((inf, i) => (
-                              <div key={i} className="flex justify-between items-center text-sm text-amber-800">
-                                <span>{inf.ageLabel}</span>
-                                <span>{inf.doseMgPerKg} mg/kg {inf.frequency}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                      <p className="text-xs text-gray-400 text-center">
-                        {selectedDrug.source ?? 'Source: KKH CE Guidelines Jan 2026'}
-                      </p>
-                    </div>
-                  )
-                })()}
-              </>
-            ) : (
-              <>
-                <WeightInput onWeightChange={kg => { setWeightKg(kg); setDoseResult(null) }} />
-
-                {hasFormulations && (
-                  <FormulationSelector
-                    formulations={paracetamolFormulations}
-                    selected={formulation}
-                    onChange={f => { setFormulation(f); setDoseResult(null) }}
-                  />
-                )}
-
-                {!hasFormulations && formulation.label && (
-                  <div className="mt-3">
-                    <p className="text-sm font-medium text-gray-500 mb-1">Formulation</p>
-                    <p className="text-sm text-gray-700 bg-gray-50 rounded-xl px-3 py-2">
-                      {formulation.label}
-                    </p>
-                  </div>
-                )}
-
+          {query.length >= 2 ? (
+            <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
+          ) : (
+            <>
+              {/* Tab toggle */}
+              <div className="flex mt-4 bg-gray-200 rounded-full p-1 gap-1">
                 <button
                   type="button"
-                  onClick={handleCalculate}
-                  disabled={weightKg === null}
-                  className="mt-4 w-full py-3 rounded-full text-base font-semibold transition-colors
-                    bg-blue-600 text-white
-                    disabled:bg-gray-100 disabled:text-gray-300 disabled:cursor-not-allowed
-                    hover:enabled:bg-blue-700 active:enabled:bg-blue-800"
+                  onClick={() => setHomeTab('drugs')}
+                  className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'drugs' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                 >
-                  Calculate dose
+                  Drugs
                 </button>
+                <button
+                  type="button"
+                  onClick={() => setHomeTab('conditions')}
+                  className={`flex-1 py-2 rounded-full text-sm font-semibold transition-colors ${homeTab === 'conditions' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                  Conditions
+                </button>
+              </div>
 
-                {selectedDrug?.dosingNote && (
-                  <div className="mt-3 bg-amber-50 border border-amber-200 rounded-2xl px-4 py-3">
-                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wider mb-1">Dosing note</p>
-                    <p className="text-sm text-amber-800">{selectedDrug.dosingNote}</p>
-                  </div>
-                )}
+              {/* Browse list */}
+              <div className="mt-3">
+                <BrowseList />
+              </div>
+            </>
+          )}
+        </div>
 
-                {doseResult && <DoseResultCard result={doseResult} />}
-              </>
-            )}
-          </div>
-        )}
+        {/* RIGHT PANEL — detail view
+            Mobile: shown only when a detail screen is active
+            Desktop: always shown (empty state or detail) */}
+        <div className={`flex-1 min-w-0 ${screen === 'home' ? 'hidden md:block' : ''}`}>
+
+          {/* Desktop empty state */}
+          {screen === 'home' && (
+            <div className="hidden md:flex flex-col items-center justify-center h-96 text-center">
+              <div className="w-16 h-16 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <svg className="w-8 h-8 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+              </div>
+              <p className="text-gray-400 font-medium">Select a drug or condition</p>
+              <p className="text-gray-300 text-sm mt-1">Dosing details will appear here</p>
+            </div>
+          )}
+
+          {/* Condition detail */}
+          {screen === 'condition' && selectedId && (() => {
+            const dbg = new URLSearchParams(window.location.search).get('debug')
+            return (
+              <div className="mt-4 md:mt-0 bg-white rounded-2xl p-6 shadow-sm">
+                <ConditionView
+                  conditionId={selectedId}
+                  onBack={handleBack}
+                  initialTier={dbg === 'asthma-mild' || dbg === 'asthma-doses' ? 'mild' : undefined}
+                  initialWeight={dbg === 'asthma-doses' ? 10 : undefined}
+                  autoCalculate={dbg === 'asthma-doses'}
+                />
+              </div>
+            )
+          })()}
+
+          {/* Drug detail */}
+          {screen === 'drug' && selectedDrug && (
+            <div className="mt-4 md:mt-0">
+              <DrugDetail />
+            </div>
+          )}
+        </div>
       </main>
 
       <Disclaimer />
