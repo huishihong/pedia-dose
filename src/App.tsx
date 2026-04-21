@@ -433,17 +433,16 @@ export default function App() {
 
         {/* LEFT PANEL — search + tabs + browse list
             Mobile: shown only on home screen
-            Desktop: always visible, sticky */}
-        <div className={`md:w-[360px] md:flex-shrink-0 md:sticky md:top-24 md:max-h-[calc(100vh-120px)] md:overflow-y-auto md:pb-4 ${screen !== 'home' ? 'hidden md:block' : ''}`}>
-          <div className="mt-4">
-            <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
-          </div>
+            Desktop: always visible, sticky with internal scroll on the list only */}
+        <div className={`md:w-[360px] md:flex-shrink-0 md:sticky md:top-24 md:max-h-[calc(100vh-120px)] md:flex md:flex-col ${screen !== 'home' ? 'hidden md:flex' : ''}`}>
 
-          {query.length >= 2 ? (
-            <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
-          ) : (
-            <>
-              {/* Tab toggle */}
+          {/* Non-scrolling top: search bar + tabs */}
+          <div className="md:flex-shrink-0">
+            <div className="mt-4">
+              <SearchBar value={query} onChange={setQuery} onClear={() => setQuery('')} />
+            </div>
+
+            {query.length < 2 && (
               <div className="flex mt-4 bg-gray-200 rounded-full p-1 gap-1">
                 <button
                   type="button"
@@ -460,13 +459,20 @@ export default function App() {
                   Conditions
                 </button>
               </div>
+            )}
+          </div>
 
-              {/* Browse list */}
-              <div className="mt-3">
-                <BrowseList />
-              </div>
-            </>
-          )}
+          {/* Scrollable list — scrollbar gutter reserves space so it doesn't overlap content */}
+          <div
+            className="mt-3 md:flex-1 md:overflow-y-auto md:pb-4"
+            style={{ scrollbarGutter: 'stable' }}
+          >
+            {query.length >= 2 ? (
+              <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
+            ) : (
+              <BrowseList />
+            )}
+          </div>
         </div>
 
         {/* RIGHT PANEL — detail view
