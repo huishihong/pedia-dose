@@ -470,7 +470,7 @@ export default function App() {
             {query.length >= 2 ? (
               <SearchResults results={searchResults} query={query} onSelect={handleSelect} />
             ) : (
-              <BrowseList />
+              BrowseList()
             )}
           </div>
         </div>
@@ -513,7 +513,7 @@ export default function App() {
           {/* Drug detail */}
           {screen === 'drug' && selectedDrug && (
             <div className="mt-4 md:mt-0">
-              <DrugDetail />
+              {DrugDetail()}
             </div>
           )}
         </div>
