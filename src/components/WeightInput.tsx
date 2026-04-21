@@ -46,7 +46,7 @@ export function WeightInput({ onWeightChange, initialValue }: WeightInputProps) 
           onChange={(e) => handleValueChange(e.target.value)}
           min="0"
           step="0.1"
-          className="flex-1 min-w-0 text-base bg-white border border-gray-200 rounded-full px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-gray-900 placeholder-gray-400 placeholder:text-sm transition-all"
+          className="flex-1 min-w-0 text-base font-semibold bg-white border border-gray-200 rounded-full px-4 py-3 focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 text-gray-900 placeholder-gray-400 placeholder:text-sm placeholder:font-semibold transition-all"
         />
         <div className="flex bg-gray-200 rounded-full p-1 gap-1">
           <button
