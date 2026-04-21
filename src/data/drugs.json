@@ -1534,10 +1534,10 @@
       "ageBandedDosing": [
         {
           "ageLabel": "All ages",
-          "notes": "1 drop per affected eye Q2H (while awake) for 48h, then QDS until 48h after symptoms resolve"
+          "notes": "1 drop per affected eye TDS–QDS; up to 2-hourly in severe infections. Continue 48h after healing. Suitable for infants."
         }
       ],
-      "dosingNote": "0.5% eye drops. Also available as 1% ointment — apply QDS or at bedtime alongside drops. Usual course: 5–7 days.",
+      "dosingNote": "0.5% eye drops. Also available as 1% ointment — apply TDS or at bedtime alongside drops.",
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -1559,25 +1559,21 @@
     },
     {
       "id": "fluticasone-nasal",
-      "name": "Fluticasone nasal spray",
+      "name": "Fluticasone furoate nasal spray (Avamys)",
       "aliases": [
-        "flixonase",
         "avamys",
-        "fluticasone"
+        "fluticasone furoate",
+        "fluticasone nasal"
       ],
       "category": "Corticosteroid — Intranasal",
       "ageBandedDosing": [
         {
-          "ageLabel": "4–11 years",
-          "notes": "1 spray per nostril OD"
-        },
-        {
-          "ageLabel": "≥12 years",
-          "notes": "2 sprays per nostril OD; reduce to 1 spray per nostril once controlled"
+          "ageLabel": "≥2 years",
+          "notes": "1–2 sprays per nostril once daily"
         }
       ],
-      "dosingNote": "50 mcg per spray. Onset may take 3–7 days — use regularly for best effect. Not for use under 4 years.",
-      "minAge": "4 years",
+      "dosingNote": "27.5 mcg per spray. Use in children ≥2 years. Onset may take 3–7 days — use regularly for best effect.",
+      "minAge": "2 years",
       "source": "PaedsENGAGE Feb 2025"
     },
     {
@@ -1625,14 +1621,10 @@
       "ageBandedDosing": [
         {
           "ageLabel": "Scabies (≥2 months)",
-          "notes": "5% cream — apply to whole body (neck down) overnight, wash off after 8–12h. Repeat after 1 week."
-        },
-        {
-          "ageLabel": "Head lice (all ages)",
-          "notes": "1% lotion — apply to damp hair, leave 10 min, rinse thoroughly"
+          "notes": "5% lotion — apply over whole body including face, neck, scalp and ears. Wash off after 8–14h. Repeat after 7 days."
         }
       ],
-      "dosingNote": "Treat all household contacts simultaneously for scabies. Wash clothing and bedding after treatment.",
+      "dosingNote": "Reapply if hands washed with soap within 8h of application. Treat all household contacts simultaneously. Wash clothing and bedding after treatment.",
       "minAge": "2 months",
       "source": "PaedsENGAGE Feb 2025"
     },
@@ -1646,10 +1638,501 @@
       "ageBandedDosing": [
         {
           "ageLabel": "All ages",
-          "notes": "Apply to affected areas PRN for itch relief"
+          "notes": "Apply to affected areas OD–QDS. May reapply after bath."
         }
       ],
-      "dosingNote": "Cooling and antipruritic. Shake before use. Used for chickenpox, insect bites, and pruritic rashes.",
+      "dosingNote": "Anti-pruritic. Cooling and soothing. Shake before use. Used for chickenpox, insect bites, and pruritic rashes.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ciprofloxacin-hc-ear",
+      "name": "Ciprofloxacin + Hydrocortisone ear drops",
+      "aliases": [
+        "ciprofloxacin ear drop",
+        "cipro ear",
+        "ciprofloxacin hydrocortisone"
+      ],
+      "category": "Antibiotic + Steroid — Otic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥1 year",
+          "notes": "3 drops into affected ear BD. Duration: 7 days. Consider 1 drop in smaller children with smaller ear canal volume."
+        }
+      ],
+      "dosingNote": "Ciprofloxacin 2 mg/mL + Hydrocortisone 10 mg/mL ear drops. For otitis media with perforation — apply topically. Not for systemic infection.",
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "mometasone-nasal",
+      "name": "Mometasone nasal spray",
+      "aliases": [
+        "nasonex",
+        "mometasone furoate nasal"
+      ],
+      "category": "Corticosteroid — Intranasal",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥2 years",
+          "notes": "1–2 sprays per nostril once daily. May increase to BD in acute rhinosinusitis (adults)."
+        }
+      ],
+      "dosingNote": "50 mcg per spray. Use in children ≥2 years. Onset may take 3–7 days — use regularly for best effect.",
+      "minAge": "2 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "tobramycin-eye-drops",
+      "name": "Tobramycin eye drops",
+      "aliases": [
+        "tobrex",
+        "tobramycin"
+      ],
+      "category": "Antibiotic — Ophthalmic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 drop BD–QDS. Severe infection: 1 drop every 4H. Max 2 drops every hour in severe infection until improvement."
+        }
+      ],
+      "dosingNote": "0.3% eye drops (Tobrex). Can be used in neonates (practice based on labelled indications). Continue 48h after resolution.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "hypromellose-drops",
+      "name": "Hypromellose eye drops",
+      "aliases": [
+        "hypromellose",
+        "artificial tears",
+        "lubricating eye drops"
+      ],
+      "category": "Lubricant — Ophthalmic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1–2 drops into affected eye(s) 1–2 hourly PRN for symptom relief"
+        }
+      ],
+      "dosingNote": "0.3% eye drops. Lubricating drops for viral conjunctivitis symptom relief. No antibacterial activity — do not use for bacterial conjunctivitis.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "chlortetracycline-eye",
+      "name": "Chlortetracycline 1% eye ointment",
+      "aliases": [
+        "chlortetracycline",
+        "aureomycin eye ointment"
+      ],
+      "category": "Antibiotic — Ophthalmic / Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "Conjunctivitis — all ages",
+          "notes": "Apply thin strip (~1 cm) to conjunctiva TDS"
+        },
+        {
+          "ageLabel": "Superficial wounds (facial region)",
+          "notes": "1 application PRN"
+        }
+      ],
+      "dosingNote": "1% eye ointment. For conjunctivitis: apply thin strip to lower conjunctival sac. Also used topically for facial/superficial wounds.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "olopatadine-eye",
+      "name": "Olopatadine eye drops",
+      "aliases": [
+        "patanol",
+        "olopatadine"
+      ],
+      "category": "Antihistamine — Ophthalmic",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥3 years",
+          "notes": "1 drop into affected eye(s) BD–QDS"
+        }
+      ],
+      "dosingNote": "Olopatadine HCl 0.1% (Patanol). For allergic conjunctivitis. Use in children ≥3 years.",
+      "minAge": "3 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "zinc-oxide",
+      "name": "Zinc oxide ointment",
+      "aliases": [
+        "desitin",
+        "zinc oxide 40%"
+      ],
+      "category": "Barrier cream — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application PRN to affected area"
+        }
+      ],
+      "dosingNote": "40% zinc oxide (Desitin). Protective barrier cream for regular diaper rash/dermatitis. Apply at each nappy change.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "miconazole-cream",
+      "name": "Miconazole nitrate 2% cream",
+      "aliases": [
+        "miconazole",
+        "daktarin cream"
+      ],
+      "category": "Antifungal — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application BD, or OD when used together with miconazole powder. Duration: 2–6 weeks."
+        }
+      ],
+      "dosingNote": "Continue for 1 week after symptoms disappear. For fungal diaper rash.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "daktacort",
+      "name": "Daktacort cream",
+      "aliases": [
+        "daktacort",
+        "hydrocortisone miconazole cream",
+        "miconazole hydrocortisone"
+      ],
+      "category": "Antifungal + Steroid — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application once to twice daily for 3–4 days until redness improves, then switch to antifungal monotherapy"
+        }
+      ],
+      "dosingNote": "Hydrocortisone 1% + Miconazole nitrate 2% (Daktacort). Steroid and antifungal combination. Short course only — switch to antifungal alone once inflammation settles.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "diclofenac-gel",
+      "name": "Diclofenac sodium 1% gel",
+      "aliases": [
+        "voltaren gel",
+        "diclofenac topical",
+        "diclofenac gel"
+      ],
+      "category": "Analgesic / NSAID — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥1 year",
+          "notes": "Apply to affected area TDS–QDS"
+        }
+      ],
+      "dosingNote": "1% gel. For topical analgesia. Use in children ≥1 year.",
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "ketoprofen-plaster",
+      "name": "Ketoprofen 30 mg plaster",
+      "aliases": [
+        "kefentech",
+        "ketoprofen patch"
+      ],
+      "category": "Analgesic / NSAID — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply 1 plaster BD to affected area"
+        }
+      ],
+      "dosingNote": "Kefentech 30 mg adhesive plaster. Avoid pasting on the same skin area repeatedly to prevent irritation.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "qv-cream",
+      "name": "QV cream",
+      "aliases": [
+        "qv",
+        "qv moisturiser"
+      ],
+      "category": "Moisturiser — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply liberally PRN"
+        }
+      ],
+      "dosingNote": "Humectant and moisturiser. For dry skin, eczema, and dermatitis. Apply after bathing while skin is still damp.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "emulsifying-ointment",
+      "name": "Emulsifying ointment",
+      "aliases": [
+        "emollient",
+        "emulsifying ointment base"
+      ],
+      "category": "Emollient — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply liberally PRN"
+        }
+      ],
+      "dosingNote": "Emollient base. Used as soap substitute and moisturiser. For eczema and dry skin. Apply in direction of hair growth to reduce folliculitis.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "hydrocortisone-cream",
+      "name": "Hydrocortisone 1% cream",
+      "aliases": [
+        "hydrocortisone topical",
+        "hydrocortisone cream",
+        "HC cream"
+      ],
+      "category": "Corticosteroid — Topical (Mild)",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply thinly to affected areas OD–BD"
+        }
+      ],
+      "dosingNote": "For mild eczema. 0.5% strength available for babies and young infants. Mild-potency steroid (Class VI–VII). Avoid face, skin folds, and occluded areas unless directed.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "soragel",
+      "name": "Soragel",
+      "aliases": [
+        "soragel",
+        "cetalkonium choline salicylate",
+        "oral ulcer gel"
+      ],
+      "category": "Oral Analgesic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥4 months",
+          "notes": "1 application to affected oral mucosa PRN"
+        }
+      ],
+      "dosingNote": "Cetalkonium Cl 0.01% + choline salicylate 8.714%. For oral ulcers and teething (≥4 months, as stated on packaging).",
+      "minAge": "4 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "oracort-e",
+      "name": "Oracort E dental paste",
+      "aliases": [
+        "oracort",
+        "triamcinolone dental paste",
+        "triamcinolone lignocaine"
+      ],
+      "category": "Corticosteroid + Anaesthetic — Dental",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages (generally avoided in young children)",
+          "notes": "1 application to affected oral mucosa TDS PRN. Press gently into lesion — do not rub."
+        }
+      ],
+      "dosingNote": "Triamcinolone acetonide 0.1% + Lignocaine HCl 3% dental paste (Oracort E). Generally avoided in young children. Contains Lignocaine — do not use excessively.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "benzydamine",
+      "name": "Benzydamine lozenges",
+      "aliases": [
+        "difflam",
+        "benzydamine"
+      ],
+      "category": "Oral Analgesic — Lozenge",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥6 years",
+          "notes": "1 lozenge every 1–2h PRN. Max 12 lozenges per day."
+        }
+      ],
+      "dosingNote": "Each lozenge contains benzydamine 3 mg (sugar-free). Difflam. For sore throat and oral ulcers. Use in children ≥6 years.",
+      "minAge": "6 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "dequalinium",
+      "name": "Dequalinium lozenges",
+      "aliases": [
+        "dequalinium chloride",
+        "strepsils"
+      ],
+      "category": "Oral Antiseptic — Lozenge",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥12 years",
+          "notes": "1 lozenge every 2–3h PRN. Max 8 lozenges per day."
+        }
+      ],
+      "dosingNote": "Each lozenge contains dequalinium 0.25 mg. For sore throat. Use in children ≥12 years only.",
+      "minAge": "12 years",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "acyclovir-cream",
+      "name": "Acyclovir 5% cream",
+      "aliases": [
+        "aciclovir cream",
+        "zovirax cream",
+        "acyclovir topical"
+      ],
+      "category": "Antiviral — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply to affected area 5 times a day for 5–10 days"
+        }
+      ],
+      "dosingNote": "5% cream (Zovirax). For herpes labialis (cold sores). Start at first sign of symptoms. Duration: 5–10 days.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "malathion",
+      "name": "Malathion 0.5% lotion",
+      "aliases": [
+        "malathion",
+        "derbac-m",
+        "scabies lotion",
+        "head lice lotion"
+      ],
+      "category": "Antiparasitic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "Scabies (≥6 months)",
+          "notes": "Apply over whole body including scalp, neck, face and ears. Wash off after 24h. Repeat application after 7 days. Reapply if hands washed with soap within 24h."
+        },
+        {
+          "ageLabel": "Head lice (≥6 years)",
+          "notes": "Apply sufficient amount on dry hair to thoroughly wet hair and scalp. Allow hair to dry naturally. Wash off after 8–12h. Repeat application after 7–9 days if needed."
+        }
+      ],
+      "dosingNote": "Use fine-toothed (nit) comb after head lice treatment to remove dead lice and eggs.",
+      "minAge": "6 months",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "chlorhexidine-cream",
+      "name": "Chlorhexidine gluconate 1% cream",
+      "aliases": [
+        "chlorhexidine cream",
+        "hibiclens cream",
+        "chlorhexidine topical"
+      ],
+      "category": "Antiseptic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Clean affected area and apply generously PRN"
+        }
+      ],
+      "dosingNote": "1% cream. Antiseptic for first-degree and superficial burns, wounds, and abrasions.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "tetracycline-ointment",
+      "name": "Tetracycline 3% ointment",
+      "aliases": [
+        "tetracycline ointment",
+        "achromycin ointment"
+      ],
+      "category": "Antibiotic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application PRN to affected area"
+        }
+      ],
+      "dosingNote": "3% ointment. For superficial abrasions and wounds. Avoid application to facial region in children <4 years.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "fusidic-acid-cream",
+      "name": "Fusidic acid 2% cream",
+      "aliases": [
+        "fucidin cream",
+        "fusidic acid topical"
+      ],
+      "category": "Antibiotic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application BD–TDS for 7 days"
+        }
+      ],
+      "dosingNote": "2% cream (Fucidin). For infected abrasions and superficial skin infections. Duration: 7 days.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "fucidic-acid-betamethasone",
+      "name": "Fusidic acid 2% + Betamethasone valerate 0.1% cream",
+      "aliases": [
+        "fucibet",
+        "fusidic acid betamethasone",
+        "fucidic betamethasone"
+      ],
+      "category": "Antibiotic + Steroid — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥1 year",
+          "notes": "1 application BD to affected area"
+        }
+      ],
+      "dosingNote": "For infected abrasions and inflammatory skin conditions with secondary infection. Use in children ≥1 year only. Betamethasone valerate 0.1% is a moderate-potency steroid.",
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "clotrimazole-beclomethasone-gentamicin",
+      "name": "Clotrimazole 1% + Beclomethasone 0.025% + Gentamicin 0.1% cream",
+      "aliases": [
+        "lorbet",
+        "clotrimazole beclomethasone gentamicin",
+        "triple cream"
+      ],
+      "category": "Antibiotic + Antifungal + Steroid — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "≥1 year",
+          "notes": "1 application BD–TDS to affected area"
+        }
+      ],
+      "dosingNote": "For infected abrasions. Contains Beclomethasone dipropionate 0.025% — a potent steroid. Use in children ≥1 year only. Short course only.",
+      "minAge": "1 year",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "octenisan-wash",
+      "name": "Octenisan wash lotion",
+      "aliases": [
+        "octenisan",
+        "octenidine wash"
+      ],
+      "category": "Antiseptic — Wash",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "Apply as body wash during showering or wiped over body during sponge bath. Use for 5 days."
+        }
+      ],
+      "dosingNote": "Antimicrobial body wash. Used for decolonisation and wound care. Apply and leave briefly before rinsing.",
+      "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "potassium-permanganate",
+      "name": "Potassium permanganate solution",
+      "aliases": [
+        "condy's crystals",
+        "KMnO4",
+        "potassium permanganate"
+      ],
+      "category": "Antiseptic — Topical",
+      "ageBandedDosing": [
+        {
+          "ageLabel": "All ages",
+          "notes": "1 application PRN. Dilute 1:8 parts with water before use."
+        }
+      ],
+      "dosingNote": "1:1000 solution, dilute 1:8 with water. May be used to compress or wash affected areas. Dab dry after use — not necessary to wash off. Stains skin and clothing.",
       "source": "PaedsENGAGE Feb 2025"
     }
   ]
