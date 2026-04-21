@@ -272,19 +272,19 @@ export default function App() {
                         const hasValue = band.doseMg != null || band.volumeMl != null
                         if (hasValue) {
                           return (
-                            <span className="text-right text-gray-900 font-semibold ml-4">
+                            <div className="min-w-0 flex-1 text-right text-gray-900 font-semibold ml-4 break-words">
                               {band.doseMg != null ? `${band.doseMg} mg` : `${band.volumeMl} mL`}
                               {band.formulation ? ` (${band.formulation})` : ''}
                               {band.frequency ? ` — ${band.frequency}` : ''}
                               {band.notes && <span className="block text-xs text-gray-400 font-normal mt-0.5">{band.notes}</span>}
-                            </span>
+                            </div>
                           )
                         }
                         return (
-                          <span className="text-right ml-4">
+                          <div className="min-w-0 flex-1 text-right ml-4 break-words">
                             <span className="font-semibold text-gray-900">{band.notes ?? ''}</span>
                             {band.frequency && <span className="block text-xs text-gray-500 font-normal mt-0.5">{band.frequency}</span>}
-                          </span>
+                          </div>
                         )
                       })()}
                     </div>
