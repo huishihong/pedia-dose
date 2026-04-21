@@ -40,7 +40,7 @@ export function SearchResults({ results, query, onSelect }: SearchResultsProps) 
                 key={r.id}
                 type="button"
                 onClick={() => onSelect(r)}
-                className={`w-full text-left px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < conditions.length - 1 ? 'border-b border-gray-100' : ''}`}
+                className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < conditions.length - 1 ? 'border-b border-gray-100' : ''}`}
               >
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">{r.name}</p>
@@ -62,7 +62,7 @@ export function SearchResults({ results, query, onSelect }: SearchResultsProps) 
                 key={r.id}
                 type="button"
                 onClick={() => onSelect(r)}
-                className={`w-full text-left px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < drugs.length - 1 ? 'border-b border-gray-100' : ''}`}
+                className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < drugs.length - 1 ? 'border-b border-gray-100' : ''}`}
               >
                 <div>
                   <p className="font-semibold text-gray-900 text-sm">{r.name}</p>

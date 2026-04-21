@@ -64,7 +64,7 @@ function ChevronRight() {
 
 function Disclaimer() {
   return (
-    <footer className="sticky bottom-0 bg-amber-50 border-t border-amber-200 px-5 py-3">
+    <footer className="sticky bottom-0 bg-amber-50 border-t border-amber-200 px-4 py-3">
       <p className="text-amber-800 text-xs text-center leading-snug">
         <strong>Calculation aid only.</strong> Always verify doses against current formulary guidelines and apply clinical judgment.
       </p>
@@ -181,7 +181,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#F2F2F7] flex flex-col max-w-lg md:max-w-2xl mx-auto">
-      <header className="sticky top-0 z-50 bg-white shadow-sm px-5 py-4 flex flex-col items-center">
+      <header className="sticky top-0 z-50 bg-white shadow-sm px-4 py-4 flex flex-col items-center">
         <button type="button" onClick={handleBack} className="flex flex-col items-center">
           <img src={logoUrl} alt="PediaDose" className="h-10" />
           <p className="text-gray-400 text-xs mt-1 tracking-wide">Paediatric drug dosing tool</p>
@@ -231,7 +231,7 @@ export default function App() {
                               key={c.id}
                               type="button"
                               onClick={() => handleSelect({ id: c.id, name: c.name, subtitle: c.section ?? '', type: 'condition' })}
-                              className={`w-full text-left px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
+                              className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
                             >
                               <div>
                                 <p className="font-semibold text-gray-900 text-sm">{c.name}</p>
@@ -270,7 +270,7 @@ export default function App() {
                               key={d.id}
                               type="button"
                               onClick={() => handleSelect({ id: d.id, name: d.name, subtitle: (d as DrugEntry).category ?? '', type: 'drug' })}
-                              className={`w-full text-left px-4 py-3.5 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
+                              className={`w-full text-left px-4 py-4 flex items-center justify-between hover:bg-gray-50 active:bg-gray-100 transition-colors ${i < items.length - 1 ? 'border-b border-gray-100' : ''}`}
                             >
                               <div>
                                 <p className="font-semibold text-gray-900 text-sm">{d.name}</p>
@@ -309,7 +309,7 @@ export default function App() {
         {screen === 'condition' && selectedId && (() => {
           const dbg = new URLSearchParams(window.location.search).get('debug')
           return (
-            <div className="mt-4 bg-white rounded-2xl p-5 shadow-sm">
+            <div className="mt-4 bg-white rounded-2xl p-6 shadow-sm">
               <ConditionView
                 conditionId={selectedId}
                 onBack={handleBack}
@@ -323,7 +323,7 @@ export default function App() {
 
         {/* DRUG FLOW */}
         {screen === 'drug' && selectedDrug && (
-          <div className="mt-4 bg-white rounded-2xl p-5 shadow-sm">
+          <div className="mt-4 bg-white rounded-2xl p-6 shadow-sm">
             <button type="button" onClick={handleBack} className="flex items-center gap-1 text-blue-600 text-sm font-medium mb-4">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -339,7 +339,7 @@ export default function App() {
               const age = selectedDrug.minAge
               const showBadge = age && age !== 'Any age' && age !== 'neonate'
               return showBadge ? (
-                <span className="inline-flex items-center text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-2.5 py-1 mt-2">
+                <span className="inline-flex items-center text-xs font-semibold bg-blue-50 text-blue-700 rounded-full px-3 py-1 mt-2">
                   Min. age: {age}
                 </span>
               ) : null
@@ -421,7 +421,7 @@ export default function App() {
                   return (
                     <div className="mt-6 space-y-3">
                       {matched && (
-                        <div className="bg-blue-600 rounded-2xl p-5 text-white">
+                        <div className="bg-blue-600 rounded-2xl p-6 text-white">
                           <p className="text-xs font-semibold uppercase tracking-wider text-blue-200 mb-1">Dose</p>
                           <p className="text-6xl font-bold leading-none">
                             {matched.doseMg} <span className="text-3xl font-semibold text-blue-200">mg</span>

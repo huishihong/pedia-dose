@@ -16,7 +16,7 @@ export function FormulationSelector({ formulations, selected, onChange }: Formul
 
       {oral.length > 0 && (
         <div className="mb-2">
-          <p className="text-xs text-gray-400 uppercase tracking-wider mb-1.5">Oral</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Oral</p>
           <div className="flex flex-wrap gap-2">
             {oral.map(f => (
               <button
@@ -43,7 +43,7 @@ export function FormulationSelector({ formulations, selected, onChange }: Formul
 
       {rectal.length > 0 && (
         <div>
-          <p className="text-xs text-gray-400 uppercase tracking-wider mb-1.5">Rectal</p>
+          <p className="text-xs text-gray-400 uppercase tracking-wider mb-2">Rectal</p>
           <div className="flex flex-wrap gap-2">
             {rectal.map(f => (
               <button

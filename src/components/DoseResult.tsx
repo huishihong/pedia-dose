@@ -8,7 +8,7 @@ export function DoseResultCard({ result }: DoseResultProps) {
   const isLiquid = result.volumeMl !== null
 
   return (
-    <div className="w-full mt-5 space-y-3">
+    <div className="w-full mt-6 space-y-3">
       {result.isCapped && (
         <div className="bg-red-50 border border-red-200 rounded-2xl px-4 py-3 flex items-start gap-3">
           <span className="text-red-500 text-lg leading-none mt-0.5">⚠️</span>
@@ -20,7 +20,7 @@ export function DoseResultCard({ result }: DoseResultProps) {
       )}
 
       {/* Main dose card — solid blue */}
-      <div className="bg-blue-600 rounded-2xl p-5 text-white">
+      <div className="bg-blue-600 rounded-2xl p-6 text-white">
         <p className="text-xs font-semibold uppercase tracking-wider text-blue-200 mb-1">Dose</p>
         <p className="text-6xl font-bold leading-none">
           {result.cappedDoseMg} <span className="text-3xl font-semibold text-blue-200">mg</span>
