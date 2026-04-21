@@ -44,12 +44,16 @@ function derivePerDoseMgPerKg(drug: ConditionDrug): number | null {
 
 export function ConditionView({ conditionId, onBack, initialTier, initialWeight, autoCalculate }: ConditionViewProps) {
   const condition = conditionsData.conditions.find(c => c.id === conditionId)
-  const [selectedTier, setSelectedTier] = useState<string | null>(initialTier ?? null)
+  const isSingleTier = condition != null && condition.severityTiers.length === 1
+  const [selectedTier, setSelectedTier] = useState<string | null>(
+    initialTier ?? (isSingleTier && condition ? condition.severityTiers[0].tier : null)
+  )
   const [weightKg, setWeightKg] = useState<number | null>(initialWeight ?? null)
   const [showDoses, setShowDoses] = useState(autoCalculate ?? false)
 
   if (!condition) return null
 
+  const tierLabel = (condition as Record<string, unknown>).tierLabel as string | undefined ?? 'Severity'
   const tier = condition.severityTiers.find(t => t.tier === selectedTier)
 
   function handleTierSelect(tierId: string) {
@@ -74,34 +78,39 @@ export function ConditionView({ conditionId, onBack, initialTier, initialWeight,
           Back
         </button>
         <h2 className="text-xl font-bold text-gray-800">{condition.name}</h2>
+        {isSingleTier && tier && (
+          <p className="text-sm text-gray-600 mt-1 leading-snug">{tier.description}</p>
+        )}
         {condition.notes && (
-          <p className="text-sm text-gray-500 mt-1 leading-snug">{condition.notes}</p>
+          <p className="text-sm text-gray-600 mt-1 leading-snug">{condition.notes}</p>
         )}
       </div>
 
-      {/* Severity tiers */}
-      <div>
-        <p className="text-sm font-medium text-gray-600 mb-2">Severity</p>
-        <div className="space-y-2">
-          {condition.severityTiers.map(t => (
-            <button
-              key={t.tier}
-              type="button"
-              onClick={() => handleTierSelect(t.tier)}
-              className={`w-full text-left px-4 py-3 rounded-xl border-2 transition-colors ${
-                selectedTier === t.tier
-                  ? 'bg-blue-600 border-blue-600 text-white'
-                  : 'bg-white border-gray-200 text-gray-800 hover:border-blue-300'
-              }`}
-            >
-              <p className="font-semibold">{t.label}</p>
-              <p className={`text-xs mt-0.5 leading-snug ${selectedTier === t.tier ? 'text-blue-200' : 'text-gray-400'}`}>
-                {t.description}
-              </p>
-            </button>
-          ))}
+      {/* Tier selector — only for multi-tier conditions */}
+      {!isSingleTier && (
+        <div>
+          <p className="text-sm font-medium text-gray-600 mb-2">{tierLabel}</p>
+          <div className="space-y-2">
+            {condition.severityTiers.map(t => (
+              <button
+                key={t.tier}
+                type="button"
+                onClick={() => handleTierSelect(t.tier)}
+                className={`w-full text-left px-4 py-3 rounded-xl border-2 transition-colors ${
+                  selectedTier === t.tier
+                    ? 'bg-blue-600 border-blue-600 text-white'
+                    : 'bg-white border-gray-200 text-gray-800 hover:border-blue-300'
+                }`}
+              >
+                <p className="font-semibold">{t.label}</p>
+                <p className={`text-xs mt-0.5 leading-snug ${selectedTier === t.tier ? 'text-blue-200' : 'text-gray-400'}`}>
+                  {t.description}
+                </p>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Weight input — only shown after severity selected */}
       {selectedTier && (

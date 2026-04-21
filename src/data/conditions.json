@@ -183,6 +183,7 @@
       "aliases": ["febrile fit", "fever with fit", "seizure with fever", "convulsion with fever"],
       "section": "F — Neurology",
       "source": "KKH CE Guidelines Jan 2026, p.218–220",
+      "tierLabel": "Stage",
       "notes": "Distinguish simple (age 6m–6yr, <15 min, generalised, single episode in 24h) from complex (>15 min, focal, or recurrent within 24h). If seizure is ongoing, refer to Status Epilepticus pathway.",
       "severityTiers": [
         {
@@ -241,6 +242,7 @@
       "aliases": ["prolonged seizure", "seizure not stopping", "ongoing fit"],
       "section": "F — Neurology",
       "source": "KKH CE Guidelines Jan 2026, p.223–224",
+      "tierLabel": "Treatment step",
       "notes": "Follow clinical pathway (Fig 1.1). Check glucose — if <3 mmol/L give 5 mL/kg IV dextrose 10%.",
       "severityTiers": [
         {
@@ -313,6 +315,7 @@
       "aliases": ["UTI", "dysuria", "pyelonephritis", "urinary infection", "kidney infection"],
       "section": "C — Febrile Conditions",
       "source": "KKH CE Guidelines Jan 2026, p.110–117; NHG Pharmacy Calculator Jul 2024",
+      "tierLabel": "Type",
       "notes": "Febrile UTI: treat empirically for 10–14 days. Afebrile UTI: treat 5–7 days. Not for use in children <3 months — admit and discuss with senior.",
       "severityTiers": [
         {
@@ -405,6 +408,7 @@
       "aliases": ["CAP", "chest infection", "lung infection", "pneumonia"],
       "section": "D — Respiratory Conditions",
       "source": "KKH CE Guidelines Jan 2026, p.178–184; NHG Pharmacy Calculator Jul 2024",
+      "tierLabel": "Presentation",
       "notes": "CXR findings and age guide antibiotic choice. Viral pneumonia (common in <3 years with normal WCC) may not require antibiotics. Severe pneumonia requires admission — outpatient management not appropriate.",
       "severityTiers": [
         {
@@ -499,6 +503,7 @@
       "aliases": ["SSTI", "cellulitis", "impetigo", "skin infection", "wound infection", "erysipelas"],
       "section": "KKH CE Antibiotic Guidance",
       "source": "KKH CE Guidelines Jan 2026, p.346; NHG Pharmacy Calculator Jul 2024",
+      "tierLabel": "Type",
       "notes": "Distinguish between impetigo/ecthyma (superficial) and cellulitis/erysipelas (deeper). Toxic or orbital cellulitis requires admission.",
       "severityTiers": [
         {
@@ -605,6 +610,7 @@
       "aliases": ["AOM", "ear infection", "acute otitis media", "ear pain", "ear discharge"],
       "section": "KKH CE Antibiotic Guidance",
       "source": "KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024 — Indication Specific Antibiotics sheet",
+      "tierLabel": "Type",
       "notes": "High-dose amoxicillin recommended for AOM. Consider watchful waiting in children ≥2 years with mild symptoms and no severe otalgia.",
       "severityTiers": [
         {
@@ -667,6 +673,7 @@
       "aliases": ["RSV", "respiratory syncytial virus", "first wheeze", "infant wheeze"],
       "section": "D — Respiratory Conditions",
       "source": "KKH CE Guidelines Jan 2026, p.174–177",
+      "tierLabel": "Approach",
       "notes": "Bronchiolitis is primarily supportive. Bronchodilators are NOT routine. A trial may be considered in moderate/severe disease with significant personal or family history of atopy — document response clearly.",
       "severityTiers": [
         {
@@ -705,6 +712,7 @@
       "aliases": ["GE", "vomiting and diarrhoea", "vomiting", "diarrhoea", "food poisoning", "stomach flu"],
       "section": "E — Gastroenterology",
       "source": "KKH CE Guidelines Jan 2026, p.206–217",
+      "tierLabel": "Symptom",
       "notes": "Primarily supportive — oral rehydration therapy (ORS) is first-line. Antibiotics generally NOT recommended (mostly viral). Ondansetron single dose may reduce vomiting and lower IV rehydration rates.",
       "severityTiers": [
         {
@@ -895,6 +903,7 @@
       "aliases": ["red eye", "pink eye", "eye infection", "bacterial conjunctivitis", "viral conjunctivitis", "allergic conjunctivitis"],
       "section": "R — Ophthalmology",
       "source": "KKH CE Guidelines Jan 2026, p.409–418",
+      "tierLabel": "Type",
       "notes": "Distinguish viral (watery, bilateral, follicular), bacterial (purulent discharge), and allergic (itching, bilateral, seasonal). Most viral cases are self-limiting.",
       "severityTiers": [
         {
