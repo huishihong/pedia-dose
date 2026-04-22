@@ -421,15 +421,17 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F2F2F7] flex flex-col max-w-lg md:max-w-5xl mx-auto">
-      <header className="sticky top-0 z-50 bg-white shadow-sm px-4 py-4 flex flex-col items-center">
-        <button type="button" onClick={handleBack} className="flex flex-col items-center">
-          <img src={logoUrl} alt="PediaDose" className="h-10" />
-          <p className="text-gray-400 text-xs mt-1 tracking-wide">Paediatric drug dosing tool</p>
-        </button>
+    <div className="min-h-screen bg-[#F2F2F7] flex flex-col">
+      <header className="sticky top-0 z-50 bg-white shadow-sm w-full">
+        <div className="max-w-lg md:max-w-5xl mx-auto px-4 py-4 flex flex-col items-center">
+          <button type="button" onClick={handleBack} className="flex flex-col items-center">
+            <img src={logoUrl} alt="PediaDose" className="h-10" />
+            <p className="text-gray-400 text-xs mt-1 tracking-wide">Paediatric drug dosing tool</p>
+          </button>
+        </div>
       </header>
 
-      <main className="flex-1 px-4 pb-8 md:flex md:gap-6 md:items-start md:pt-6">
+      <main className="flex-1 w-full max-w-lg md:max-w-5xl mx-auto px-4 pb-8 md:flex md:gap-6 md:items-start md:pt-6">
 
         {/* LEFT PANEL — search + tabs + browse list
             Mobile: shown only on home screen
