@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './index.css'
 import logoUrl from './assets/logo.svg'
 import { SearchBar } from './components/SearchBar'
@@ -7,11 +7,14 @@ import { ConditionView } from './components/ConditionView'
 import { WeightInput } from './components/WeightInput'
 import { FormulationSelector } from './components/FormulationSelector'
 import { DoseResultCard } from './components/DoseResult'
+import { FlagButton } from './components/FlagButton'
+import { AdminPage } from './pages/Admin'
 import { search } from './utils/search'
 import type { SearchResult } from './utils/search'
 import { calculateParacetamol } from './utils/doseCalculator'
 import { calculateGenericDose } from './utils/genericDoseCalculator'
 import type { DoseResult, Formulation } from './utils/doseCalculator'
+import { logNotFound } from './utils/flagging'
 import drugsData from './data/drugs.json'
 import conditionsData from './data/conditions.json'
 
@@ -73,6 +76,8 @@ function Disclaimer() {
 }
 
 export default function App() {
+  if (window.location.pathname === '/admin') return <AdminPage />
+
   const [screen, setScreen] = useState<Screen>('home')
   const [query, setQuery] = useState('')
   const [selectedId, setSelectedId] = useState<string | null>(null)
@@ -101,6 +106,15 @@ export default function App() {
   }, [])
 
   const searchResults = search(query)
+
+  // Not-found logging — fire once per unique query that returns no results
+  const loggedQueries = useRef<Set<string>>(new Set())
+  useEffect(() => {
+    if (query.length >= 2 && searchResults.length === 0 && !loggedQueries.current.has(query)) {
+      loggedQueries.current.add(query)
+      logNotFound(query)
+    }
+  }, [query, searchResults.length])
 
   function handleSelect(result: SearchResult) {
     setSelectedId(result.id)
@@ -237,7 +251,10 @@ export default function App() {
           Back
         </button>
 
-        <h2 className="text-xl font-bold text-gray-900 mb-1">{selectedDrug.name}</h2>
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h2 className="text-xl font-bold text-gray-900">{selectedDrug.name}</h2>
+          <FlagButton context={{ screen: 'details', drug: selectedDrug.name, weight_kg: null, calculated_dose: null }} />
+        </div>
         {selectedDrug.category && (
           <p className="text-sm text-gray-400">{selectedDrug.category}</p>
         )}
@@ -413,7 +430,7 @@ export default function App() {
               </div>
             )}
 
-            {doseResult && <DoseResultCard result={doseResult} />}
+            {doseResult && <DoseResultCard result={doseResult} drugName={selectedDrug?.name} />}
           </>
         )}
       </div>

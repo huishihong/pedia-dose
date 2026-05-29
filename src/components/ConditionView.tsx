@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import conditionsData from '../data/conditions.json'
 import { WeightInput } from './WeightInput'
+import { FlagButton } from './FlagButton'
 import { calculateConditionDrug } from '../utils/genericDoseCalculator'
 
 interface ConditionViewProps {
@@ -77,7 +78,11 @@ export function ConditionView({ conditionId, onBack, initialTier, initialWeight,
           </svg>
           Back
         </button>
-        <h2 className="text-xl font-bold text-gray-800">{condition.name}</h2>
+        {/* Title row with flag button */}
+        <div className="flex items-start justify-between gap-2">
+          <h2 className="text-xl font-bold text-gray-800">{condition.name}</h2>
+          <FlagButton context={{ screen: 'details', condition: condition.name, weight_kg: null, calculated_dose: null }} />
+        </div>
         {isSingleTier && tier && (
           <p className="text-sm text-gray-600 mt-1 leading-snug">{tier.description}</p>
         )}
@@ -166,7 +171,16 @@ export function ConditionView({ conditionId, onBack, initialTier, initialWeight,
               <div key={i} className="bg-white border-2 border-gray-100 rounded-xl p-4">
                 <div className="flex items-start justify-between gap-2">
                   <p className="font-bold text-gray-800">{result.drugName}</p>
-                  <span className="text-xs bg-gray-100 text-gray-500 rounded-full px-2 py-0.5 whitespace-nowrap">{result.route}</span>
+                  <div className="flex items-center gap-2 flex-shrink-0">
+                    <span className="text-xs bg-gray-100 text-gray-500 rounded-full px-2 py-0.5 whitespace-nowrap">{result.route}</span>
+                    <FlagButton context={{
+                      screen: 'result',
+                      condition: condition.name,
+                      drug: result.drugName,
+                      weight_kg: weightKg,
+                      calculated_dose: result.isCalculated ? `${result.cappedMg} mg` : null,
+                    }} />
+                  </div>
                 </div>
 
                 {result.isCalculated ? (

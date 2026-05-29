@@ -1,10 +1,12 @@
 import type { DoseResult } from '../utils/doseCalculator'
+import { FlagButton } from './FlagButton'
 
 interface DoseResultProps {
   result: DoseResult
+  drugName?: string
 }
 
-export function DoseResultCard({ result }: DoseResultProps) {
+export function DoseResultCard({ result, drugName }: DoseResultProps) {
   const isLiquid = result.volumeMl !== null
 
   return (
@@ -68,9 +70,17 @@ export function DoseResultCard({ result }: DoseResultProps) {
         </div>
       </div>
 
-      <p className="text-xs text-gray-400 text-center pt-1">
-        Source: KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025
-      </p>
+      <div className="flex items-center justify-between pt-1">
+        <p className="text-xs text-gray-400">
+          Source: KKH CE Guidelines Jan 2026; NHG Pharmacy Calculator Jul 2024; PaedsENGAGE Feb 2025
+        </p>
+        <FlagButton context={{
+          screen: 'result',
+          drug: drugName ?? null,
+          weight_kg: result.weightKg,
+          calculated_dose: `${result.cappedDoseMg} mg`,
+        }} />
+      </div>
     </div>
   )
 }
