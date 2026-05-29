@@ -15,10 +15,10 @@ export function FlagButton({ context }: FlagButtonProps) {
         type="button"
         onClick={() => setOpen(true)}
         title="Flag an issue"
-        className="flex items-center gap-1 text-xs text-gray-300 hover:text-red-400 transition-colors"
+        className="flex items-center gap-1.5 text-xs font-semibold text-red-400 hover:text-red-600 transition-colors flex-shrink-0"
       >
-        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21V4m0 0l7-1 4 2 7-1v13l-7 1-4-2-7 1V4z" />
+        <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M4 21V4.5L5 4l6 2 6-2 1 .5V15.5l-1 .5-6-2-6 2-1-.5V21H4z" />
         </svg>
         <span>Flag</span>
       </button>

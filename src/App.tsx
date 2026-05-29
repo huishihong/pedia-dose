@@ -253,7 +253,12 @@ export default function App() {
 
         <div className="flex items-start justify-between gap-2 mb-1">
           <h2 className="text-xl font-bold text-gray-900">{selectedDrug.name}</h2>
-          <FlagButton context={{ screen: 'details', drug: selectedDrug.name, weight_kg: null, calculated_dose: null }} />
+          <FlagButton context={{
+            screen: doseResult ? 'result' : 'details',
+            drug: selectedDrug.name,
+            weight_kg: doseResult ? doseResult.weightKg : null,
+            calculated_dose: doseResult ? `${doseResult.cappedDoseMg} mg` : null,
+          }} />
         </div>
         {selectedDrug.category && (
           <p className="text-sm text-gray-400">{selectedDrug.category}</p>
@@ -430,7 +435,7 @@ export default function App() {
               </div>
             )}
 
-            {doseResult && <DoseResultCard result={doseResult} drugName={selectedDrug?.name} />}
+            {doseResult && <DoseResultCard result={doseResult} />}
           </>
         )}
       </div>
