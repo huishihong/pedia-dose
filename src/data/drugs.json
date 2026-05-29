@@ -2134,6 +2134,235 @@
       ],
       "dosingNote": "1:1000 solution, dilute 1:8 with water. May be used to compress or wash affected areas. Dab dry after use — not necessary to wash off. Stains skin and clothing.",
       "source": "PaedsENGAGE Feb 2025"
+    },
+    {
+      "id": "dimenhydrinate",
+      "name": "Dimenhydrinate",
+      "aliases": ["dimenate", "motion sickness", "anti-vertigo", "vomiting"],
+      "category": "Anti-emetic — Anti-vertigo",
+      "ageBandedDosing": [
+        { "ageLabel": "1–6 y/o", "volumeMl": "4–8", "formulation": "15mg/5ml", "frequency": "BD/TDS" },
+        { "ageLabel": "7–12 y/o", "volumeMl": "8–15", "formulation": "15mg/5ml", "frequency": "BD/TDS" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "dexchlorpheniramine",
+      "name": "Dexchlorpheniramine",
+      "aliases": ["polaramine", "dexchlor", "antihistamine"],
+      "category": "Antihistamine — 1st generation",
+      "minAge": "2 years",
+      "ageBandedDosing": [
+        { "ageLabel": "2–6 y/o*", "volumeMl": "1.25–2.5", "formulation": "2mg/5ml", "frequency": "TDS" },
+        { "ageLabel": "6–12 y/o", "volumeMl": "2.5–5", "formulation": "2mg/5ml", "frequency": "QDS" },
+        { "ageLabel": ">12 y/o", "volumeMl": "5–10", "formulation": "2mg/5ml", "frequency": "QDS" }
+      ],
+      "dosingNote": "*Use with caution in children under 6.",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "dextromethorphan",
+      "name": "Dextromethorphan",
+      "aliases": ["beathorphan", "tussidex", "cough suppressant", "DXM"],
+      "category": "Cough suppressant",
+      "minAge": "2 years",
+      "ageBandedDosing": [
+        { "ageLabel": "2–6 y/o", "volumeMl": "2.5", "formulation": "15mg/5ml", "frequency": "TDS" },
+        { "ageLabel": "6–12 y/o", "volumeMl": "5", "formulation": "15mg/5ml", "frequency": "TDS" },
+        { "ageLabel": ">12 y/o", "volumeMl": "5–10", "formulation": "15mg/5ml", "frequency": "TDS" }
+      ],
+      "dosingNote": "Use with caution. Not recommended under 2 years.",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "ketotifen",
+      "name": "Ketotifen",
+      "aliases": ["dhatifen", "zaditen", "mast cell stabiliser"],
+      "category": "Antihistamine — Mast cell stabiliser",
+      "minAge": "6 months",
+      "ageBandedDosing": [
+        { "ageLabel": "6 months – 3 y/o", "volumeMl": "2.5", "formulation": "1mg/5ml", "frequency": "BD" },
+        { "ageLabel": ">3 y/o", "volumeMl": "5", "formulation": "1mg/5ml", "frequency": "BD" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "bromhexine",
+      "name": "Bromhexine",
+      "aliases": ["bisolvon", "vasican", "mucolytic"],
+      "category": "Mucolytic",
+      "minAge": "2 years",
+      "ageBandedDosing": [
+        { "ageLabel": "2–5 y/o (4mg/5ml)", "volumeMl": "5", "formulation": "4mg/5ml", "frequency": "BD or 2.5ml TDS" },
+        { "ageLabel": "2–5 y/o (8mg/5ml)", "volumeMl": "2.5", "formulation": "8mg/5ml", "frequency": "BD" },
+        { "ageLabel": "6–12 y/o (4mg/5ml)", "volumeMl": "5", "formulation": "4mg/5ml", "frequency": "TDS" },
+        { "ageLabel": "6–12 y/o (8mg/5ml)", "volumeMl": "2.5", "formulation": "8mg/5ml", "frequency": "TDS" },
+        { "ageLabel": ">12 y/o (4mg/5ml)", "volumeMl": "10", "formulation": "4mg/5ml", "frequency": "TDS" },
+        { "ageLabel": ">12 y/o (8mg/5ml)", "volumeMl": "5–10", "formulation": "8mg/5ml", "frequency": "TDS" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "carbocisteine",
+      "name": "Carbocisteine",
+      "aliases": ["rhinathiol", "rhinathiol 2%", "carbocysteine", "mucolytic"],
+      "category": "Mucolytic",
+      "minAge": "2 years",
+      "ageBandedDosing": [
+        { "ageLabel": "<2 y/o", "notes": "Contraindicated" },
+        { "ageLabel": "2–5 y/o", "volumeMl": "5", "formulation": "100mg/5ml", "frequency": "BD" },
+        { "ageLabel": ">5 y/o", "volumeMl": "5", "formulation": "100mg/5ml", "frequency": "TDS" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "bisacodyl-suppository",
+      "name": "Bisacodyl suppository",
+      "aliases": ["dulcolax", "bisacodyl", "laxative suppository"],
+      "category": "Laxative — Rectal",
+      "minAge": "4 years",
+      "ageBandedDosing": [
+        { "ageLabel": "4–10 y/o (5mg supp)", "notes": "1 suppository OD" },
+        { "ageLabel": "4–10 y/o (10mg supp)", "notes": "½ suppository OD" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "ispaghula-husk",
+      "name": "Ispaghula husk",
+      "aliases": ["fybogel", "mucilin", "psyllium", "fibre supplement"],
+      "category": "Laxative — Bulk-forming",
+      "minAge": "6 years",
+      "ageBandedDosing": [
+        { "ageLabel": "6–12 y/o", "notes": "½ sachet BD" },
+        { "ageLabel": ">12 y/o", "notes": "1 sachet BD" }
+      ],
+      "dosingNote": "Take with a full glass of water. Do not take immediately before bed.",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "dioctahedral-smectite",
+      "name": "Dioctahedral smectite",
+      "aliases": ["smecta", "diosmectite", "anti-diarrhoeal"],
+      "category": "Anti-diarrhoeal",
+      "ageBandedDosing": [
+        { "ageLabel": "<1 y/o", "notes": "½ sachet (3g) BD" },
+        { "ageLabel": "1–2 y/o", "notes": "½–1 sachet (3g) BD" },
+        { "ageLabel": ">2 y/o", "notes": "1 sachet (3g) BD/TDS" },
+        { "ageLabel": "Adult", "notes": "1 sachet (3g) TDS" }
+      ],
+      "dosingNote": "Dissolve sachet in 50ml water and take between meals. Separate from other medications by 2 hours.",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "light-kaolin",
+      "name": "Light kaolin",
+      "aliases": ["kaomix", "kaolin", "anti-diarrhoeal"],
+      "category": "Anti-diarrhoeal",
+      "minAge": "3 years",
+      "ageBandedDosing": [
+        { "ageLabel": "3–6 y/o", "notes": "5–10ml after each bowel movement, BD" },
+        { "ageLabel": "6–12 y/o", "notes": "10–20ml after each bowel movement, TDS" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "colimix",
+      "name": "Colimix syrup",
+      "aliases": ["colimix", "anti-diarrhoeal"],
+      "category": "Anti-diarrhoeal",
+      "ageBandedDosing": [
+        { "ageLabel": ">6 months", "volumeMl": "5", "frequency": "TDS/QDS (before each feed)" },
+        { "ageLabel": "4–12 y/o", "volumeMl": "5–10", "frequency": "TDS/QDS" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "lactobacillus",
+      "name": "Lactobacillus acidophilus",
+      "aliases": ["lacteol fort", "lactoguard", "probiotic"],
+      "category": "Probiotic",
+      "ageBandedDosing": [
+        { "ageLabel": "Infant (sachet 10 billion)", "notes": "½–1 sachet initial; ½–1 sachet subsequent" },
+        { "ageLabel": "Children (sachet 10 billion)", "notes": "1–2 sachets initial; 1 sachet subsequent" },
+        { "ageLabel": "Children (capsule 5 billion)", "notes": "2 capsules BD" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "lysozyme",
+      "name": "Lysozyme",
+      "aliases": ["leftose", "lysozyme syrup"],
+      "category": "Mucolytic enzyme",
+      "ageBandedDosing": [
+        { "ageLabel": "<2 y/o", "volumeMl": "1–2", "formulation": "5mg/ml", "frequency": "TDS" },
+        { "ageLabel": "2–6 y/o", "volumeMl": "2–3", "formulation": "5mg/ml", "frequency": "TDS" },
+        { "ageLabel": "7–14 y/o", "volumeMl": "3–4", "formulation": "5mg/ml", "frequency": "TDS" }
+      ],
+      "cautions": ["Derived from egg white — avoid in egg allergy"],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "gaviscon-oral",
+      "name": "Gaviscon oral suspension",
+      "aliases": ["gaviscon", "alginate", "antacid", "anti-reflux", "GORD"],
+      "category": "Antacid — Anti-reflux",
+      "minAge": "6 years",
+      "ageBandedDosing": [
+        { "ageLabel": "6–12 y/o", "volumeMl": "5–10", "frequency": "After meals" },
+        { "ageLabel": ">12 y/o", "volumeMl": "10–20", "frequency": "After meals" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "triamcinolone-nasal",
+      "name": "Triamcinolone nasal spray",
+      "aliases": ["nasocort", "triamcinolone acetonide nasal"],
+      "category": "Corticosteroid — Nasal",
+      "minAge": "4 years",
+      "ageBandedDosing": [
+        { "ageLabel": "4–11 y/o", "notes": "1 spray each nostril OD" },
+        { "ageLabel": ">12 y/o", "notes": "2 sprays each nostril OD; maintenance 1 spray each nostril OD" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "fluticasone-propionate-nasal",
+      "name": "Fluticasone propionate nasal spray",
+      "aliases": ["flixonase", "fluticasone propionate", "fluticasone nasal"],
+      "category": "Corticosteroid — Nasal",
+      "minAge": "4 years",
+      "ageBandedDosing": [
+        { "ageLabel": "4–11 y/o", "notes": "1 spray each nostril OD" },
+        { "ageLabel": ">12 y/o", "notes": "2 sprays each nostril OD; max 2 sprays each nostril BD" }
+      ],
+      "dosingNote": "Fluticasone propionate 50mcg/spray (Flixonase). Distinct from fluticasone furoate (Avamys).",
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "bambuterol",
+      "name": "Bambuterol",
+      "aliases": ["bambec", "long-acting bronchodilator", "beta-2 agonist"],
+      "category": "Bronchodilator — Long-acting β2 agonist",
+      "minAge": "2 years",
+      "ageBandedDosing": [
+        { "ageLabel": "2–5 y/o", "volumeMl": "5", "formulation": "1mg/ml", "frequency": "OD" },
+        { "ageLabel": "6–12 y/o", "volumeMl": "10", "formulation": "1mg/ml", "frequency": "OD; max 20ml BD" }
+      ],
+      "source": "Paeds_Meds_v2"
+    },
+    {
+      "id": "seretide-evohaler",
+      "name": "Seretide Evohaler 25/50",
+      "aliases": ["seretide", "salmeterol fluticasone", "ICS LABA", "inhaler"],
+      "category": "ICS/LABA — Inhaler",
+      "minAge": "4 years",
+      "ageBandedDosing": [
+        { "ageLabel": ">4 y/o", "notes": "1 inhalation BD (max 2 inhalations BD)" },
+        { "ageLabel": ">12 y/o", "notes": "2 inhalations BD" }
+      ],
+      "dosingNote": "25mcg salmeterol xinafoate + 50mcg fluticasone propionate per actuation. Use with spacer in children.",
+      "source": "Paeds_Meds_v2"
     }
   ]
 }
